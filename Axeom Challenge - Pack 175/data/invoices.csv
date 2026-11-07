@@ -1,0 +1,152 @@
+invoice_no,bill_to,email,issued,due,amount,status,memo
+INV-1001,Crown DFW,media@crowndfw.org,2026-04-01,2026-04-15,300.00,paid,Podcast Studio 2hr 4/1
+INV-1002,Bayou WP,djackson@bayouwp.com,2026-04-01,2026-04-15,2500.00,paid,Monthly retainer April
+INV-1003,H&H Radio,mia@heartandhustle.fm,2026-04-06,2026-04-20,300.00,paid,
+INV-1004,Startup Texas,darnell@startuptexas.fm,2026-04-09,2026-04-23,550.00,paid,B003 Podcast Studio 4hr
+INV-1005,Crown DFW,media@crowndfw.org,2026-04-11,2026-04-25,300.00,paid,Podcast Studio 2hr 4/10
+INV-1006,Luna Roofing,reggie@lunaroofingco.com,2026-04-13,2026-04-27,900.00,paid,B006 Reels Pack
+INV-1007,Torres Dental,office@torresdental.com,2026-04-14,2026-04-28,1500.00,paid,B005 Content Day
+INV-1008,Brightwater & Co Builders,nolan@brightwater.build,2026-04-14,2026-04-28,1500.00,paid,
+INV-1009,Heart & Hustle Radio,mia@heartandhustle.fm,2026-04-21,2026-05-05,300.00,paid,
+INV-1010,Crown Media Team,media@crowndfw.org,2026-04-21,2026-05-05,300.00,paid,B008 Podcast Studio 2hr
+INV-1011,Juniper Med Spa - Frisco,erin@junipermedspa.com,2026-04-22,2026-05-06,1500.00,paid,
+INV-1012,Startup Texas Podcast,darnell@startuptexas.fm,2026-04-25,2026-05-09,550.00,paid,
+INV-1013,Alana Ibarra,alana@meridianbridal.com,2026-04-28,2026-05-12,900.00,paid,
+INV-1014,Heart & Hustle Radio,mia@heartandhustle.fm,2026-04-29,2026-05-13,300.00,paid,B015 Podcast Studio 2hr
+INV-1015,Crown DFW,media@crowndfw.org,2026-04-29,2026-05-13,300.00,paid,
+INV-1016,Bayou Wealth,djackson@bayouwp.com,2026-05-01,2026-05-15,2500.00,paid,Monthly retainer May
+INV-1017,Price Ins,david@priceinsures.com,2026-05-01,2026-05-15,2500.00,paid,Monthly retainer May
+INV-1018,Startup Texas Podcast,darnell@startuptexas.fm,2026-05-07,2026-05-21,550.00,paid,B016 Podcast Studio 4hr
+INV-1019,Crown Church,media@crowndfw.org,2026-05-07,2026-05-21,270.00,paid,Podcast Studio 2hr 5/7
+INV-1020,Luna Roofing Co,reggie@lunaroofingco.com,2026-05-12,2026-05-26,900.00,paid,B019 Reels Pack
+INV-1021,Maple Fitness,luis@maplefit.co,2026-05-14,2026-05-28,900.00,paid,Reels Pack 5/12
+INV-1022,Crown Church,media@crowndfw.org,2026-05-14,2026-05-28,270.00,paid,Podcast Studio 2hr 5/13
+INV-1023,Mia Torres,mia@heartandhustle.fm,2026-05-14,2026-05-28,300.00,paid,B018 Podcast Studio 2hr
+INV-1024,Beacon Med Spa,alana@beaconmedspa.com,2026-05-18,2026-06-01,900.00,paid,
+INV-1025,Startup Texas,darnell@startuptexas.fm,2026-05-21,2026-06-04,550.00,paid,B027 Podcast Studio 4hr
+INV-1026,Crown Church,media@crowndfw.org,2026-05-23,2026-06-06,270.00,paid,Podcast Studio 2hr 5/21
+INV-1027,Andre Hale,andre@primebarbers.com,2026-05-25,2026-06-08,900.00,paid,
+INV-1028,Heart and Hustle,mia@heartandhustle.fm,2026-05-25,2026-06-08,300.00,paid,Podcast Studio 2hr 5/22
+INV-1029,Crown Church,media@crowndfw.org,2026-05-28,2026-06-11,270.00,paid,B030 Podcast Studio 2hr
+INV-1030,Adeyemi Law Firm,info@adeyemilaw.com,2026-06-01,2026-06-15,2500.00,paid,Monthly retainer June
+INV-1031,Hillcrest Physical Therapy,greed@hillcrestptdallas.com,2026-06-01,2026-06-15,2500.00,paid,Monthly retainer June
+INV-1032,Price Insurance,david@priceinsures.com,2026-06-01,2026-06-15,2500.00,paid,Monthly retainer June
+INV-1033,Dr. Priya Haddad,office@haddaddental.com,2026-06-01,2026-06-15,1500.00,paid,Content Day 6/1
+INV-1034,Bayou WP,djackson@bayouwp.com,2026-06-01,2026-06-15,2500.00,paid,Monthly retainer June
+INV-1035,Meridian Bridal Boutique,alana@meridianbridal.com,2026-06-03,2026-06-17,900.00,paid,Reels Pack 6/1
+INV-1036,Heart & Hustle,mia@heartandhustle.fm,2026-06-03,2026-06-17,300.00,paid,B036 Podcast Studio 2hr
+INV-1037,Nina Torres DDS,office@torresdental.com,2026-06-03,2026-06-17,1500.00,paid,
+INV-1038,Startup Texas,darnell@startuptexas.fm,2026-06-04,2026-06-18,550.00,paid,Podcast Studio 4hr 6/4
+INV-1039,Blue Bonnet Realty LLC,ivy@bluebonnetrealty.com,2026-06-04,2026-06-18,1500.00,paid,Content Day 6/1
+INV-1040,Brightwater Builders LLC,nolan@brightwater.build,2026-06-08,2026-06-22,1500.00,paid,Content Day 6/8
+INV-1041,Maple Fitness,luis@maplefit.co,2026-06-08,2026-06-22,900.00,paid,B041 Reels Pack
+INV-1042,Heart & Hustle Radio,mia@heartandhustle.fm,2026-06-09,2026-06-23,300.00,paid,B039 Podcast Studio 2hr
+INV-1043,Juniper Med Spa - Plano,erin@junipermedspa.com,2026-06-12,2026-06-26,1500.00,paid,B043 Content Day
+INV-1044,Fieldhouse Marketing,tanya@fieldhousemktg.com,2026-06-12,2026-06-26,900.00,paid,
+INV-1045,Torres Family Law PLLC,ttorres@torresfamilylaw.com,2026-06-13,2026-06-27,900.00,paid,Reels Pack 6/12
+INV-1046,Heart and Hustle,mia@heartandhustle.fm,2026-06-16,2026-06-30,300.00,paid,Podcast Studio 2hr 6/16
+INV-1047,Beacon Medspa,alana@beaconmedspa.com,2026-06-16,2026-06-30,900.00,paid,
+INV-1048,Andre Hale,andre@primebarbers.com,2026-06-20,2026-07-04,900.00,paid,B054 Reels Pack
+INV-1049,Crown DFW,media@crowndfw.org,2026-06-20,2026-07-04,270.00,paid,B051 Podcast Studio 2hr
+INV-1050,Luna Roofing Co,reggie@lunaroofingco.com,2026-06-20,2026-07-04,900.00,paid,B053 Reels Pack
+INV-1051,Darnell Whitfield,darnell@startuptexas.fm,2026-06-20,2026-07-04,550.00,paid,
+INV-1052,Glow Coffee Roasters,mia@glowcoffee.com,2026-06-22,2026-07-06,900.00,paid,Reels Pack 6/22
+INV-1053,Heart and Hustle,mia@heartandhustle.fm,2026-06-25,2026-07-09,300.00,paid,B055 Podcast Studio 2hr
+INV-1054,Crown Media Team,media@crowndfw.org,2026-06-29,2026-07-13,270.00,paid,B057 Podcast Studio 2hr
+INV-1055,Heart and Hustle,mia@heartandhustle.fm,2026-06-30,2026-07-14,300.00,paid,B058 Podcast Studio 2hr
+INV-1056,Meridian Bridal Boutique,alana@meridianbridal.com,2026-06-30,2026-07-14,900.00,paid,Reels Pack 6/29
+INV-1057,Startup Texas,darnell@startuptexas.fm,2026-07-01,2026-07-15,550.00,paid,Podcast Studio 4hr 7/1
+INV-1058,Bayou Wealth Partners,djackson@bayouwp.com,2026-07-01,2026-07-15,2500.00,paid,Monthly retainer July
+INV-1059,David Price,david@priceinsures.com,2026-07-01,2026-07-15,2500.00,paid,Monthly retainer July
+INV-1060,Adeyemi,info@adeyemilaw.com,2026-07-01,2026-07-15,2500.00,paid,Monthly retainer July
+INV-1061,Hillcrest PT Dallas,greed@hillcrestptdallas.com,2026-07-01,2026-07-15,2500.00,paid,Monthly retainer July
+INV-1062,Fieldhouse Marketing,tanya@fieldhousemktg.com,2026-07-01,2026-07-15,900.00,paid,B061 Reels Pack
+INV-1063,Nolan Cho,nolan@stonebridgegym.co,2026-07-08,2026-07-22,900.00,paid,Reels Pack 7/7
+INV-1064,Torres Family Law PLLC,ttorres@torresfamilylaw.com,2026-07-08,2026-07-22,900.00,paid,Reels Pack 7/7
+INV-1065,Crown Church,media@crowndfw.org,2026-07-09,2026-07-23,300.00,paid,B064 Podcast Studio 2hr
+INV-1066,Heart & Hustle Radio,mia@heartandhustle.fm,2026-07-11,2026-07-25,300.00,unpaid,Podcast Studio 2hr 7/8
+INV-1067,Haddad Dental,office@haddaddental.com,2026-07-13,2026-07-27,1500.00,paid,Content Day 7/10
+INV-1068,Horizon Family Therapy,tortiz@horizonfamilytherapy.com,2026-07-14,2026-07-28,1500.00,paid,B075 Content Day
+INV-1069,Fieldhouse Marketing,tanya@fieldhousemktg.com,2026-07-14,2026-07-28,900.00,paid,
+INV-1070,Ridgewaylab Coffee,carmen@theridgewaylab.coffee,2026-07-16,2026-07-30,900.00,paid,
+INV-1071,Dr. Nina Torres,office@torresdental.com,2026-07-16,2026-07-30,1500.00,paid,B068 Content Day
+INV-1072,Darnell Whitfield,darnell@startuptexas.fm,2026-07-17,2026-07-31,550.00,paid,B072 Podcast Studio 4hr
+INV-1073,Crown Media Team,media@crowndfw.org,2026-07-18,2026-08-01,270.00,paid,
+INV-1074,Glow Roasters,mia@glowcoffee.com,2026-07-18,2026-08-01,900.00,paid,B078 Reels Pack
+INV-1075,Maple,luis@maplefit.co,2026-07-19,2026-08-02,900.00,paid,Reels Pack 7/16
+INV-1076,Blue Bonnet Realty,ivy@bluebonnetrealty.com,2026-07-21,2026-08-04,1500.00,paid,
+INV-1077,Mia Torres,mia@heartandhustle.fm,2026-07-22,2026-08-05,300.00,unpaid,Podcast Studio 2hr 7/21
+INV-1078,Torress Auto,imran@torressautospa.com,2026-07-24,2026-08-07,900.00,paid,B081 Reels Pack
+INV-1079,Beacon Medspa,alana@beaconmedspa.com,2026-07-24,2026-08-07,900.00,paid,Reels Pack 7/23
+INV-1080,Prime Barbers,andre@primebarbers.com,2026-07-28,2026-08-11,900.00,paid,Reels Pack 7/28
+INV-1081,Alana Ibarra,alana@meridianbridal.com,2026-07-28,2026-08-11,900.00,paid,
+INV-1082,Juniper,erin@junipermedspa.com,2026-07-30,2026-08-13,1500.00,paid,B091 Content Day
+INV-1083,Brightwater Builders LLC,nolan@brightwater.build,2026-07-30,2026-08-13,1500.00,unpaid,
+INV-1084,H&H Radio,mia@heartandhustle.fm,2026-07-31,2026-08-14,300.00,unpaid,B087 Podcast Studio 2hr
+INV-1085,Crown Media Team,media@crowndfw.org,2026-07-31,2026-08-14,270.00,paid,
+INV-1086,Adeyemi Law Firm,info@adeyemilaw.com,2026-08-01,2026-08-15,2250.00,paid,Monthly retainer August
+INV-1087,Startup Texas,darnell@startuptexas.fm,2026-08-01,2026-08-15,550.00,paid,
+INV-1088,David Price,david@priceinsures.com,2026-08-01,2026-08-15,2500.00,paid,Monthly retainer August
+INV-1089,Hillcrest PT Dallas,greed@hillcrestptdallas.com,2026-08-01,2026-08-15,2500.00,paid,Monthly retainer August
+INV-1090,Torres Family Law PLLC,ttorres@torresfamilylaw.com,2026-08-06,2026-08-20,900.00,paid,B092 Reels Pack
+INV-1091,Wills Roofing,will@willsroofingtx.com,2026-08-06,2026-08-20,900.00,paid,Reels Pack 8/6
+INV-1092,Crown Church,media@crowndfw.org,2026-08-07,2026-08-21,270.00,paid,
+INV-1093,Fieldhouse Marketing,tanya@fieldhousemktg.com,2026-08-10,2026-08-24,900.00,paid,Reels Pack 8/10
+INV-1094,Fieldhouse Marketing,tanya@fieldhousemktg.com,2026-08-11,2026-08-25,900.00,paid,B097 Reels Pack
+INV-1095,Maple,luis@mapleathletics.com,2026-08-11,2026-08-25,900.00,paid,
+INV-1096,Heart and Hustle,mia@heartandhustle.fm,2026-08-12,2026-08-26,300.00,paid,
+INV-1097,Stonebridge,nolan@stonebridgegym.co,2026-08-13,2026-08-27,900.00,paid,Reels Pack 8/13
+INV-1098,Crown Media Team,media@crowndfw.org,2026-08-13,2026-08-27,270.00,paid,
+INV-1099,Nolan Nguyen,nolan@bluebonnetrg.com,2026-08-14,2026-08-28,1500.00,unpaid,B105 Content Day
+INV-1100,Darnell Whitfield,darnell@startuptexas.fm,2026-08-15,2026-08-29,550.00,unpaid,B106 Podcast Studio 4hr
+INV-1101,Torres's Auto,imran@torressautospa.com,2026-08-15,2026-08-29,900.00,paid,Reels Pack 8/14
+INV-1102,Luna Roofing,reggie@lunaroofingco.com,2026-08-19,2026-09-02,900.00,paid,Reels Pack 8/18
+INV-1103,The Ridgeway Lab,carmen@theridgewaylab.coffee,2026-08-20,2026-09-03,900.00,paid,B107 Reels Pack
+INV-1104,Dr. Tasha Ortiz,tortiz@horizonfamilytherapy.com,2026-08-20,2026-09-03,1500.00,paid,B109 Content Day
+INV-1105,Crown Media Team,media@crowndfw.org,2026-08-22,2026-09-05,270.00,unpaid,
+INV-1106,Beacon,alana@beaconmedspa.com,2026-08-24,2026-09-07,900.00,paid,Reels Pack 8/24
+INV-1107,Haddad Dental,office@haddaddental.com,2026-08-25,2026-09-08,1500.00,paid,B113 Content Day
+INV-1108,Blue Bonnet Realty LLC,ivy@bluebonnetrealty.com,2026-08-26,2026-09-09,1500.00,paid,B114 Content Day
+INV-1109,H&H Radio,mia@heartandhustle.fm,2026-08-27,2026-09-10,300.00,paid,
+INV-1110,Glow Coffee,mia@glowcoffee.com,2026-08-27,2026-09-10,900.00,paid,B115 Reels Pack
+INV-1111,Meridian Bridal,alana@meridianbridal.com,2026-08-28,2026-09-11,900.00,paid,Reels Pack 8/27
+INV-1112,Startup Texas Podcast,darnell@startuptexas.fm,2026-08-28,2026-09-11,550.00,paid,
+INV-1113,Crown Media Team,media@crowndfw.org,2026-08-31,2026-09-14,270.00,paid,
+INV-1114,Adeyemi,info@adeyemilaw.com,2026-09-01,2026-09-15,2500.00,paid,Monthly retainer September
+INV-1115,Price Insurance,david@priceinsures.com,2026-09-01,2026-09-15,2500.00,paid,Monthly retainer September
+INV-1116,Hillcrest PT,greed@hillcrestptdallas.com,2026-09-01,2026-09-15,2500.00,unpaid,Monthly retainer September
+INV-1117,Tasha Torres,tasha@abchomecare.com,2026-09-02,2026-09-16,1500.00,unpaid,
+INV-1118,Tasha Torres,ttorres@torresfamilylaw.com,2026-09-02,2026-09-16,900.00,paid,B118 Reels Pack
+INV-1119,Delgado Auto,kevin.delgado.detail@gmail.com,2026-09-03,2026-09-17,900.00,paid,B121 Reels Pack
+INV-1120,Andre Hale,andre@primebarbers.com,2026-09-03,2026-09-17,900.00,paid,Reels Pack 8/31
+INV-1121,Will Moore,will@willsroofingtx.com,2026-09-07,2026-09-21,900.00,partial,Reels Pack 9/7
+INV-1122,Stonebridge Gym TX,nolan@stonebridgegym.co,2026-09-08,2026-09-22,900.00,unpaid,B128 Reels Pack
+INV-1123,Mia Torres,mia@heartandhustle.fm,2026-09-08,2026-09-22,300.00,paid,
+INV-1124,Dr. Nina Torres,office@torresdental.com,2026-09-10,2026-09-24,1500.00,paid,Content Day 9/7
+INV-1125,Maple Athletics,luis@mapleathletics.com,2026-09-10,2026-09-24,900.00,paid,B125 Reels Pack
+INV-1126,Fieldhouse Marketing,tanya@fieldhousemktg.com,2026-09-10,2026-09-24,900.00,paid,B130 Reels Pack
+INV-1127,Fieldhouse Marketing,tanya@fieldhousemktg.com,2026-09-11,2026-09-25,900.00,unpaid,
+INV-1128,Luna Roofing,reggie@lunaroofingco.com,2026-09-13,2026-09-27,900.00,paid,
+INV-1129,Startup Texas,darnell@startuptexas.fm,2026-09-14,2026-09-28,550.00,paid,B136 Podcast Studio 4hr
+INV-1130,Torres's Auto Spa,imran@torressautospa.com,2026-09-14,2026-09-28,900.00,paid,
+INV-1131,Blue Bonnet Realty LLC,ivy@bluebonnetrealty.com,2026-09-16,2026-09-30,1500.00,paid,B142 Content Day
+INV-1132,Crown DFW,media@crowndfw.org,2026-09-19,2026-10-03,270.00,unpaid,B138 Podcast Studio 2hr
+INV-1133,Heart & Hustle,mia@heartandhustle.fm,2026-09-22,2026-10-06,300.00,unpaid,
+INV-1134,The Ridgeway Lab,carmen@theridgewaylab.coffee,2026-09-24,2026-10-08,900.00,unpaid,
+INV-1135,Horizon Therapy,tortiz@horizonfamilytherapy.com,2026-09-24,2026-10-08,1500.00,unpaid,
+INV-1136,Beacon Med Spa - Frisco,alana@beaconmedspa.com,2026-09-24,2026-10-08,900.00,paid,B140 Reels Pack
+INV-1137,Juniper Medspa,erin@junipermedspa.com,2026-09-26,2026-10-10,1500.00,unpaid,B145 Content Day
+INV-1138,Blue Bonnet Realty,ivy@bluebonnetrealty.com,2026-09-27,2026-10-11,1500.00,unpaid,
+INV-1139,Crown DFW,media@crowndfw.org,2026-09-28,2026-10-12,270.00,unpaid,Podcast Studio 2hr 9/28
+INV-1140,Nolan Nguyen,nolan@bluebonnetrg.com,2026-09-28,2026-10-12,1500.00,unpaid,B144 Content Day
+INV-1141,Delgado Auto,kevin.delgado.detail@gmail.com,2026-09-29,2026-10-13,900.00,unpaid,Reels Pack 9/29
+INV-1142,H&H Radio,mia@heartandhustle.fm,2026-09-30,2026-10-14,300.00,unpaid,
+INV-1143,Prime Barbershop,andre@primebarbers.com,2026-10-01,2026-10-15,900.00,unpaid,Reels Pack 9/28
+INV-1144,Hillcrest PT,greed@hillcrestptdallas.com,2026-10-01,2026-10-15,2500.00,unpaid,Monthly retainer October
+INV-1145,Maple,luis@mapleathletics.com,2026-10-01,2026-10-15,900.00,unpaid,B152 Reels Pack
+INV-1146,Adeyemi Law,info@adeyemilaw.com,2026-10-01,2026-10-15,2500.00,unpaid,Monthly retainer October
+INV-1147,Price Insurance,david@priceinsures.com,2026-10-01,2026-10-15,2500.00,unpaid,Monthly retainer October
+INV-1148,Glow Coffee,mia@glowcoffee.com,2026-10-01,2026-10-15,900.00,unpaid,
+INV-1149,Darnell Whitfield,darnell@startuptexas.fm,2026-10-03,2026-10-17,550.00,unpaid,
+INV-1150,Meridian Bridal,alana@meridianbridal.com,2026-10-05,2026-10-19,900.00,unpaid,B153 Reels Pack
+INV-1151,Dr. Priya Haddad,office@haddaddental.com,2026-06-01,2026-06-15,1500.00,void,Content Day 6/1

@@ -1,0 +1,732 @@
+{
+  "pack_id": "175",
+  "your_name": "Muhammad Abu Huraira",
+  "your_email": "huraira.eqeel@gmail.com",
+  "live_link": "",
+  "video_link": "",
+  "code_or_files_link": "",
+  "client_count": 29,
+  "clients": [
+    {
+      "name": "Heart & Hustle Radio",
+      "other_names_used_in_the_data": [
+        "H&H Radio",
+        "Heart & Hustle",
+        "Heart and Hustle",
+        "Mia Torres"
+      ],
+      "emails": [
+        "mia@heartandhustle.fm",
+        "mia.torres.mail@gmail.com"
+      ],
+      "phones": [
+        "214-555-0198"
+      ]
+    },
+    {
+      "name": "Crown Church",
+      "other_names_used_in_the_data": [
+        "Crown Media Team",
+        "Crown DFW",
+        "Pastor Wes Hale",
+        "Wes Hale"
+      ],
+      "emails": [
+        "media@crowndfw.org"
+      ],
+      "phones": [
+        "972-555-0168"
+      ]
+    },
+    {
+      "name": "Torres Dental",
+      "other_names_used_in_the_data": [
+        "Torres Dental PLLC",
+        "Nina Torres DDS",
+        "Dr Torres",
+        "Dr. Nina Torres",
+        "Nina Torres"
+      ],
+      "emails": [
+        "office@torresdental.com",
+        "office@torresdental.con"
+      ],
+      "phones": [
+        "214-555-0184"
+      ]
+    },
+    {
+      "name": "Luna Roofing Co",
+      "other_names_used_in_the_data": [
+        "Luna Roofing",
+        "Reggie Ramirez"
+      ],
+      "emails": [
+        "reggie@lunaroofingco.com"
+      ],
+      "phones": [
+        "469-555-0112"
+      ]
+    },
+    {
+      "name": "Startup Texas Podcast",
+      "other_names_used_in_the_data": [
+        "Startup Texas",
+        "Darnell Whitfield"
+      ],
+      "emails": [
+        "darnell@startuptexas.fm"
+      ],
+      "phones": [
+        "817-555-0135",
+        "214-555-0144"
+      ]
+    },
+    {
+      "name": "Brightwater Builders",
+      "other_names_used_in_the_data": [
+        "Brightwater",
+        "Brightwater & Co Builders",
+        "Brightwater Builders LLC",
+        "Nolan Romero",
+        "Nolan Nguyen"
+      ],
+      "emails": [
+        "nolan@brightwater.build"
+      ],
+      "phones": [
+        "214-555-0186"
+      ]
+    },
+    {
+      "name": "Bayou Wealth Partners",
+      "other_names_used_in_the_data": [
+        "Bayou WP",
+        "Bayou Wealth",
+        "Derek Jackson"
+      ],
+      "emails": [
+        "djackson@bayouwp.com"
+      ],
+      "phones": [
+        "972-555-0165"
+      ]
+    },
+    {
+      "name": "Meridian Bridal Boutique",
+      "other_names_used_in_the_data": [
+        "Meridian Bridal",
+        "Alana Ibarra"
+      ],
+      "emails": [
+        "alana@meridianbridal.com"
+      ],
+      "phones": [
+        "972-555-0188"
+      ]
+    },
+    {
+      "name": "Juniper Med Spa",
+      "other_names_used_in_the_data": [
+        "Juniper",
+        "Juniper Med Spa - Frisco",
+        "Juniper Med Spa - Plano",
+        "Juniper Medspa",
+        "Erin Tran"
+      ],
+      "emails": [
+        "erin@junipermedspa.com",
+        "frisco@junipermedspa.com"
+      ],
+      "phones": [
+        "817-555-0194"
+      ]
+    },
+    {
+      "name": "Maple Athletics",
+      "other_names_used_in_the_data": [
+        "Maple Fitness",
+        "Maple",
+        "Luis Sullivan"
+      ],
+      "emails": [
+        "luis@maplefit.co",
+        "luis@mapleathletics.com"
+      ],
+      "phones": [
+        "972-555-0160"
+      ]
+    },
+    {
+      "name": "Hillcrest Physical Therapy",
+      "other_names_used_in_the_data": [
+        "Hillcrest PT Dallas",
+        "Hillcrest PT",
+        "Gloria Reed",
+        "Leah Reed"
+      ],
+      "emails": [
+        "greed@hillcrestptdallas.com",
+        "leah@hillcrestptdallas.com"
+      ],
+      "phones": [
+        "817-555-0199",
+        "972-555-0149"
+      ]
+    },
+    {
+      "name": "Beacon Med Spa",
+      "other_names_used_in_the_data": [
+        "Beacon Med Spa - Plano",
+        "Beacon Med Spa - Frisco",
+        "Beacon",
+        "Beacon Medspa",
+        "Alana Ibarra"
+      ],
+      "emails": [
+        "alana@beaconmedspa.com"
+      ],
+      "phones": [
+        "469-555-0177"
+      ]
+    },
+    {
+      "name": "Adeyemi Law Firm",
+      "other_names_used_in_the_data": [
+        "Adeyemi",
+        "Adeyemi Law Firm PLLC",
+        "Adeyemi Law",
+        "Grace Adeyemi",
+        "Reggie Adeyemi"
+      ],
+      "emails": [
+        "info@adeyemilaw.com"
+      ],
+      "phones": [
+        "972-555-0119",
+        "817-555-0108"
+      ]
+    },
+    {
+      "name": "Prime Barbershop",
+      "other_names_used_in_the_data": [
+        "Prime Barbers",
+        "Andre Hale"
+      ],
+      "emails": [
+        "andre@primebarbers.com"
+      ],
+      "phones": [
+        "817-555-0146",
+        "214-555-0172"
+      ]
+    },
+    {
+      "name": "Haddad Dental",
+      "other_names_used_in_the_data": [
+        "Dr. Priya Haddad",
+        "Haddad Dental PLLC",
+        "Dr Haddad",
+        "Priya Haddad",
+        "Priya Haddad DDS"
+      ],
+      "emails": [
+        "office@haddaddental.com"
+      ],
+      "phones": [
+        "214-555-0150",
+        "214-555-0141"
+      ]
+    },
+    {
+      "name": "Price Insurance Group",
+      "other_names_used_in_the_data": [
+        "Price Ins",
+        "Price Insurance",
+        "David Price"
+      ],
+      "emails": [
+        "david@priceinsures.com"
+      ],
+      "phones": [
+        "972-555-0135"
+      ]
+    },
+    {
+      "name": "Blue Bonnet Realty",
+      "other_names_used_in_the_data": [
+        "Blue Bonnet Realty LLC",
+        "Ivy Haddad"
+      ],
+      "emails": [
+        "ivy@bluebonnetrealty.com"
+      ],
+      "phones": [
+        "214-555-0164"
+      ]
+    },
+    {
+      "name": "Torres Family Law",
+      "other_names_used_in_the_data": [
+        "Torres Family Law PLLC",
+        "Torres Law",
+        "Tasha Torres"
+      ],
+      "emails": [
+        "ttorres@torresfamilylaw.com"
+      ],
+      "phones": [
+        "214-555-0176"
+      ]
+    },
+    {
+      "name": "Vista Pediatrics",
+      "other_names_used_in_the_data": [
+        "Fieldhouse - Vista",
+        "Yasmin Hassan"
+      ],
+      "emails": [
+        "yhassan@vistapeds.com"
+      ],
+      "phones": [
+        "214-555-0196",
+        "214-555-0182"
+      ]
+    },
+    {
+      "name": "Glow Coffee Roasters",
+      "other_names_used_in_the_data": [
+        "Glow Coffee",
+        "Glow Roasters",
+        "Mia Shah"
+      ],
+      "emails": [
+        "mia@glowcoffee.com"
+      ],
+      "phones": [
+        "972-555-0129"
+      ]
+    },
+    {
+      "name": "Parkside Chiropractic",
+      "other_names_used_in_the_data": [
+        "Parkside Chiro",
+        "Fieldhouse - Dr.",
+        "Dr. Carter",
+        "Renee Carter"
+      ],
+      "emails": [
+        "drcarter@parksidechiro.com"
+      ],
+      "phones": [
+        "972-555-0101",
+        "469-555-0118"
+      ]
+    },
+    {
+      "name": "Stonebridge Gym TX",
+      "other_names_used_in_the_data": [
+        "Stonebridge Gym",
+        "Stonebridge",
+        "Nolan Cho"
+      ],
+      "emails": [
+        "nolan@stonebridgegym.co"
+      ],
+      "phones": [
+        "214-555-0166",
+        "214-555-0158"
+      ]
+    },
+    {
+      "name": "Horizon Family Therapy",
+      "other_names_used_in_the_data": [
+        "Horizon Therapy",
+        "Dr. Tasha Ortiz",
+        "Tasha Ortiz"
+      ],
+      "emails": [
+        "tortiz@horizonfamilytherapy.com"
+      ],
+      "phones": [
+        "214-555-0118",
+        "469-555-0142"
+      ]
+    },
+    {
+      "name": "The Ridgeway Lab",
+      "other_names_used_in_the_data": [
+        "Ridgewaylab Coffee",
+        "Ridgeway Lab",
+        "Carmen Castillo"
+      ],
+      "emails": [
+        "carmen@theridgewaylab.coffee"
+      ],
+      "phones": [
+        "469-555-0139",
+        "972-555-0115"
+      ]
+    },
+    {
+      "name": "Torres's Auto Spa",
+      "other_names_used_in_the_data": [
+        "Torress Auto",
+        "Torres's Auto",
+        "Imran Torres"
+      ],
+      "emails": [
+        "imran@torressautospa.com"
+      ],
+      "phones": [
+        "972-555-0172",
+        "214-555-0190"
+      ]
+    },
+    {
+      "name": "Will's Roofing",
+      "other_names_used_in_the_data": [
+        "Will's Roofing LLC",
+        "Wills Roofing",
+        "Will Moore"
+      ],
+      "emails": [
+        "will@willsroofingtx.com"
+      ],
+      "phones": [
+        "972-555-0106",
+        "469-555-0187"
+      ]
+    },
+    {
+      "name": "Bluebonnet Realty Group",
+      "other_names_used_in_the_data": [
+        "Bluebonnet RG",
+        "Nolan Nguyen"
+      ],
+      "emails": [
+        "nolan@bluebonnetrg.com"
+      ],
+      "phones": [
+        "469-555-0117",
+        "214-555-0138"
+      ]
+    },
+    {
+      "name": "ABC Home Care",
+      "other_names_used_in_the_data": [
+        "ABC Homecare",
+        "Tasha Torres"
+      ],
+      "emails": [
+        "tasha@abchomecare.com"
+      ],
+      "phones": [
+        "214-555-0149"
+      ]
+    },
+    {
+      "name": "Delgado Auto Detailing",
+      "other_names_used_in_the_data": [
+        "Delgado Auto",
+        "Delgado Detailing",
+        "Kevin Delgado"
+      ],
+      "emails": [
+        "kevin.delgado.detail@gmail.com"
+      ],
+      "phones": [
+        "817-555-0134",
+        "972-555-0147"
+      ]
+    }
+  ],
+  "payers_who_are_not_clients": [
+    {
+      "name": "Fieldhouse Marketing",
+      "pays_for": [
+        "Vista Pediatrics",
+        "Parkside Chiropractic"
+      ]
+    }
+  ],
+  "overdue": [
+    {
+      "client": "Bluebonnet Realty Group",
+      "invoice": "INV-1099",
+      "amount_owed": 1500.0,
+      "days_late": 39
+    },
+    {
+      "client": "Startup Texas Podcast",
+      "invoice": "INV-1100",
+      "amount_owed": 550.0,
+      "days_late": 38
+    },
+    {
+      "client": "Hillcrest Physical Therapy",
+      "invoice": "INV-1116",
+      "amount_owed": 2500.0,
+      "days_late": 21
+    },
+    {
+      "client": "ABC Home Care",
+      "invoice": "INV-1117",
+      "amount_owed": 1500.0,
+      "days_late": 20
+    },
+    {
+      "client": "Will's Roofing",
+      "invoice": "INV-1121",
+      "amount_owed": 450.0,
+      "days_late": 15
+    },
+    {
+      "client": "Stonebridge Gym TX",
+      "invoice": "INV-1122",
+      "amount_owed": 900.0,
+      "days_late": 14
+    },
+    {
+      "client": "Vista Pediatrics",
+      "invoice": "INV-1127",
+      "amount_owed": 900.0,
+      "days_late": 11
+    },
+    {
+      "client": "Crown Church",
+      "invoice": "INV-1132",
+      "amount_owed": 270.0,
+      "days_late": 3
+    }
+  ],
+  "overdue_total": 8570.0,
+  "we_owe": [
+    {
+      "client": "Blue Bonnet Realty",
+      "amount": 1500.0,
+      "why": "Shoot B142 (2026-09-22) was cancelled for a family emergency and rescheduled to B154 (completed 2026-10-05). Client paid $1,500.00 on 2026-09-28 (P5121 for INV-1131), and extra unpaid invoice INV-1138 ($1,500.00) was erroneously generated for the rescheduled shoot instead of applying the prepaid credit."
+    },
+    {
+      "client": "Prime Barbershop",
+      "amount": 900.0,
+      "why": "Duplicate payment received for invoice INV-1080 (paid $900.00 via Zelle P5077 on 2026-08-02 with blank reference and $900.00 via card P5081 on 2026-08-05 with reference INV-1080)."
+    },
+    {
+      "client": "Crown Church",
+      "amount": 30.0,
+      "why": "Overcharged on invoice INV-1065 (booking B064 on 2026-07-08 was priced at $270.00 with 10% community discount, but INV-1065 billed and collected $300.00 via P5067)."
+    }
+  ],
+  "never_billed": [
+    {
+      "client": "Adeyemi Law Firm",
+      "booking_id_or_month": "2026-05 Retainer (B020)",
+      "amount": 2500.0
+    },
+    {
+      "client": "Hillcrest Physical Therapy",
+      "booking_id_or_month": "2026-05 Retainer (B024)",
+      "amount": 2500.0
+    },
+    {
+      "client": "Crown Church",
+      "booking_id_or_month": "B038",
+      "amount": 270.0
+    },
+    {
+      "client": "Luna Roofing Co",
+      "booking_id_or_month": "B080",
+      "amount": 900.0
+    },
+    {
+      "client": "Crown Church",
+      "booking_id_or_month": "B083",
+      "amount": 270.0
+    },
+    {
+      "client": "Crown Church",
+      "booking_id_or_month": "B131",
+      "amount": 270.0
+    },
+    {
+      "client": "Brightwater Builders",
+      "booking_id_or_month": "B132",
+      "amount": 1500.0
+    }
+  ],
+  "never_billed_total": 8210.0,
+  "billing_tool_is_wrong": [
+    {
+      "invoice": "INV-1066",
+      "tool_says": "unpaid",
+      "truth": "paid",
+      "how_you_know": "Paid via lump-sum Zelle payment P5076 ($900.00) on 2026-08-02 with reference 'july sessions' covering INV-1066, INV-1077, and INV-1084."
+    },
+    {
+      "invoice": "INV-1077",
+      "tool_says": "unpaid",
+      "truth": "paid",
+      "how_you_know": "Paid via lump-sum Zelle payment P5076 ($900.00) on 2026-08-02 with reference 'july sessions' covering INV-1066, INV-1077, and INV-1084."
+    },
+    {
+      "invoice": "INV-1083",
+      "tool_says": "unpaid",
+      "truth": "paid",
+      "how_you_know": "Paid via ACH payment P5074 ($1,500.00) on 2026-08-02 with explicit reference 'INV-1083'."
+    },
+    {
+      "invoice": "INV-1084",
+      "tool_says": "unpaid",
+      "truth": "paid",
+      "how_you_know": "Paid via lump-sum Zelle payment P5076 ($900.00) on 2026-08-02 with reference 'july sessions' covering INV-1066, INV-1077, and INV-1084."
+    },
+    {
+      "invoice": "INV-1105",
+      "tool_says": "unpaid",
+      "truth": "paid",
+      "how_you_know": "Paid via Zelle payment P5100 ($270.00) on 2026-08-29 with explicit reference 'INV-1105'."
+    },
+    {
+      "invoice": "INV-1110",
+      "tool_says": "paid",
+      "truth": "unpaid",
+      "how_you_know": "Marked paid in invoices.csv for Glow Coffee Roasters ($900.00), but no matching payment deposit exists in payments.csv."
+    },
+    {
+      "invoice": "INV-1121",
+      "tool_says": "partial",
+      "truth": "partial ($450.00 remaining balance)",
+      "how_you_know": "Zelle payment P5115 for $450.00 received on 2026-09-19 with reference 'half now half later' against $900.00 invoice."
+    },
+    {
+      "invoice": "INV-1138",
+      "tool_says": "unpaid",
+      "truth": "void / covered by prepaid P5121",
+      "how_you_know": "Shoot B142 was cancelled and rescheduled to B154 (completed 2026-10-05); client already paid $1,500.00 on 2026-09-28 (P5121 on INV-1131), making INV-1138 a duplicate invoice."
+    },
+    {
+      "invoice": "INV-1151",
+      "tool_says": "void",
+      "truth": "void (out of sequence)",
+      "how_you_know": "Issued 2026-06-01 for $1,500.00 but placed at the end of invoices.csv; voided post-hoc."
+    }
+  ],
+  "lost_requests": [
+    {
+      "video_id": "V022",
+      "request_date": "2026-05-14",
+      "came_by": "whatsapp",
+      "why_it_was_lost": "Client asked to remove prices section; instruction was never transcribed onto production board notes."
+    },
+    {
+      "video_id": "V049",
+      "request_date": "2026-06-05",
+      "came_by": "voice note",
+      "why_it_was_lost": "Client sent audio voice note to cut first 3 seconds; audio was never transcribed or logged onto the production board."
+    },
+    {
+      "video_id": "V047",
+      "request_date": "2026-06-08",
+      "came_by": "email",
+      "why_it_was_lost": "Request to add walk-ins welcome line was missed; editor delivered cut without checking email."
+    },
+    {
+      "video_id": "V114",
+      "request_date": "2026-07-15",
+      "came_by": "instagram",
+      "why_it_was_lost": "Instagram DM revision request was not converted into an operational production board task."
+    },
+    {
+      "video_id": "V142",
+      "request_date": "2026-07-19",
+      "came_by": "instagram",
+      "why_it_was_lost": "Instagram DM was ignored and not logged on production board during Eli's tenure."
+    },
+    {
+      "video_id": "V081",
+      "request_date": "2026-07-25",
+      "came_by": "email",
+      "why_it_was_lost": "Repeated request for back pain myths cut was missed between inboxes and never copied to board notes."
+    },
+    {
+      "video_id": "V135",
+      "request_date": "2026-07-25",
+      "came_by": "voice note",
+      "why_it_was_lost": "Voice note instruction was not transcribed onto production board during Eli's tenure."
+    },
+    {
+      "video_id": "V132",
+      "request_date": "2026-07-30",
+      "came_by": "voice note",
+      "why_it_was_lost": "Voice note instruction was not logged onto production board."
+    },
+    {
+      "video_id": "V149",
+      "request_date": "2026-08-04",
+      "came_by": "email",
+      "why_it_was_lost": "Client requested full compliance name 'Hillcrest Physical Therapy', but notes were not logged on board and cut retained abbreviation."
+    },
+    {
+      "video_id": "V268",
+      "request_date": "2026-09-15",
+      "came_by": "voice note",
+      "why_it_was_lost": "Voice note from client was not entered into production workflow."
+    },
+    {
+      "video_id": "V274",
+      "request_date": "2026-09-17",
+      "came_by": "voice note",
+      "why_it_was_lost": "Voice note instruction was left unrecorded on production board."
+    }
+  ],
+  "lost_requests_root_causes": [
+    "No centralized intake channel for unstructured messages (WhatsApp, Instagram DMs, Email, and Voice Notes are disconnected from the production board workflow).",
+    "Onboarding and workflow breakdown with new editor Eli (joined July 3, 2026), who has 0 revision notes logged on the board across all 106 of his assigned videos.",
+    "Vague client phrasing ('the one we shot last week') and duplicate recurring monthly video titles causing notes to be dropped or misattributed without video IDs.",
+    "Editors marking videos Delivered without formal client sign-off (41.3% of delivered videos lack client approval dates) and leaving approved tasks ('V121', 'V152') stuck in 'In revision'."
+  ],
+  "lost_requests_started_getting_worse_in": "2026-07",
+  "never_replied_leads": [
+    "L003",
+    "L007",
+    "L020",
+    "L021",
+    "L026",
+    "L030",
+    "L043",
+    "L046",
+    "L060",
+    "L064",
+    "L070",
+    "L075",
+    "L086",
+    "L087",
+    "L097"
+  ],
+  "most_likely_to_leave": {
+    "client": "Hillcrest Physical Therapy",
+    "evidence": [
+      "Repeated unaddressed revision requests and missed voice/email notes across multiple months.",
+      "Regulatory compliance violation on 2026-09-02 and 2026-09-08: Videos repeatedly used 'Hillcrest PT' instead of the mandatory full legal name 'Hillcrest Physical Therapy'.",
+      "Unpaid September and October retainers (INV-1116 for $2,500.00 is 21 days overdue and INV-1144 for $2,500.00 is unpaid), showing payment withholding over quality/compliance issues.",
+      "Leah Reed submitted website lead L097 on 2026-09-29 asking to discuss their contract, followed by an urgent email on 2026-10-03 stating: 'We need to talk about the contract this week.'"
+    ],
+    "what_to_do_this_week": "Have owner Zaid personally call Gloria Reed and Leah Reed today to apologize for the missed revision notes and compliance errors, assign senior editor Ali to re-render all videos with the full 'Hillcrest Physical Therapy' branding within 24 hours, and confirm contract continuation terms before seeking payment on INV-1116."
+  },
+  "best_marketing_channel": {
+    "channel": "Referral",
+    "why": "Referrals achieved a 91.7% win conversion rate (11 won out of 12 leads), generated $41,400.00 in invoiced revenue ($33,900.00 collected cash), and brought high-trust local business clients with $0 customer acquisition cost."
+  },
+  "what_this_data_cannot_tell_us": [
+    "Customer Acquisition Cost (CAC) and ad spend breakdown across Meta ads, Google ads, and Instagram (costs.csv only records studio and editor rates).",
+    "Overhead and fixed studio operating expenses (rent, equipment depreciation, software subscriptions, taxes, and insurance).",
+    "Zaid's owner salary and non-billable administrative hours spent on sales, scheduling, billing, and client communications.",
+    "Formal contract terms, cancellation/reschedule policies, and structured client satisfaction metrics (NPS/CSAT)."
+  ],
+  "monday_top_3": [
+    "Call Gloria Reed and Leah Reed at Hillcrest Physical Therapy today to resolve the compliance naming errors, re-render their videos via senior editor Ali, and save the $2,500/month retainer account.",
+    "Issue invoices for the $8,210.00 in unbilled work (2 missed May retainers totaling $5,000.00 + 5 unbilled shoots totaling $3,210.00), void duplicate invoice INV-1138 ($1,500.00 credit for Blue Bonnet Realty), and send reminders for overdue invoices.",
+    "Reply immediately to the 15 unreplied human leads (prioritizing existing client enquiries L087 Mia Torres and L097 Leah Reed, plus referral L086 Victor Vega) and clear stuck production board tasks V121 and V152."
+  ]
+}

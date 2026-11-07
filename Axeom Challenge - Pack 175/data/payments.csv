@@ -1,0 +1,123 @@
+payment_id,date,payer,payer_email,amount,method,reference
+P5001,03/04/2026,Bayou WP,djackson@bayouwp.com,2500.00,Zelle,INV-1002
+P5002,04/04/2026,CROWN CHURCH,media@crowndfw.org,300.00,ACH,INV-1001
+P5003,16/04/2026,Luna Roofing Co,reggie@lunaroofingco.com,900.00,card,INV-1006
+P5004,16/04/2026,DR. NINA TORRES,office@torresdental.com,1500.00,ACH,
+P5005,21/04/2026,H&H RADIO,mia@heartandhustle.fm,300.00,Zelle,INV-1003
+P5006,21/04/2026,Startup Texas Podcast,darnell@startuptexas.fm,550.00,card,INV-1004
+P5007,21/04/2026,Brightwater & Co Builders,nolan@brightwater.build,1500.00,card,INV-1008
+P5008,23/04/2026,Crown DFW,media@crowndfw.org,300.00,card,INV-1010
+P5009,23/04/2026,Crown Church,media@crowndfw.org,300.00,Zelle,
+P5010,26/04/2026,H&H RADIO,mia@heartandhustle.fm,300.00,Zelle,INV-1009
+P5011,27/04/2026,DARNELL WHITFIELD,darnell@startuptexas.fm,550.00,card,INV-1012
+P5012,01/05/2026,JUNIPER MEDSPA,erin@junipermedspa.com,1500.00,Zelle,INV-1011
+P5013,06/05/2026,Bayou WP,djackson@bayouwp.com,2500.00,ACH,INV-1016
+P5014,06/05/2026,Price Insurance Group,david@priceinsures.com,2500.00,Zelle,INV-1017
+P5015,06/05/2026,CROWN CHURCH,media@crowndfw.org,300.00,card,INV-1015
+P5016,12/05/2026,Crown Media Team,media@crowndfw.org,270.00,ACH,INV-1019
+P5017,17/05/2026,Mia Torres,mia@heartandhustle.fm,300.00,Zelle,
+P5018,19/05/2026,Luna Roofing Co,reggie@lunaroofingco.com,900.00,Zelle,INV-1020
+P5019,19/05/2026,MIA TORRES,mia@heartandhustle.fm,300.00,ACH,
+P5020,19/05/2026,Beacon Med Spa - Frisco,alana@beaconmedspa.com,900.00,card,
+P5021,20/05/2026,Meridian Bridal,alana@meridianbridal.com,900.00,card,INV-1013
+P5022,24/05/2026,Crown Church,media@crowndfw.org,270.00,card,INV-1026
+P5023,25/05/2026,Darnell Whitfield,darnell@startuptexas.fm,550.00,card,INV-1018
+P5024,01/06/2026,Crown DFW,media@crowndfw.org,270.00,card,INV-1022
+P5025,03/06/2026,Mia Torres,mia@heartandhustle.fm,300.00,ACH,INV-1028
+P5026,05/06/2026,Startup Texas,darnell@startuptexas.fm,550.00,ACH,INV-1025
+P5027,05/06/2026,Maple Fitness,luis@maplefit.co,900.00,card,INV-1021
+P5028,06/06/2026,Hillcrest PT,greed@hillcrestptdallas.com,2500.00,ACH,INV-1031
+P5029,06/06/2026,Prime Barbers,andre@primebarbers.com,900.00,card,INV-1027
+P5030,07/06/2026,DARNELL WHITFIELD,darnell@startuptexas.fm,550.00,card,INV-1038
+P5031,08/06/2026,MIA TORRES,mia@heartandhustle.fm,300.00,ACH,INV-1036
+P5032,11/06/2026,Brightwater & Co Builders,nolan@brightwater.build,1500.00,ACH,INV-1040
+P5033,11/06/2026,MIA TORRES,mia@heartandhustle.fm,300.00,Zelle,INV-1042
+P5034,13/06/2026,Dr. Priya Haddad,office@haddaddental.com,1500.00,card,
+P5035,15/06/2026,Crown Church,media@crowndfw.org,270.00,card,INV-1029
+P5036,15/06/2026,Alana Ibarra,alana@meridianbridal.com,900.00,card,INV-1035
+P5037,17/06/2026,Juniper Med Spa - Frisco,erin@junipermedspa.com,1500.00,card,INV-1043
+P5038,18/06/2026,Nina Torres DDS,office@torresdental.com,1500.00,ACH,INV-1037
+P5039,19/06/2026,DAVID PRICE,david@priceinsures.com,2500.00,Zelle,
+P5040,19/06/2026,BEACON MED SPA,alana@beaconmedspa.com,900.00,ACH,INV-1047
+P5041,19/06/2026,Ivy Haddad,ivy@bluebonnetrealty.com,1500.00,ACH,INV-1039
+P5042,20/06/2026,TASHA TORRES,ttorres@torresfamilylaw.com,900.00,card,
+P5043,23/06/2026,CROWN CHURCH,media@crowndfw.org,270.00,Zelle,INV-1049
+P5044,23/06/2026,DEREK JACKSON,djackson@bayouwp.com,2500.00,Zelle,
+P5045,23/06/2026,REGGIE ADEYEMI,info@adeyemilaw.com,2500.00,Zelle,INV-1030
+P5046,26/06/2026,Luis Sullivan,luis@maplefit.co,900.00,card,INV-1041
+P5047,29/06/2026,Luna Roofing,reggie@lunaroofingco.com,900.00,Zelle,INV-1050
+P5048,29/06/2026,STARTUP TEXAS,darnell@startuptexas.fm,550.00,ACH,
+P5049,02/07/2026,Meridian Bridal Boutique,alana@meridianbridal.com,900.00,Zelle,INV-1056
+P5050,02/07/2026,Adeyemi Law Firm,info@adeyemilaw.com,2500.00,card,
+P5051,03/07/2026,GLORIA REED,greed@hillcrestptdallas.com,2500.00,card,INV-1061
+P5052,03/07/2026,MIA TORRES,mia@heartandhustle.fm,300.00,Zelle,INV-1055
+P5053,04/07/2026,FIELDHOUSE MARKETING LLC,tanya@fieldhousemktg.com,900.00,ACH,Fieldhouse Jun invoices
+P5054,04/07/2026,H&H Radio,mia@heartandhustle.fm,300.00,Zelle,INV-1053
+P5055,04/07/2026,Startup Texas Podcast,darnell@startuptexas.fm,550.00,card,
+P5056,04/07/2026,Glow Roasters,mia@glowcoffee.com,900.00,Zelle,INV-1052
+P5057,05/07/2026,PRIME BARBERSHOP,andre@primebarbers.com,900.00,card,INV-1048
+P5058,08/07/2026,Heart and Hustle,mia@heartandhustle.fm,300.00,card,
+P5059,14/07/2026,PASTOR WES HALE,media@crowndfw.org,270.00,card,INV-1054
+P5060,16/07/2026,Priya Haddad DDS,office@haddaddental.com,1500.00,card,INV-1067
+P5061,19/07/2026,David Price,david@priceinsures.com,2500.00,card,INV-1059
+P5062,21/07/2026,Crown Church,media@crowndfw.org,270.00,card,INV-1073
+P5063,21/07/2026,Horizon Family Therapy,tortiz@horizonfamilytherapy.com,1500.00,card,INV-1068
+P5064,23/07/2026,GLOW COFFEE ROASTERS,mia@glowcoffee.com,900.00,Zelle,INV-1074
+P5065,23/07/2026,Bayou WP,djackson@bayouwp.com,2500.00,card,INV-1058
+P5066,24/07/2026,Startup Texas Podcast,darnell@startuptexas.fm,550.00,card,INV-1072
+P5067,27/07/2026,Crown DFW,media@crowndfw.org,300.00,ACH,INV-1065
+P5068,28/07/2026,CARMEN CASTILLO,carmen@theridgewaylab.coffee,900.00,Zelle,
+P5069,30/07/2026,TORRES LAW,ttorres@torresfamilylaw.com,900.00,card,
+P5070,30/07/2026,STONEBRIDGE,nolan@stonebridgegym.co,900.00,Zelle,INV-1063
+P5071,31/07/2026,ALANA IBARRA,alana@beaconmedspa.com,900.00,ACH,INV-1079
+P5072,02/08/2026,STARTUP TEXAS,darnell@startuptexas.fm,550.00,Zelle,INV-1087
+P5073,02/08/2026,Juniper Med Spa - Plano,erin@junipermedspa.com,1500.00,ACH,INV-1082
+P5074,02/08/2026,Brightwater & Co Builders,nolan@brightwater.build,1500.00,ACH,INV-1083
+P5076,02/08/2026,MIA TORRES,,900.00,Zelle,july sessions
+P5077,02/08/2026,Andre Hale,andre@primebarbers.com,900.00,Zelle,
+P5078,03/08/2026,PASTOR WES HALE,media@crowndfw.org,270.00,card,INV-1085
+P5079,03/08/2026,Maple Athletics,luis@mapleathletics.com,900.00,Zelle,INV-1075
+P5080,05/08/2026,FIELDHOUSE MARKETING LLC,tanya@fieldhousemktg.com,1800.00,ACH,Fieldhouse Jul invoices
+P5081,05/08/2026,Andre Hale,andre@primebarbers.com,900.00,card,INV-1080
+P5082,07/08/2026,NINA TORRES,office@torresdental.com,1500.00,card,INV-1071
+P5083,08/08/2026,ADEYEMI LAW,info@adeyemilaw.com,2250.00,card,INV-1086
+P5084,08/08/2026,TORRES'S AUTO SPA,imran@torressautospa.com,900.00,Zelle,INV-1078
+P5085,08/08/2026,IVY HADDAD,ivy@bluebonnetrealty.com,1500.00,card,
+P5086,08/08/2026,GLORIA REED,greed@hillcrestptdallas.com,2500.00,Zelle,
+P5087,08/08/2026,Crown Media Team,media@crowndfw.org,270.00,Zelle,INV-1092
+P5088,09/08/2026,ALANA IBARRA,alana@meridianbridal.com,900.00,Zelle,INV-1081
+P5089,09/08/2026,WILL'S ROOFING,will@willsroofingtx.com,900.00,ACH,INV-1091
+P5090,09/08/2026,TORRES LAW,ttorres@torresfamilylaw.com,900.00,Zelle,INV-1090
+P5091,16/08/2026,Torress Auto,imran@torressautospa.com,900.00,Zelle,INV-1101
+P5092,19/08/2026,Price Insurance,david@priceinsures.com,2500.00,card,INV-1088
+P5093,21/08/2026,LUNA ROOFING CO,reggie@lunaroofingco.com,900.00,ACH,INV-1102
+P5094,22/08/2026,Crown DFW,media@crowndfw.org,270.00,Zelle,
+P5095,23/08/2026,Ridgewaylab Coffee,carmen@theridgewaylab.coffee,900.00,ACH,
+P5096,25/08/2026,Nolan Cho,nolan@stonebridgegym.co,900.00,card,INV-1097
+P5097,26/08/2026,Maple Athletics,luis@mapleathletics.com,900.00,card,INV-1095
+P5098,29/08/2026,BEACON MEDSPA,alana@beaconmedspa.com,900.00,ACH,INV-1106
+P5099,29/08/2026,Heart & Hustle,mia@heartandhustle.fm,300.00,Zelle,INV-1109
+P5100,29/08/2026,CROWN DFW,media@crowndfw.org,270.00,Zelle,INV-1105
+P5101,29/08/2026,Horizon Therapy,tortiz@horizonfamilytherapy.com,1500.00,Zelle,INV-1104
+P5102,30/08/2026,Alana Ibarra,alana@meridianbridal.com,900.00,Zelle,INV-1111
+P5103,02/09/2026,STARTUP TEXAS PODCAST,darnell@startuptexas.fm,550.00,Zelle,INV-1112
+P5104,03/09/2026,HEART & HUSTLE RADIO,mia@heartandhustle.fm,300.00,ACH,INV-1096
+P5105,03/09/2026,FIELDHOUSE MARKETING LLC,tanya@fieldhousemktg.com,1800.00,ACH,Fieldhouse Aug invoices
+P5106,04/09/2026,ADEYEMI LAW FIRM,info@adeyemilaw.com,2500.00,card,
+P5107,04/09/2026,Torres Family Law PLLC,ttorres@torresfamilylaw.com,900.00,card,INV-1118
+P5108,05/09/2026,Prime Barbershop,andre@primebarbers.com,900.00,ACH,INV-1120
+P5109,06/09/2026,DR. PRIYA HADDAD,office@haddaddental.com,1500.00,card,INV-1107
+P5110,07/09/2026,Ivy Haddad,ivy@bluebonnetrealty.com,1500.00,ACH,INV-1108
+P5111,09/09/2026,CROWN CHURCH,media@crowndfw.org,270.00,card,
+P5112,13/09/2026,Heart & Hustle Radio,mia@heartandhustle.fm,300.00,ACH,INV-1123
+P5113,13/09/2026,PRICE INSURANCE GROUP,david@priceinsures.com,2500.00,card,INV-1115
+P5114,17/09/2026,Torres's Auto Spa,imran@torressautospa.com,900.00,Zelle,INV-1130
+P5115,19/09/2026,WILL MOORE,,450.00,Zelle,half now half later
+P5116,19/09/2026,MAPLE,luis@mapleathletics.com,900.00,ACH,INV-1125
+P5117,25/09/2026,DELGADO AUTO,kevin.delgado.detail@gmail.com,900.00,card,INV-1119
+P5118,25/09/2026,Dr Torres,office@torresdental.com,1500.00,card,INV-1124
+P5119,25/09/2026,Luna Roofing Co,reggie@lunaroofingco.com,900.00,card,INV-1128
+P5120,27/09/2026,Beacon,alana@beaconmedspa.com,900.00,ACH,INV-1136
+P5121,28/09/2026,BLUE BONNET REALTY,ivy@bluebonnetrealty.com,1500.00,ACH,
+P5122,29/09/2026,Darnell Whitfield,darnell@startuptexas.fm,550.00,card,INV-1129
+P5123,04/10/2026,FIELDHOUSE MARKETING LLC,tanya@fieldhousemktg.com,900.00,ACH,Fieldhouse Sep invoices

@@ -1,0 +1,18 @@
+# Internal agent configuration and scratch docs (kept separate from submission)
+.agent/
+AGENTS.md
+GEMINI.md
+MEMORY.md
+working_docs/
+Axeom Challenge - Pack 175.zip
+
+# Python & SQLite runtime artifacts
+__pycache__/
+*.py[cod]
+*.db
+*.sqlite
+*.sqlite3
+.env
+.venv/
+venv/
+.vercel/
