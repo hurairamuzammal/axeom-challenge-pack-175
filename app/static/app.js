@@ -370,36 +370,36 @@ function renderVideosView() {
   if (VIDEO_VIEW_MODE === "tiles") {
     // MODE 1: SQUARE TILES GRID
     container.innerHTML = `
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-4">
         ${displayList
           .map((v) => {
             const clientName = v.canonical_client || v.client;
             return `
-              <div onclick="openVideoTrace('${v.video_id}')" class="square-tile rounded-3xl p-5 sm:p-6 cursor-pointer flex flex-col justify-between group min-h-[175px] sm:min-h-[190px] transition-all">
+              <div onclick="openVideoTrace('${v.video_id}')" class="square-tile rounded-2xl p-4 sm:p-4.5 cursor-pointer flex flex-col justify-between group min-h-[135px] sm:min-h-[145px] transition-all">
                 
                 <!-- Top Row: ID Badge + Hours Logged -->
                 <div class="flex items-start justify-between">
-                  <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/25 flex items-center justify-center font-mono-num font-black text-sm text-amber-400 shadow-inner">
+                  <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/25 flex items-center justify-center font-mono-num font-black text-xs text-amber-400 shadow-inner">
                     ${escapeHtml(v.video_id)}
                   </div>
                   <span class="text-xs text-slate-400 font-mono-num font-bold">${v.editor_hours_num || 0}h</span>
                 </div>
 
                 <!-- Center: Video Title & Client -->
-                <div class="my-auto py-1.5">
-                  <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-amber-400 transition line-clamp-2">
+                <div class="my-auto py-1">
+                  <h3 class="text-xs sm:text-sm font-bold text-white group-hover:text-amber-400 transition line-clamp-2">
                     ${escapeHtml(v.title || "Untitled Video")}
                   </h3>
-                  <p class="text-xs sm:text-sm text-slate-400 truncate mt-1">
+                  <p class="text-[11px] sm:text-xs text-slate-400 truncate mt-0.5">
                     ${escapeHtml(clientName)}
                   </p>
                 </div>
 
                 <!-- Bottom Row: Editor Tag + Status Text -->
-                <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between">
-                  <div class="flex items-center gap-2 text-xs sm:text-sm text-slate-300 font-medium">
-                    <span class="w-2 h-2 rounded-full ${v.editor === "Eli" ? "bg-rose-400" : "bg-emerald-400"}"></span>
-                    <span class="truncate max-w-[80px] sm:max-w-none">${escapeHtml(v.editor || "Team")}</span>
+                <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between">
+                  <div class="flex items-center gap-1.5 text-xs text-slate-300 font-medium">
+                    <span class="w-1.5 h-1.5 rounded-full ${v.editor === "Eli" ? "bg-rose-400" : "bg-emerald-400"}"></span>
+                    <span class="truncate max-w-[70px] sm:max-w-none text-[11px] sm:text-xs">${escapeHtml(v.editor || "Team")}</span>
                   </div>
                   <div class="text-right">
                     ${getStatusBadge(v)}
@@ -690,27 +690,27 @@ function renderClientsView() {
       }
 
       return `
-        <div onclick="openClientTrace('${escapeHtml(name)}')" class="square-tile rounded-3xl p-5 sm:p-6 cursor-pointer flex flex-col justify-between group min-h-[175px] sm:min-h-[190px] transition-all">
+        <div onclick="openClientTrace('${escapeHtml(name)}')" class="square-tile rounded-2xl p-4 sm:p-4.5 cursor-pointer flex flex-col justify-between group min-h-[135px] sm:min-h-[145px] transition-all">
           
           <!-- Top Row: Top-Left Line Icon Badge -->
           <div class="flex items-start justify-between">
-            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br ${meta.color} border flex items-center justify-center shadow-md">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br ${meta.color} border flex items-center justify-center shadow-md">
               ${meta.icon}
             </div>
             <span class="text-xs font-mono-num text-slate-400 font-bold">${c.video_ids?.length || 0} vids</span>
           </div>
 
           <!-- Center: Client Name & Category -->
-          <div class="my-auto py-1.5">
-            <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-amber-400 transition line-clamp-2">
+          <div class="my-auto py-1">
+            <h3 class="text-xs sm:text-sm font-bold text-white group-hover:text-amber-400 transition line-clamp-2">
               ${escapeHtml(name)}
             </h3>
-            <p class="text-xs sm:text-sm text-slate-400 truncate mt-1">${meta.category}</p>
+            <p class="text-[11px] sm:text-xs text-slate-400 truncate mt-0.5">${meta.category}</p>
           </div>
 
           <!-- Bottom Row: Bottom-Left Plan, Bottom-Right Invoice Text -->
-          <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between">
-            <div class="text-xs font-mono-num text-slate-400 truncate max-w-[80px] sm:max-w-none">
+          <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between">
+            <div class="text-[11px] font-mono-num text-slate-400 truncate max-w-[80px] sm:max-w-none">
               ${meta.plan}
             </div>
             ${bottomRightText}
@@ -749,33 +749,33 @@ function renderInvoicesView() {
       const clientName = item.client;
 
       return `
-        <div onclick="openClientTrace('${escapeHtml(clientName)}')" class="square-tile rounded-3xl p-5 sm:p-6 cursor-pointer flex flex-col justify-between group min-h-[175px] sm:min-h-[190px] transition-all">
+        <div onclick="openClientTrace('${escapeHtml(clientName)}')" class="square-tile rounded-2xl p-4 sm:p-4.5 cursor-pointer flex flex-col justify-between group min-h-[135px] sm:min-h-[145px] transition-all">
           
           <!-- Top Row: Top-Left Line Icon + ID -->
           <div class="flex items-start justify-between">
-            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl ${isOverdue ? "bg-rose-500/10 border-rose-500/25 text-rose-400" : "bg-amber-500/10 border-amber-500/25 text-amber-400"} border flex items-center justify-center font-mono-num font-bold text-xs shadow-inner">
+            <div class="w-10 h-10 rounded-xl ${isOverdue ? "bg-rose-500/10 border-rose-500/25 text-rose-400" : "bg-amber-500/10 border-amber-500/25 text-amber-400"} border flex items-center justify-center font-mono-num font-bold text-xs shadow-inner">
               ${icon}
             </div>
-            <span class="text-xs font-mono-num font-bold px-2.5 py-1 rounded-xl ${isOverdue ? "bg-rose-500/20 text-rose-300" : "bg-amber-500/20 text-amber-300"}">
+            <span class="text-[11px] font-mono-num font-bold px-2 py-0.5 rounded-lg ${isOverdue ? "bg-rose-500/20 text-rose-300" : "bg-amber-500/20 text-amber-300"}">
               ${isOverdue ? `${item.days_overdue}d Late` : "Never Billed"}
             </span>
           </div>
 
           <!-- Center: Client Name & Code -->
-          <div class="my-auto py-1.5">
-            <div class="font-mono-num font-bold text-xs sm:text-sm text-slate-300">${escapeHtml(idLabel)}</div>
-            <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-amber-400 transition line-clamp-2 mt-1">
+          <div class="my-auto py-1">
+            <div class="font-mono-num font-bold text-xs text-slate-300">${escapeHtml(idLabel)}</div>
+            <h3 class="text-xs sm:text-sm font-bold text-white group-hover:text-amber-400 transition line-clamp-2 mt-0.5">
               ${escapeHtml(clientName)}
             </h3>
           </div>
 
           <!-- Bottom Row: Bottom-Left Due Date, Bottom-Right Amount -->
-          <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between">
-            <div class="text-xs font-mono-num text-slate-400">
+          <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between">
+            <div class="text-[11px] font-mono-num text-slate-400">
               ${isOverdue ? `Due ${item.due_date}` : `Shoot ${item.shoot_date}`}
             </div>
             <div class="text-right">
-              <div class="font-mono-num font-black ${isOverdue ? "text-rose-400" : "text-amber-400"} text-sm sm:text-base">
+              <div class="font-mono-num font-black ${isOverdue ? "text-rose-400" : "text-amber-400"} text-xs sm:text-sm">
                 ${fmtUSD(item.amount_owed || item.amount)}
               </div>
             </div>
@@ -802,66 +802,66 @@ function renderGuardsView() {
   const cardsHtml = [
     // Square Tile 1: Blue Bonnet Pre-Check Guard
     `
-      <div onclick="confirmAction('VOID_1138', 'Duplicate invoice INV-1138 voided; prepaid funds linked to completed shoot B154.')" class="square-tile rounded-3xl p-5 sm:p-6 cursor-pointer flex flex-col justify-between group min-h-[175px] sm:min-h-[190px] border-emerald-500/30 transition-all">
+      <div onclick="confirmAction('VOID_1138', 'Duplicate invoice INV-1138 voided; prepaid funds linked to completed shoot B154.')" class="square-tile rounded-2xl p-4 sm:p-4.5 cursor-pointer flex flex-col justify-between group min-h-[135px] sm:min-h-[145px] border-emerald-500/30 transition-all">
         <div class="flex items-start justify-between">
-          <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-400">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-400">
             ${ICONS.shield}
           </div>
-          <span class="text-xs font-mono-num px-2.5 py-1 rounded-xl bg-emerald-500/20 text-emerald-300 font-bold">Rule Guard</span>
+          <span class="text-[11px] font-mono-num px-2 py-0.5 rounded-lg bg-emerald-500/20 text-emerald-300 font-bold">Rule Guard</span>
         </div>
-        <div class="my-auto py-1.5">
-          <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-emerald-400 transition line-clamp-2">
+        <div class="my-auto py-1">
+          <h3 class="text-xs sm:text-sm font-bold text-white group-hover:text-emerald-400 transition line-clamp-2">
             Blue Bonnet Realty
           </h3>
-          <p class="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">Cancelled B142 rescheduled to B154 (Delivered). Sent INV-1138 without pre-check.</p>
+          <p class="text-[11px] sm:text-xs text-slate-300 mt-0.5 leading-relaxed">Cancelled B142 rescheduled to B154 (Delivered). Sent INV-1138 without pre-check.</p>
         </div>
-        <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between">
-          <div class="text-xs font-mono-num text-slate-400">Pre-Check Guard</div>
-          <div class="text-right font-mono-num font-black text-emerald-400 text-sm sm:text-base">$0.00 Owed</div>
+        <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between">
+          <div class="text-[11px] font-mono-num text-slate-400">Pre-Check Guard</div>
+          <div class="text-right font-mono-num font-black text-emerald-400 text-xs sm:text-sm">$0.00 Owed</div>
         </div>
       </div>
     `,
 
     // Square Tile 2: Hillcrest PT Churn Rescue
     `
-      <div onclick="openVideoTrace('V049')" class="square-tile rounded-3xl p-5 sm:p-6 cursor-pointer flex flex-col justify-between group min-h-[175px] sm:min-h-[190px] border-rose-500/30 transition-all">
+      <div onclick="openVideoTrace('V049')" class="square-tile rounded-2xl p-4 sm:p-4.5 cursor-pointer flex flex-col justify-between group min-h-[135px] sm:min-h-[145px] border-rose-500/30 transition-all">
         <div class="flex items-start justify-between">
-          <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-rose-500/10 border border-rose-500/25 flex items-center justify-center text-rose-400">
+          <div class="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/25 flex items-center justify-center text-rose-400">
             ${ICONS.medical}
           </div>
-          <span class="text-xs font-mono-num px-2.5 py-1 rounded-xl bg-rose-500/20 text-rose-300 font-bold">Churn Risk</span>
+          <span class="text-[11px] font-mono-num px-2 py-0.5 rounded-lg bg-rose-500/20 text-rose-300 font-bold">Churn Risk</span>
         </div>
-        <div class="my-auto py-1.5">
-          <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-rose-400 transition line-clamp-2">
+        <div class="my-auto py-1">
+          <h3 class="text-xs sm:text-sm font-bold text-white group-hover:text-rose-400 transition line-clamp-2">
             Hillcrest Physical Therapy
           </h3>
-          <p class="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">Missed Voice Notes V049 &amp; Compliance breach. INV-1116 withheld.</p>
+          <p class="text-[11px] sm:text-xs text-slate-300 mt-0.5 leading-relaxed">Missed Voice Notes V049 &amp; Compliance breach. INV-1116 withheld.</p>
         </div>
-        <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between">
-          <div class="text-xs font-mono-num text-slate-400">Gloria Reed</div>
-          <div class="text-right font-mono-num font-black text-rose-400 text-sm sm:text-base">$2,500/mo</div>
+        <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between">
+          <div class="text-[11px] font-mono-num text-slate-400">Gloria Reed</div>
+          <div class="text-right font-mono-num font-black text-rose-400 text-xs sm:text-sm">$2,500/mo</div>
         </div>
       </div>
     `,
 
     // Square Tiles for Leads
     ...leads.map((l) => `
-      <div onclick="confirmAction('REPLY_${l.lead_id}', 'Followup email drafted for ${escapeHtml(l.contact_name)}.')" class="square-tile rounded-3xl p-5 sm:p-6 cursor-pointer flex flex-col justify-between group min-h-[175px] sm:min-h-[190px] transition-all">
+      <div onclick="confirmAction('REPLY_${l.lead_id}', 'Followup email drafted for ${escapeHtml(l.contact_name)}.')" class="square-tile rounded-2xl p-4 sm:p-4.5 cursor-pointer flex flex-col justify-between group min-h-[135px] sm:min-h-[145px] transition-all">
         <div class="flex items-start justify-between">
-          <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-sky-500/10 border border-sky-500/25 flex items-center justify-center text-sky-400">
+          <div class="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/25 flex items-center justify-center text-sky-400">
             ${ICONS.user}
           </div>
-          <span class="text-xs font-mono-num px-2.5 py-1 rounded-xl bg-slate-800 text-slate-300 font-semibold">${escapeHtml(l.source || "Web")}</span>
+          <span class="text-[11px] font-mono-num px-2 py-0.5 rounded-lg bg-slate-800 text-slate-300 font-semibold">${escapeHtml(l.source || "Web")}</span>
         </div>
-        <div class="my-auto py-1.5">
-          <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-sky-400 transition truncate">
+        <div class="my-auto py-1">
+          <h3 class="text-xs sm:text-sm font-bold text-white group-hover:text-sky-400 transition truncate">
             ${escapeHtml(l.contact_name)}
           </h3>
-          <p class="text-xs sm:text-sm text-amber-400/90 font-medium truncate mt-1">${escapeHtml(l.business_name || l.matched_client || "Prospective")}</p>
+          <p class="text-[11px] sm:text-xs text-amber-400/90 font-medium truncate mt-0.5">${escapeHtml(l.business_name || l.matched_client || "Prospective")}</p>
         </div>
-        <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between">
-          <div class="text-xs font-mono-num text-slate-400">Lead</div>
-          <div class="text-right text-xs sm:text-sm text-sky-400 font-bold group-hover:underline">Reply &rarr;</div>
+        <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between">
+          <div class="text-[11px] font-mono-num text-slate-400">Lead</div>
+          <div class="text-right text-[11px] sm:text-xs text-sky-400 font-bold group-hover:underline">Reply &rarr;</div>
         </div>
       </div>
     `),
