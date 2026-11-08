@@ -1895,15 +1895,15 @@ function openVideoTrace(videoId) {
 
       <!-- Step 3: Client Feedback & Voice Notes -->
       <div class="flex items-start gap-4 relative timeline-step">
-        <div class="w-12 h-12 rounded-2xl ${voiceNoteItem ? "bg-purple-500/20 border-purple-500/40 text-purple-300" : "bg-slate-800 border-slate-700"} flex items-center justify-center shrink-0 z-10 timeline-line">
+        <div class="w-12 h-12 rounded-2xl ${hasVoiceNote ? "bg-purple-500/20 border-purple-500/40 text-purple-300" : "bg-slate-800 border-slate-700"} flex items-center justify-center shrink-0 z-10 timeline-line">
           ${ICONS.audioWave}
         </div>
-        <div class="flex-1 ${voiceNoteItem ? "bg-purple-950/20 border-purple-500/30" : "bg-slate-900/60 border-slate-800"} border p-5 rounded-2xl space-y-3.5">
+        <div class="flex-1 ${hasVoiceNote ? "bg-purple-950/20 border-purple-500/30" : "bg-slate-900/60 border-slate-800"} border p-5 rounded-2xl space-y-3.5">
           <div class="flex items-center justify-between">
-            <span class="text-sm sm:text-base font-bold ${voiceNoteItem ? "text-purple-300" : "text-white"}">
+            <span class="text-sm sm:text-base font-bold ${hasVoiceNote ? "text-purple-300" : "text-white"}">
               3. Client Feedback &amp; Messaging Intake
             </span>
-            <span class="text-xs font-mono-num px-2.5 py-1 rounded-lg ${voiceNoteItem ? "bg-purple-500/20 text-purple-300 border border-purple-500/30" : "bg-slate-800 text-slate-300"}">
+            <span class="text-xs font-mono-num px-2.5 py-1 rounded-lg ${hasVoiceNote ? "bg-purple-500/20 text-purple-300 border border-purple-500/30" : "bg-slate-800 text-slate-300"}">
               ${channelBadge}
             </span>
           </div>
@@ -1914,8 +1914,8 @@ function openVideoTrace(videoId) {
           </div>
 
           <!-- Message Quote / Audio Transcript -->
-          <div class="p-4 rounded-xl bg-black/40 border ${voiceNoteItem ? "border-purple-500/30" : "border-slate-800"} space-y-2">
-            <div class="flex items-center justify-between text-xs ${voiceNoteItem ? "text-purple-400" : "text-slate-400"} font-mono-num">
+          <div class="p-4 rounded-xl bg-black/40 border ${hasVoiceNote ? "border-purple-500/30" : "border-slate-800"} space-y-2">
+            <div class="flex items-center justify-between text-xs ${hasVoiceNote ? "text-purple-400" : "text-slate-400"} font-mono-num">
               <span>Channel: ${channelBadge}</span>
               <span>Sender: ${escapeHtml(msgItem?.sender || clientName)}</span>
             </div>
@@ -1937,7 +1937,7 @@ function openVideoTrace(videoId) {
                   <span class="text-xs font-mono-num font-bold uppercase tracking-wider text-rose-400 block">[MISSING PRODUCTION NOTES]</span>
                   <p class="text-xs sm:text-sm text-rose-200 mt-1 leading-relaxed">Client sent revision instructions via ${channelBadge}, but notes on the production board card are completely blank! Instruction was lost in transit before reaching editor ${escapeHtml(video.editor)}.</p>
                 </div>
-                <button onclick="confirmAction('SYNC_${video.video_id}', 'Voice note synced directly to ${escapeHtml(video.editor)}\\'s board card.')" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition shadow-sm cursor-pointer">
+                <button onclick="confirmAction('SYNC_${video.video_id}')" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition shadow-sm cursor-pointer">
                   Sync Instructions Directly to ${escapeHtml(video.editor)}'s Card
                 </button>
               </div>
@@ -2031,8 +2031,8 @@ function openVideoTrace(videoId) {
                   <span class="text-xs font-mono-num font-bold uppercase tracking-wider text-amber-400 block">[MISSING INVOICE DATE - NEVER BILLED]</span>
                   <p class="text-xs sm:text-sm text-amber-200 mt-1 leading-relaxed">Shoot session ${bookingId || ""} was captured and delivered, but NO invoice was ever issued ($8,210.00 studio unbilled revenue leak). Immediate draft invoice required.</p>
                 </div>
-                <button onclick="confirmAction('BILL_${bookingId || video.video_id}', 'Draft invoice for ${escapeHtml(clientName)} (${fmtUSD(unbilledItem.amount)}) queued for dispatch.')" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition shadow-sm cursor-pointer">
-                  Generate Draft Invoice (${fmtUSD(unbilledItem.amount)})
+                <button onclick="confirmAction('BILL_${bookingId || video.video_id}')" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition shadow-sm cursor-pointer">
+                  Generate Draft Invoice (${fmtUSD(unbilledItem?.amount || 0)})
                 </button>
               </div>
             </div>
@@ -2085,7 +2085,7 @@ function openVideoTrace(videoId) {
                   <span class="text-xs font-mono-num font-bold uppercase tracking-wider text-rose-400 block">[MISSING SETTLEMENT DATE - PAST DUE]</span>
                   <p class="text-xs sm:text-sm text-rose-200 mt-1 leading-relaxed">Invoice ${overdueInvoice.invoice_no} was due on ${overdueInvoice.due_date}. As of October 6, 2026, it is <span class="font-bold text-white">${overdueInvoice.days_overdue} days past due</span> (${fmtUSD(overdueInvoice.amount_owed)} outstanding).</p>
                 </div>
-                <button onclick="confirmAction('REMIND_${overdueInvoice.invoice_no}', 'Payment reminder sent to ${escapeHtml(overdueInvoice.email || clientName)}.')" class="px-4 py-2 rounded-xl bg-rose-500 hover:bg-rose-400 text-white font-bold text-xs transition shadow-sm cursor-pointer">
+                <button onclick="confirmAction('REMIND_${overdueInvoice.invoice_no}')" class="px-4 py-2 rounded-xl bg-rose-500 hover:bg-rose-400 text-white font-bold text-xs transition shadow-sm cursor-pointer">
                   Send Payment Reminder (${fmtUSD(overdueInvoice.amount_owed)})
                 </button>
               </div>
@@ -2321,7 +2321,7 @@ function openClientTrace(clientName) {
                   <span class="text-xs font-mono-num font-bold uppercase tracking-wider text-amber-400 block">[MISSING INVOICE DATE - NEVER BILLED]</span>
                   <p class="text-xs sm:text-sm text-amber-200 mt-1 leading-relaxed">${escapeHtml(unbilledItem.service)} completed on ${unbilledItem.shoot_date}, but no invoice was ever issued ($8,210.00 studio unbilled revenue leak).</p>
                 </div>
-                <button onclick="confirmAction('BILL_${unbilledItem.booking_id}', 'Draft invoice for ${escapeHtml(clientName)} (${fmtUSD(unbilledItem.amount)}) queued for dispatch.')" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition shadow-sm cursor-pointer">
+                <button onclick="confirmAction('BILL_${unbilledItem.booking_id}')" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition shadow-sm cursor-pointer">
                   Generate Draft Invoice (${fmtUSD(unbilledItem.amount)})
                 </button>
               </div>
@@ -2380,7 +2380,7 @@ function openClientTrace(clientName) {
                   <span class="text-xs font-mono-num font-bold uppercase tracking-wider text-rose-400 block">OVERDUE BALANCE // ${overdueItem.invoice_no}</span>
                   <p class="text-xs sm:text-sm text-rose-200 mt-1 leading-relaxed">${escapeHtml(clientName)} has an outstanding balance of <span class="font-bold text-white">${fmtUSD(overdueItem.amount_owed)}</span> (${overdueItem.days_overdue} days past due relative to Oct 6, 2026).</p>
                 </div>
-                <button onclick="confirmAction('REMIND_${overdueItem.invoice_no}', 'Payment reminder sent to ${escapeHtml(overdueItem.email || clientName)}.')" class="px-4 py-2 rounded-xl bg-rose-500 hover:bg-rose-400 text-white font-bold text-xs transition shadow-sm cursor-pointer">
+                <button onclick="confirmAction('REMIND_${overdueItem.invoice_no}')" class="px-4 py-2 rounded-xl bg-rose-500 hover:bg-rose-400 text-white font-bold text-xs transition shadow-sm cursor-pointer">
                   Send Friendly Dunning Reminder (${fmtUSD(overdueItem.amount_owed)})
                 </button>
               </div>
@@ -2457,6 +2457,20 @@ function filterVideos(filterType) {
 }
 
 function confirmAction(actionKey, message) {
+  if (!message) {
+    if (actionKey.startsWith("BILL_")) {
+      const ref = actionKey.replace("BILL_", "");
+      message = `Draft invoice generated for shoot ${ref} and queued for dispatch.`;
+    } else if (actionKey.startsWith("REMIND_")) {
+      const inv = actionKey.replace("REMIND_", "");
+      message = `Payment reminder for ${inv} sent to client contact.`;
+    } else if (actionKey.startsWith("SYNC_")) {
+      const vid = actionKey.replace("SYNC_", "");
+      message = `Voice note instructions for ${vid} synced directly to editor board.`;
+    } else {
+      message = `Action ${actionKey} successfully confirmed.`;
+    }
+  }
   showBanner(message);
   closeDrawer();
 }
