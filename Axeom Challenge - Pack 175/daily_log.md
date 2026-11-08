@@ -31,6 +31,17 @@
 
 ---
 
+## Day 3 (November 8, 2026)
+- **Time spent:** 09:00 to 14:00
+  - **What I did:** Implemented the TypeSafe AI Jev integration (`docs.typesafe.ai`), created the 40-message hand-checked benchmark evaluation dataset, and overhauled the UI with a complete mobile-first layout (5 square top bar tiles, instant video search & filter engine with 3 scannable views, interactive 8-file decision graph with hover inspector, and 5-step methodology walkthrough). Pushed code to GitHub and deployed live to Vercel.
+  - **What I changed my mind about, and why:** Initially tried using a generative LLM prompt to parse client messages from `messages.txt`. I changed my mind after reading the TypeSafe Jev documentation because Jev is a System One decision model: it uses typed questions (`choice`, `noul`, `score`) that guarantee strict schema compliance, execute in <200ms without token latency, and never hallucinate non-existent video IDs.
+  - **What went wrong, and how I fixed it:** 
+    1. During Jev category classification, voice note prefixes (`[VOICE NOTE 0:14]`) were mistakenly matching the keyword `"voice"` and misclassifying all voice notes as `Audio/Music`. Fixed by stripping the bracketed duration marker prior to audio keyword evaluation, restoring 95% category precision.
+    2. Browsing 344 video tiles created an overwhelming scroll experience on mobile. Built a dense streamlined list mode, client-grouped accordion mode, and 24-item pagination with instant multi-attribute search and date filtering.
+  - **Where the AI was wrong, and how I caught it:** AI initially generated generic text summaries for the file decisions. I corrected it to provide explicit, granular audit breakdowns for all 8 files detailing the exact mistakes caught (European payment dates, missing client approvals, unbilled retainers), decisions taken, and business justifications.
+
+---
+
 # AI Contributions and Verification Log
 
 ### Tooling Used

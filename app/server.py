@@ -16,10 +16,15 @@ from __future__ import annotations
 import json
 import mimetypes
 import os
+import sys
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any, Dict
 from urllib.parse import urlparse
+
+ROOT_DIR = Path(__file__).resolve().parent.parent
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
 
 from app.engine import DEFAULT_RAW_DATA_DIR, AxeomReactiveEngine
 from app.ingestion import parse_csv_content, parse_messages_content
@@ -173,6 +178,22 @@ class AxeomRequestHandler(BaseHTTPRequestHandler):
             self.engine.storage.add_custom_intake(intake_payload)
             state = self.engine.run_pipeline()
             self._send_json(state)
+            return
+
+        if path == "/api/jev/evaluate":
+            text = (body.get("text") or "").strip()
+            sender = (body.get("sender") or "").strip()
+            from app.jev_integration import JevExtractionEngine
+            jev_eng = JevExtractionEngine()
+            eval_res = jev_eng.evaluate_custom_text(text, sender=sender)
+            self._send_json(eval_res)
+            return
+
+        if path == "/api/jev/benchmark":
+            from app.jev_integration import JevExtractionEngine
+            jev_eng = JevExtractionEngine()
+            bench_res = jev_eng.run_benchmark_40()
+            self._send_json(bench_res)
             return
 
         if path == "/api/reset":

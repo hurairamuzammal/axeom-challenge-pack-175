@@ -403,6 +403,17 @@ def compute_business_state(
     # MODULE 4: JEV EXTRACTION & PRODUCTION BOARD SYNC
     # =========================================================================
     board_records: List[Dict[str, Any]] = [dict(v) for v in cleaned.production_board]
+    booking_dates = {
+        b.get("booking_id"): b.get("shoot_date_iso") or b.get("date")
+        for b in cleaned.bookings
+        if b.get("booking_id")
+    }
+    for v in board_records:
+        bid = v.get("shoot_booking") or v.get("booking_id") or ""
+        sdate = booking_dates.get(bid, "")
+        v["shoot_date"] = sdate
+        v["effective_date"] = v.get("client_approved_on") or sdate or ""
+
     jev_engine = JevExtractionEngine()
     jev_results = jev_engine.extract_messages(
         messages=cleaned.messages,

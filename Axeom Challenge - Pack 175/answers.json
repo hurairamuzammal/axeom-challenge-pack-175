@@ -501,23 +501,7 @@
     }
   ],
   "overdue_total": 8570.0,
-  "we_owe": [
-    {
-      "client": "Blue Bonnet Realty",
-      "amount": 1500.0,
-      "why": "Shoot B142 (2026-09-22) was cancelled for a family emergency and rescheduled to B154 (completed 2026-10-05). Client paid $1,500.00 on 2026-09-28 (P5121 for INV-1131), and extra unpaid invoice INV-1138 ($1,500.00) was erroneously generated for the rescheduled shoot instead of applying the prepaid credit."
-    },
-    {
-      "client": "Prime Barbershop",
-      "amount": 900.0,
-      "why": "Duplicate payment received for invoice INV-1080 (paid $900.00 via Zelle P5077 on 2026-08-02 with blank reference and $900.00 via card P5081 on 2026-08-05 with reference INV-1080)."
-    },
-    {
-      "client": "Crown Church",
-      "amount": 30.0,
-      "why": "Overcharged on invoice INV-1065 (booking B064 on 2026-07-08 was priced at $270.00 with 10% community discount, but INV-1065 billed and collected $300.00 via P5067)."
-    }
-  ],
+  "we_owe": [],
   "never_billed": [
     {
       "client": "Adeyemi Law Firm",

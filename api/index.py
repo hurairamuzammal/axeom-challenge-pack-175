@@ -18,3 +18,4 @@ from app.server import AxeomRequestHandler
 class handler(AxeomRequestHandler):
     """Vercel Python Serverless handler."""
     pass
+

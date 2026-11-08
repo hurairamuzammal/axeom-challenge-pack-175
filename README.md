@@ -56,3 +56,4 @@ python3 -m unittest discover -s tests -v
 - `Axeom Challenge - Pack 175/daily_log.md` & `daily-log.txt` — Chronological engineering & AI verification log
 - `Axeom Challenge - Pack 175/ai_log.md` — AI mistakes caught and human verification log
 - `Axeom Challenge - Pack 175/data/` — Original raw dataset (strictly untouched)
+
