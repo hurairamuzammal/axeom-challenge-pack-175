@@ -352,7 +352,7 @@ function renderVideosView() {
     const isZombie = ["V121", "V152"].includes(v.video_id);
 
     if (isZombie) {
-      return `<span class="inline-flex items-center gap-1 text-rose-400 font-mono-num font-bold text-[11px] animate-pulse">${ICONS.alert} Stuck Task</span>`;
+      return `<span class="inline-flex items-center gap-1 text-amber-300 font-mono-num font-bold text-[10px] px-2 py-0.5 rounded-lg bg-amber-500/15 border border-amber-500/30">${ICONS.alert} Stuck (Approved)</span>`;
     }
     if (hasVoiceNote) {
       return `<span class="inline-flex items-center gap-1 text-purple-300 font-mono-num font-bold text-[11px]">${ICONS.audioWave} Voice Note</span>`;
@@ -368,40 +368,44 @@ function renderVideosView() {
 
   // 5. Render Selected View Mode
   if (VIDEO_VIEW_MODE === "tiles") {
-    // MODE 1: SQUARE TILES GRID
+    // MODE 1: COMPACT RESPONSIVE TILES GRID (NO WASTED VOID SPACE)
     container.innerHTML = `
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-3.5">
         ${displayList
           .map((v) => {
             const clientName = v.canonical_client || v.client;
+            const isStuck = ["V121", "V152"].includes(v.video_id);
             return `
-              <div onclick="openVideoTrace('${v.video_id}')" class="square-tile rounded-2xl p-4 sm:p-4.5 cursor-pointer flex flex-col justify-between group min-h-[135px] sm:min-h-[145px] transition-all">
+              <div onclick="openVideoTrace('${v.video_id}')" class="square-tile rounded-2xl p-3.5 sm:p-4 cursor-pointer flex flex-col justify-between group transition-all ${isStuck ? "border-amber-500/40 bg-amber-500/[0.03]" : ""}">
                 
-                <!-- Top Row: ID Badge + Hours Logged -->
-                <div class="flex items-start justify-between">
-                  <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/25 flex items-center justify-center font-mono-num font-black text-xs text-amber-400 shadow-inner">
+                <!-- Top Row: ID Badge + Hours Logged with Clock Icon -->
+                <div class="flex items-center justify-between">
+                  <div class="px-2.5 py-1 rounded-xl bg-amber-500/10 border border-amber-500/25 font-mono-num font-black text-xs text-amber-400 shadow-inner">
                     ${escapeHtml(v.video_id)}
                   </div>
-                  <span class="text-xs text-slate-400 font-mono-num font-bold">${v.editor_hours_num || 0}h</span>
+                  <span class="flex items-center gap-1 font-mono-num font-semibold text-[11px] text-slate-300 bg-slate-900/90 px-2 py-0.5 rounded-lg border border-slate-800" title="Editor production hours logged on this cut">
+                    <svg class="w-3 h-3 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span>${v.editor_hours_num || 0}h edit</span>
+                  </span>
                 </div>
 
                 <!-- Center: Video Title & Client -->
-                <div class="my-auto py-1">
-                  <h3 class="text-xs sm:text-sm font-bold text-white group-hover:text-amber-400 transition line-clamp-2">
+                <div class="my-2">
+                  <h3 class="text-xs sm:text-sm font-bold text-white group-hover:text-amber-400 transition line-clamp-2 leading-snug">
                     ${escapeHtml(v.title || "Untitled Video")}
                   </h3>
-                  <p class="text-[11px] sm:text-xs text-slate-400 truncate mt-0.5">
+                  <p class="text-[11px] text-slate-400 truncate mt-0.5">
                     ${escapeHtml(clientName)}
                   </p>
                 </div>
 
                 <!-- Bottom Row: Editor Tag + Status Text -->
-                <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between">
+                <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between gap-1">
                   <div class="flex items-center gap-1.5 text-xs text-slate-300 font-medium">
                     <span class="w-1.5 h-1.5 rounded-full ${v.editor === "Eli" ? "bg-rose-400" : "bg-emerald-400"}"></span>
-                    <span class="truncate max-w-[70px] sm:max-w-none text-[11px] sm:text-xs">${escapeHtml(v.editor || "Team")}</span>
+                    <span class="truncate max-w-[65px] sm:max-w-none text-[11px]">${escapeHtml(v.editor || "Team")}</span>
                   </div>
-                  <div class="text-right">
+                  <div class="text-right shrink-0">
                     ${getStatusBadge(v)}
                   </div>
                 </div>
@@ -1754,6 +1758,15 @@ function openVideoTrace(videoId) {
   const hasNotesOnBoard = Boolean(video.notes_on_board && video.notes_on_board.trim());
   const isUnbilled = Boolean(unbilledItem);
   const isOverdue = Boolean(overdueInvoice);
+  const isStuckTicket = Boolean(hasApprovalDate && (video.stage || "").toLowerCase() === "in revision");
+
+  // Accurate Financial Calculations
+  const invoiceAmount = anyInvoice ? (anyInvoice.original_amount || 0) : unbilledItem ? (unbilledItem.amount || 0) : 0;
+  const paidAmount = anyInvoice ? (anyInvoice.paid_amount || 0) : 0;
+  const owedAmount = anyInvoice ? (anyInvoice.amount_owed || 0) : unbilledItem ? (unbilledItem.amount || 0) : 0;
+  const isPaidInFull = anyInvoice && owedAmount <= 0.01;
+  const isOpenUpcoming = anyInvoice && owedAmount > 0.01 && (anyInvoice.days_overdue || 0) <= 0;
+  const isOverdueDebt = anyInvoice && (anyInvoice.days_overdue || 0) > 0;
 
   tag.textContent = `OPERATIONAL TRACE // ${video.video_id}`;
   tag.className = "text-xs font-mono-num font-bold uppercase px-3 py-1 rounded-xl bg-purple-500/20 text-purple-300 border border-purple-500/30";
@@ -1776,58 +1789,58 @@ function openVideoTrace(videoId) {
 
   body.innerHTML = `
     <!-- Top Summary Tile -->
-    <div class="p-5 sm:p-6 rounded-3xl bg-slate-900 border border-slate-800 flex items-center justify-between">
-      <div class="flex items-center gap-4">
-        <div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400">
+    <div class="p-4 sm:p-5 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-between">
+      <div class="flex items-center gap-3.5">
+        <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400">
           ${ICONS.video}
         </div>
         <div>
-          <div class="font-mono-num font-bold text-base sm:text-lg text-white">${video.video_id} &bull; ${escapeHtml(video.title || "Untitled Video")}</div>
-          <div class="text-xs sm:text-sm text-slate-300 mt-0.5">${escapeHtml(clientName)} &bull; Editor: <span class="font-semibold text-white">${escapeHtml(video.editor)}</span></div>
+          <div class="font-mono-num font-bold text-sm sm:text-base text-white">${video.video_id} &bull; ${escapeHtml(video.title || "Untitled Video")}</div>
+          <div class="text-xs text-slate-300 mt-0.5">${escapeHtml(clientName)} &bull; Editor: <span class="font-semibold text-white">${escapeHtml(video.editor)}</span></div>
         </div>
       </div>
       <div class="text-right">
-        <span class="text-xs sm:text-sm font-mono-num px-3 py-1.5 rounded-xl bg-slate-800 text-slate-200 border border-slate-700">Stage: ${escapeHtml(video.stage)}</span>
+        <span class="text-xs font-mono-num px-2.5 py-1 rounded-xl bg-slate-800 text-slate-200 border border-slate-700">Stage: ${escapeHtml(video.stage)}</span>
       </div>
     </div>
 
     <!-- Horizontal Process Stepper Bar (6 Steps) -->
-    <div class="p-5 sm:p-6 rounded-3xl bg-slate-900/90 border border-slate-800 space-y-4">
+    <div class="p-4 sm:p-5 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-3.5">
       <div class="flex items-center justify-between">
         <span class="text-xs font-mono-num font-bold uppercase tracking-wider text-slate-400">Sequential Operations Lifecycle Stepper</span>
-        <span class="text-xs font-mono-num px-2.5 py-0.5 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">6 Stages Tracked</span>
+        <span class="text-xs font-mono-num px-2 py-0.5 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">6 Stages</span>
       </div>
       
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 text-center">
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 text-center font-mono-num">
         <!-- Step 1: Booked -->
-        <div class="p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
-          <div class="text-[10px] font-mono-num font-bold uppercase">1. Booked</div>
-          <div class="text-xs font-bold mt-1 flex items-center justify-center gap-1"><span>Done</span><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span></div>
+        <div class="p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+          <div class="text-[10px] font-bold uppercase">1. Booked</div>
+          <div class="text-xs font-bold mt-0.5">Done</div>
         </div>
         <!-- Step 2: Editor Cut -->
-        <div class="p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
-          <div class="text-[10px] font-mono-num font-bold uppercase">2. Editor</div>
-          <div class="text-xs font-bold mt-1 flex items-center justify-center gap-1"><span>${escapeHtml(video.editor)}</span><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span></div>
+        <div class="p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+          <div class="text-[10px] font-bold uppercase">2. Editor</div>
+          <div class="text-xs font-bold mt-0.5">${escapeHtml(video.editor)}</div>
         </div>
         <!-- Step 3: Messaging Intake -->
-        <div class="p-3 rounded-2xl ${hasVoiceNote ? "bg-purple-500/15 border-purple-500/40 text-purple-300" : hasNotesOnBoard ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400" : "bg-rose-500/15 border-rose-500/30 text-rose-300"}">
-          <div class="text-[10px] font-mono-num font-bold uppercase">3. Intake</div>
-          <div class="text-xs font-bold mt-1">${hasVoiceNote ? "Audio Note" : hasNotesOnBoard ? "Synced" : "Dropped"}</div>
+        <div class="p-2.5 rounded-xl ${hasVoiceNote ? "bg-purple-500/15 border-purple-500/40 text-purple-300" : hasNotesOnBoard ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400" : "bg-rose-500/15 border-rose-500/30 text-rose-300"}">
+          <div class="text-[10px] font-bold uppercase">3. Intake</div>
+          <div class="text-xs font-bold mt-0.5">${hasVoiceNote ? "Audio Note" : hasNotesOnBoard ? "Synced" : "Dropped"}</div>
         </div>
         <!-- Step 4: Approval -->
-        <div class="p-3 rounded-2xl ${hasApprovalDate ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400" : "bg-rose-500/15 border-rose-500/30 text-rose-300"}">
-          <div class="text-[10px] font-mono-num font-bold uppercase">4. Approval</div>
-          <div class="text-xs font-bold mt-1">${hasApprovalDate ? "Signed" : "Missing Date"}</div>
+        <div class="p-2.5 rounded-xl ${isStuckTicket ? "bg-amber-500/20 border-amber-500/40 text-amber-300" : hasApprovalDate ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400" : "bg-rose-500/15 border-rose-500/30 text-rose-300"}">
+          <div class="text-[10px] font-bold uppercase">4. Approval</div>
+          <div class="text-xs font-bold mt-0.5">${isStuckTicket ? "Stuck Ticket" : hasApprovalDate ? "Signed" : "Missing Date"}</div>
         </div>
         <!-- Step 5: Billing -->
-        <div class="p-3 rounded-2xl ${isUnbilled ? "bg-rose-500/15 border-rose-500/30 text-rose-300" : "bg-emerald-500/10 border-emerald-500/30 text-emerald-400"}">
-          <div class="text-[10px] font-mono-num font-bold uppercase">5. Billing</div>
-          <div class="text-xs font-bold mt-1">${isUnbilled ? "Unbilled" : "Invoiced"}</div>
+        <div class="p-2.5 rounded-xl ${isUnbilled ? "bg-rose-500/15 border-rose-500/30 text-rose-300" : "bg-emerald-500/10 border-emerald-500/30 text-emerald-400"}">
+          <div class="text-[10px] font-bold uppercase">5. Billing</div>
+          <div class="text-xs font-bold mt-0.5">${isUnbilled ? "Unbilled" : "Invoiced"}</div>
         </div>
         <!-- Step 6: Settlement -->
-        <div class="p-3 rounded-2xl ${isOverdue ? "bg-rose-500/15 border-rose-500/30 text-rose-300" : isUnbilled ? "bg-slate-800/80 border-slate-700 text-slate-400" : "bg-emerald-500/10 border-emerald-500/30 text-emerald-400"}">
-          <div class="text-[10px] font-mono-num font-bold uppercase">6. Ledger</div>
-          <div class="text-xs font-bold mt-1">${isOverdue ? "Past Due" : isUnbilled ? "Pending" : "Settled"}</div>
+        <div class="p-2.5 rounded-xl ${isOverdueDebt ? "bg-rose-500/15 border-rose-500/30 text-rose-300" : isOpenUpcoming ? "bg-amber-500/15 border-amber-500/30 text-amber-300" : isUnbilled ? "bg-slate-800 border-slate-700 text-slate-400" : "bg-emerald-500/10 border-emerald-500/30 text-emerald-400"}">
+          <div class="text-[10px] font-bold uppercase">6. Ledger</div>
+          <div class="text-xs font-bold mt-0.5">${isOverdueDebt ? "Past Due" : isOpenUpcoming ? "Open (Due)" : isUnbilled ? "Pending" : "Settled"}</div>
         </div>
       </div>
     </div>
@@ -1963,17 +1976,38 @@ function openVideoTrace(videoId) {
 
       <!-- Step 4: Delivery / Approval -->
       <div class="flex items-start gap-4 relative timeline-step">
-        <div class="w-12 h-12 rounded-2xl ${hasApprovalDate ? "bg-emerald-500/20 border-emerald-500/40 text-emerald-300" : "bg-rose-500/20 border-rose-500/40 text-rose-300"} flex items-center justify-center shrink-0 z-10 timeline-line">
+        <div class="w-12 h-12 rounded-2xl ${isStuckTicket ? "bg-amber-500/20 border-amber-500/40 text-amber-300" : hasApprovalDate ? "bg-emerald-500/20 border-emerald-500/40 text-emerald-300" : "bg-rose-500/20 border-rose-500/40 text-rose-300"} flex items-center justify-center shrink-0 z-10 timeline-line">
           ${ICONS.package}
         </div>
         <div class="flex-1 bg-slate-900/60 border border-slate-800 p-5 rounded-2xl space-y-3">
           <div class="flex items-center justify-between">
             <span class="text-sm sm:text-base font-bold text-white">4. Quality Inspection &amp; Client Approval</span>
-            <span class="text-xs font-mono-num font-semibold ${hasApprovalDate ? "text-emerald-400" : "text-rose-400"}">Stage: ${video.stage}</span>
+            <span class="text-xs font-mono-num font-semibold ${isStuckTicket ? "text-amber-400" : hasApprovalDate ? "text-emerald-400" : "text-rose-400"}">Stage: ${video.stage}</span>
           </div>
 
           ${
-            hasApprovalDate
+            isStuckTicket
+              ? `
+            <div class="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
+                ${ICONS.alert}
+              </div>
+              <div class="flex-1 space-y-2">
+                <div>
+                  <span class="text-xs font-mono-num font-bold uppercase tracking-wider text-amber-400 block">[STUCK BOARD TICKET // OPERATIONAL BOTTLENECK]</span>
+                  <p class="text-xs sm:text-sm text-amber-200 mt-1 leading-relaxed">Client approved this cut on <span class="font-bold text-white">${video.client_approved_on}</span>, yet the board card was NEVER moved to "Delivered" and remained stuck as "${video.stage}" for over 70 days! This distorts active studio capacity metrics.</p>
+                </div>
+                <button onclick="confirmAction('RESOLVE_${video.video_id}')" class="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition shadow-sm cursor-pointer">
+                  Resolve: Mark Delivered &amp; Close Ticket
+                </button>
+              </div>
+            </div>
+            <div class="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-300 flex items-center gap-2">
+              <span class="inline-block text-emerald-400">${ICONS.check}</span>
+              <span>Client Official Approval Signed: <span class="font-mono-num font-bold text-white">${video.client_approved_on}</span></span>
+            </div>
+          `
+              : hasApprovalDate
               ? `
             <div class="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-start gap-3">
               <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
@@ -2013,10 +2047,31 @@ function openVideoTrace(videoId) {
         <div class="w-12 h-12 rounded-2xl ${isUnbilled ? "bg-rose-500/20 border-rose-500/40 text-rose-300" : "bg-emerald-500/20 border-emerald-500/40 text-emerald-300"} flex items-center justify-center shrink-0 z-10 timeline-line">
           ${ICONS.invoice}
         </div>
-        <div class="flex-1 bg-slate-900/60 border border-slate-800 p-5 rounded-2xl space-y-3">
+        <div class="flex-1 bg-slate-900/60 border border-slate-800 p-5 rounded-2xl space-y-3.5">
           <div class="flex items-center justify-between">
             <span class="text-sm sm:text-base font-bold text-white">5. Financial Billing &amp; Invoicing</span>
-            <span class="text-xs font-mono-num ${isUnbilled ? "text-rose-400 font-bold" : "text-emerald-400"}">${isUnbilled ? "UNBILLED REVENUE" : "INVOICE LINKED"}</span>
+            <span class="text-xs font-mono-num ${isUnbilled ? "text-rose-400 font-bold" : "text-emerald-400"}">${isUnbilled ? "UNBILLED REVENUE" : anyInvoice ? anyInvoice.invoice_no : "RETAINER"}</span>
+          </div>
+
+          <!-- 3-Column Financial Ledger Table: Total Invoiced, Received, Net Outstanding -->
+          <div class="grid grid-cols-3 gap-2.5 p-3.5 sm:p-4 rounded-2xl bg-slate-950 border border-slate-800 text-center font-mono-num">
+            <div class="space-y-0.5">
+              <span class="text-[10px] uppercase font-bold text-slate-400 block">Total Invoiced</span>
+              <span class="text-sm sm:text-base font-extrabold text-white block">${fmtUSD(invoiceAmount)}</span>
+              <span class="text-[10px] text-slate-500">${anyInvoice ? anyInvoice.invoice_no : isUnbilled ? "Unbilled Gap" : "Retainer"}</span>
+            </div>
+            <div class="space-y-0.5 border-x border-slate-800/80">
+              <span class="text-[10px] uppercase font-bold text-slate-400 block">Amount Received</span>
+              <span class="text-sm sm:text-base font-extrabold ${paidAmount > 0 ? "text-emerald-400" : "text-slate-400"} block">${fmtUSD(paidAmount)}</span>
+              <span class="text-[10px] text-slate-500">${paidAmount > 0 ? "Bank ACH/Wire" : "$0.00 Received"}</span>
+            </div>
+            <div class="space-y-0.5">
+              <span class="text-[10px] uppercase font-bold text-slate-400 block">Net Outstanding</span>
+              <span class="text-sm sm:text-base font-extrabold ${isOverdueDebt ? "text-rose-400" : isOpenUpcoming ? "text-amber-400" : "text-emerald-400"} block">${fmtUSD(owedAmount)}</span>
+              <span class="text-[10px] ${isOverdueDebt ? "text-rose-400 font-bold" : isOpenUpcoming ? "text-amber-400 font-semibold" : "text-emerald-400"}">
+                ${isPaidInFull ? "Paid in Full" : isOpenUpcoming ? `Due in ${Math.abs(anyInvoice.days_overdue)}d` : isOverdueDebt ? `${anyInvoice.days_overdue}d Past Due` : isUnbilled ? "Never Billed" : "Settled"}
+              </span>
+            </div>
           </div>
 
           ${
@@ -2039,12 +2094,14 @@ function openVideoTrace(videoId) {
           `
               : anyInvoice
               ? `
-            <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-between text-xs sm:text-sm">
+            <div class="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800 flex items-center justify-between text-xs sm:text-sm">
               <div>
                 <span class="font-mono-num font-bold text-white">${anyInvoice.invoice_no}</span>
                 <span class="text-slate-400 ml-2">Issued: ${anyInvoice.issued_date} &bull; Due: ${anyInvoice.due_date}</span>
               </div>
-              <span class="font-mono-num font-bold text-white">${fmtUSD(anyInvoice.original_amount)}</span>
+              <span class="font-mono-num font-semibold ${isOverdueDebt ? "text-rose-400" : isOpenUpcoming ? "text-amber-400" : "text-emerald-400"}">
+                ${isPaidInFull ? "Paid" : isOpenUpcoming ? "Open / Pending" : "Past Due"}
+              </span>
             </div>
           `
               : `
@@ -2064,17 +2121,19 @@ function openVideoTrace(videoId) {
 
       <!-- Step 6: Bank Settlement & Ledger Reconciliation -->
       <div class="flex items-start gap-4 timeline-step">
-        <div class="w-12 h-12 rounded-2xl ${isOverdue ? "bg-rose-500/20 border-rose-500/40 text-rose-300" : "bg-emerald-500/20 border-emerald-500/40 text-emerald-300"} flex items-center justify-center shrink-0 z-10">
+        <div class="w-12 h-12 rounded-2xl ${isOverdueDebt ? "bg-rose-500/20 border-rose-500/40 text-rose-300" : isOpenUpcoming ? "bg-amber-500/20 border-amber-500/40 text-amber-300" : "bg-emerald-500/20 border-emerald-500/40 text-emerald-300"} flex items-center justify-center shrink-0 z-10">
           ${ICONS.shield}
         </div>
         <div class="flex-1 bg-slate-900/60 border border-slate-800 p-5 rounded-2xl space-y-3">
           <div class="flex items-center justify-between">
             <span class="text-sm sm:text-base font-bold text-white">6. Bank Settlement &amp; Receivables Ledger</span>
-            <span class="text-xs font-mono-num ${isOverdue ? "text-rose-400 font-bold" : "text-emerald-400 font-bold"}">${isOverdue ? "OVERDUE BALANCE" : "RECONCILED"}</span>
+            <span class="text-xs font-mono-num ${isOverdueDebt ? "text-rose-400 font-bold" : isOpenUpcoming ? "text-amber-400 font-bold" : "text-emerald-400 font-bold"}">
+              ${isOverdueDebt ? "OVERDUE BALANCE" : isOpenUpcoming ? "OPEN INVOICE" : isUnbilled ? "PENDING INVOICE" : "RECONCILED"}
+            </span>
           </div>
 
           ${
-            isOverdue
+            isOverdueDebt
               ? `
             <div class="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-start gap-3">
               <div class="w-8 h-8 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center shrink-0 mt-0.5">
@@ -2083,11 +2142,23 @@ function openVideoTrace(videoId) {
               <div class="flex-1 space-y-2">
                 <div>
                   <span class="text-xs font-mono-num font-bold uppercase tracking-wider text-rose-400 block">[MISSING SETTLEMENT DATE - PAST DUE]</span>
-                  <p class="text-xs sm:text-sm text-rose-200 mt-1 leading-relaxed">Invoice ${overdueInvoice.invoice_no} was due on ${overdueInvoice.due_date}. As of October 6, 2026, it is <span class="font-bold text-white">${overdueInvoice.days_overdue} days past due</span> (${fmtUSD(overdueInvoice.amount_owed)} outstanding).</p>
+                  <p class="text-xs sm:text-sm text-rose-200 mt-1 leading-relaxed">Invoice ${anyInvoice.invoice_no} was due on ${anyInvoice.due_date}. As of October 6, 2026, it is <span class="font-bold text-white">${anyInvoice.days_overdue} days past due</span> (${fmtUSD(owedAmount)} outstanding).</p>
                 </div>
-                <button onclick="confirmAction('REMIND_${overdueInvoice.invoice_no}')" class="px-4 py-2 rounded-xl bg-rose-500 hover:bg-rose-400 text-white font-bold text-xs transition shadow-sm cursor-pointer">
-                  Send Payment Reminder (${fmtUSD(overdueInvoice.amount_owed)})
+                <button onclick="confirmAction('REMIND_${anyInvoice.invoice_no}')" class="px-4 py-2 rounded-xl bg-rose-500 hover:bg-rose-400 text-white font-bold text-xs transition shadow-sm cursor-pointer">
+                  Send Payment Reminder (${fmtUSD(owedAmount)})
                 </button>
+              </div>
+            </div>
+          `
+              : isOpenUpcoming
+              ? `
+            <div class="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-start gap-3">
+              <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
+                ${ICONS.clock || ICONS.invoice}
+              </div>
+              <div>
+                <span class="text-xs font-mono-num font-bold uppercase tracking-wider text-amber-400 block">[OPEN INVOICE - PENDING SETTLEMENT]</span>
+                <p class="text-xs sm:text-sm text-amber-200 mt-1 leading-relaxed">Invoice ${anyInvoice.invoice_no} was issued on ${anyInvoice.issued_date} and is due on ${anyInvoice.due_date} (${Math.abs(anyInvoice.days_overdue)} days remaining within normal net terms). Total balance pending collection: <span class="font-bold text-white font-mono-num">${fmtUSD(owedAmount)}</span>.</p>
               </div>
             </div>
           `
@@ -2111,8 +2182,8 @@ function openVideoTrace(videoId) {
           <!-- Operational Lifecycle Complete -->
           <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs sm:text-sm">
             <span class="text-slate-500 font-mono-num">Lifecycle Status:</span>
-            <span class="font-bold text-emerald-400 flex items-center gap-1.5">
-              <span>Operational Cycle: Delivered, Billed &amp; Reconciled</span>
+            <span class="font-bold ${isPaidInFull ? "text-emerald-400" : isOpenUpcoming ? "text-amber-400" : isOverdueDebt ? "text-rose-400" : "text-slate-400"} flex items-center gap-1.5">
+              <span>${isPaidInFull ? "Delivered, Billed &amp; Reconciled" : isOpenUpcoming ? "Delivered &amp; Invoiced (Pending Payment Due)" : isOverdueDebt ? "Delivered &amp; Invoiced (Past Due Collection)" : "In Progress"}</span>
             </span>
           </div>
         </div>
@@ -2467,6 +2538,9 @@ function confirmAction(actionKey, message) {
     } else if (actionKey.startsWith("SYNC_")) {
       const vid = actionKey.replace("SYNC_", "");
       message = `Voice note instructions for ${vid} synced directly to editor board.`;
+    } else if (actionKey.startsWith("RESOLVE_")) {
+      const vid = actionKey.replace("RESOLVE_", "");
+      message = `Stuck ticket ${vid} resolved: Marked as Delivered and closed on board.`;
     } else {
       message = `Action ${actionKey} successfully confirmed.`;
     }
