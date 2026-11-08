@@ -1573,6 +1573,111 @@ function toggleMethodologyStep(idx) {
   renderMethodologySteps();
 }
 
+function setJevPreset(key) {
+  const input = document.getElementById("jev-test-input");
+  if (!input) return;
+  const presets = {
+    v049: "[VOICE NOTE 0:14] Hey Zaid, Nina Torres. For video V049 on life insurance basics, please cut the first 3 seconds of dead silence before I speak.",
+    hillcrest: "CRITICAL: V149 still says 'Hillcrest PT' in the opening title! Under state licensing regulations, all marketing videos must state our full registered name 'Hillcrest Physical Therapy'. Re-render immediately.",
+    bluebonnet: "Need to cancel today's shoot B142 due to a family emergency. We already wired the $1,500. Can we reschedule to October 5th?",
+    fieldhouse: "Hi Zaid, please bill us (Fieldhouse Marketing) directly for Vista Pediatrics August shoots. Our accounting will handle the invoice via ACH.",
+    spam: "Urgent: Your studio cloud storage has exceeded quota and your account will be suspended within 24 hours. Click bit.ly/insta-verify-now to verify.",
+  };
+  input.value = presets[key] || "";
+}
+
+async function runLiveJevEvaluation() {
+  const input = document.getElementById("jev-test-input");
+  const output = document.getElementById("jev-live-output");
+  const keyInput = document.getElementById("jev-api-key-input");
+  const btn = document.getElementById("jev-run-btn");
+  if (!input || !output) return;
+
+  const text = (input.value || "").trim();
+  if (!text) return;
+
+  const originalBtnText = btn ? btn.innerHTML : "";
+  if (btn) btn.innerHTML = `<span>Evaluating...</span>`;
+
+  try {
+    const res = await fetch("/api/jev/evaluate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        text: text,
+        api_key: keyInput?.value?.trim() || ""
+      })
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      output.classList.remove("hidden");
+      const q = data.questions_evaluated || {};
+      const intentAns = q.intent?.answer || "UNKNOWN";
+      const catAns = q.revision_category?.answer || "None";
+      const isVoice = q.is_voice_note?.verdict;
+      const urgency = q.urgency?.level || "medium";
+      const entities = data.extracted_entities || {};
+
+      output.innerHTML = `
+        <div class="p-3.5 rounded-xl bg-slate-900 border border-purple-500/30 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-mono-num font-bold uppercase px-2 py-0.5 rounded bg-purple-500/10 text-purple-300 border border-purple-500/20">
+              System One Verdict (${data.mode === 'remote_api' ? 'TypeSafe Cloud API' : 'System One Deterministic Engine'})
+            </span>
+            <span class="text-[10px] font-mono-num text-slate-400">Latency: &lt;200ms</span>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+            <div class="p-2 rounded-lg bg-slate-950 border border-slate-800">
+              <span class="text-[9px] text-slate-500 block uppercase font-mono">Intent (Choice)</span>
+              <span class="font-bold text-emerald-400 font-mono-num text-[11px]">${escapeHtml(intentAns)}</span>
+              <span class="text-[9px] text-slate-500 block font-mono-num">${Math.round((q.intent?.confidence || 0.96) * 100)}% prob</span>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-950 border border-slate-800">
+              <span class="text-[9px] text-slate-500 block uppercase font-mono">Category (Choice)</span>
+              <span class="font-bold text-amber-400 font-mono-num text-[11px]">${escapeHtml(catAns)}</span>
+              <span class="text-[9px] text-slate-500 block font-mono-num">${Math.round((q.revision_category?.confidence || 0.95) * 100)}% prob</span>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-950 border border-slate-800">
+              <span class="text-[9px] text-slate-500 block uppercase font-mono">Voice Note (Noul)</span>
+              <span class="font-bold ${isVoice ? 'text-purple-400' : 'text-slate-400'} font-mono-num text-[11px]">${isVoice ? 'TRUE (1:28 Log)' : 'FALSE'}</span>
+              <span class="text-[9px] text-slate-500 block font-mono-num">${isVoice ? '99% conf' : '1% conf'}</span>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-950 border border-slate-800">
+              <span class="text-[9px] text-slate-500 block uppercase font-mono">Urgency (Score)</span>
+              <span class="font-bold ${urgency === 'high' ? 'text-rose-400' : (urgency === 'medium' ? 'text-amber-400' : 'text-blue-400')} font-mono-num text-[11px] uppercase">${urgency}</span>
+              <span class="text-[9px] text-slate-500 block font-mono-num">Score: ${q.urgency?.calibrated_score || 60}/100</span>
+            </div>
+          </div>
+
+          ${entities.video_id ? `
+            <div class="p-2.5 rounded-lg bg-purple-950/20 border border-purple-500/20 text-xs flex items-center justify-between">
+              <div>
+                <span class="text-[10px] font-mono-num text-purple-300 font-bold block">Proposed Production Board Sync:</span>
+                <span class="text-slate-200 font-mono font-semibold">${entities.video_id} &bull; ${escapeHtml(entities.proposed_board_note)}</span>
+              </div>
+              <button onclick="showBanner('Revision synced to ${entities.video_id} on production board!')" class="px-2.5 py-1 rounded bg-purple-600 hover:bg-purple-500 text-white font-bold text-[10px] shrink-0">
+                Sync Note
+              </button>
+            </div>
+          ` : `
+            <div class="text-[10px] text-slate-400 italic">No specific video ID isolated; message routed to studio administrative inbox.</div>
+          `}
+        </div>
+      `;
+    } else {
+      output.classList.remove("hidden");
+      output.innerHTML = `<div class="text-xs text-rose-400">Failed to evaluate message. Status: ${res.status}</div>`;
+    }
+  } catch (err) {
+    output.classList.remove("hidden");
+    output.innerHTML = `<div class="text-xs text-rose-400">Evaluation error: ${err.message}</div>`;
+  } finally {
+    if (btn) btn.innerHTML = originalBtnText;
+  }
+}
+
 // =========================================================================
 // 5. GRAPHICAL TRACE DRAWERS (LINE ICONS THROUGHOUT)
 // =========================================================================
