@@ -67,21 +67,135 @@
     ::-webkit-scrollbar-thumb { background: #334155; border-radius: 999px; }
   </style>
 </head>
-<body class="min-h-screen flex flex-col antialiased selection:bg-amber-400 selection:text-slate-950 pb-16">
+<body class="min-h-screen flex flex-col antialiased selection:bg-amber-400 selection:text-slate-950 pb-20 md:pb-16">
 
-  <!-- TOP MINIMAL APP BAR -->
-  <header class="sticky top-0 z-30 bg-[#06080d]/95 backdrop-blur border-b border-slate-800/80 px-4 sm:px-8 py-3">
-    <div class="max-w-[1440px] mx-auto flex items-center justify-between gap-4">
-      
-      <!-- Brand & Date -->
+  <!-- MOBILE NAVIGATION DRAWER & BACKDROP -->
+  <div id="mobile-nav-backdrop" onclick="closeMobileMenu()" class="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 transition-opacity duration-300 opacity-0 pointer-events-none"></div>
+
+  <aside id="mobile-nav-drawer" class="fixed top-0 bottom-0 left-0 w-80 max-w-[85vw] bg-[#080c14] border-r border-slate-800 z-50 flex flex-col justify-between transition-transform duration-300 -translate-x-full shadow-2xl">
+    <!-- Drawer Header -->
+    <div class="p-4 border-b border-slate-800 flex items-center justify-between bg-[#06080d]">
       <div class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-950 font-black text-xs shadow-md shadow-amber-500/20">
+        <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-950 font-black text-xs shadow-md shadow-amber-500/20">
+          AX
+        </div>
+        <div>
+          <div class="text-sm font-bold text-white tracking-tight flex items-center gap-2">
+            <span>AXEOM MENU</span>
+            <span class="text-[10px] font-mono-num font-semibold px-1.5 py-0.2 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">OCT 6</span>
+          </div>
+          <div class="text-[10px] text-slate-400">Dallas Content Studio Operations</div>
+        </div>
+      </div>
+      <button onclick="closeMobileMenu()" class="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition" aria-label="Close Navigation Menu">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Navigation Menu Items -->
+    <div class="flex-1 overflow-y-auto p-4 space-y-2">
+      <div class="text-[10px] font-bold uppercase tracking-wider text-slate-500 px-3 py-1">Navigation Views</div>
+
+      <!-- Item 1: Videos -->
+      <button onclick="switchTab('videos'); setVideoStageFilter('all'); closeMobileMenu();" id="drawer-nav-videos" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-semibold transition text-amber-400 bg-amber-500/10 border border-amber-500/30">
+        <div class="flex items-center gap-3">
+          <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-2.36a.75.75 0 0 1 1.03.67v6.38a.75.75 0 0 1-1.03.67l-4.72-2.36M4.5 18.75h10.5a2.25 2.25 0 0 0 2.25-2.25V7.5a2.25 2.25 0 0 0-2.25-2.25H4.5A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z"/></svg>
+          <span>Videos & Pipeline</span>
+        </div>
+        <span class="text-xs font-mono-num px-2 py-0.5 rounded bg-slate-800 text-slate-300">198</span>
+      </button>
+
+      <!-- Item 2: Clients -->
+      <button onclick="switchTab('clients'); closeMobileMenu();" id="drawer-nav-clients" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-semibold transition text-slate-300 hover:bg-slate-800/70 border border-transparent">
+        <div class="flex items-center gap-3">
+          <svg class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"/></svg>
+          <span>Real Clients & Retainers</span>
+        </div>
+        <span class="text-xs font-mono-num px-2 py-0.5 rounded bg-slate-800 text-slate-300">29</span>
+      </button>
+
+      <!-- Item 3: Invoices -->
+      <button onclick="switchTab('invoices'); closeMobileMenu();" id="drawer-nav-invoices" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-semibold transition text-slate-300 hover:bg-slate-800/70 border border-transparent">
+        <div class="flex items-center gap-3">
+          <svg class="w-4 h-4 text-rose-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z"/></svg>
+          <span>Invoices & Overdue Debt</span>
+        </div>
+        <span class="text-xs font-mono-num px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 font-bold">$15,850</span>
+      </button>
+
+      <!-- Item 4: Guards -->
+      <button onclick="switchTab('guards'); closeMobileMenu();" id="drawer-nav-guards" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-semibold transition text-slate-300 hover:bg-slate-800/70 border border-transparent">
+        <div class="flex items-center gap-3">
+          <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/></svg>
+          <span>Pre-Check Balance Guards</span>
+        </div>
+        <span class="text-xs font-mono-num px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold">$0 Owed</span>
+      </button>
+
+      <!-- Item 5: Decisions -->
+      <button onclick="switchTab('decisions'); closeMobileMenu();" id="drawer-nav-decisions" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-semibold transition text-slate-300 hover:bg-slate-800/70 border border-transparent">
+        <div class="flex items-center gap-3">
+          <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+          <span>Audit, Jev & Decisions</span>
+        </div>
+        <span class="text-xs font-mono-num px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-bold">100% Score</span>
+      </button>
+
+      <!-- Quick Video Filters -->
+      <div class="pt-4 border-t border-slate-800/80">
+        <div class="text-[10px] font-bold uppercase tracking-wider text-slate-500 px-3 py-1">Quick Video Filters</div>
+        <div class="grid grid-cols-2 gap-2 pt-1 px-1">
+          <button onclick="switchTab('videos'); filterVideos('all'); closeMobileMenu();" class="px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-medium text-slate-300 hover:text-white">
+            All Videos
+          </button>
+          <button onclick="switchTab('videos'); filterVideos('voicenotes'); closeMobileMenu();" class="px-2.5 py-1.5 rounded-lg bg-purple-950/40 border border-purple-800/50 text-xs font-medium text-purple-300 hover:text-purple-200">
+            🎤 Voice Notes
+          </button>
+          <button onclick="switchTab('videos'); setVideoStageFilter('unbilled'); closeMobileMenu();" class="px-2.5 py-1.5 rounded-lg bg-amber-950/40 border border-amber-800/50 text-xs font-medium text-amber-300 hover:text-amber-200">
+            ⚡ Unbilled ($900)
+          </button>
+          <button onclick="switchTab('videos'); filterVideos('zombies'); closeMobileMenu();" class="px-2.5 py-1.5 rounded-lg bg-rose-950/40 border border-rose-800/50 text-xs font-medium text-rose-300 hover:text-rose-200">
+            ⚠️ Zombie Tasks
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Drawer Footer Actions -->
+    <div class="p-4 border-t border-slate-800 bg-[#06080d] space-y-2">
+      <label for="global-upload-input" onclick="closeMobileMenu()" class="cursor-pointer w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold transition shadow-sm">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+        <span>Upload Updated Files</span>
+      </label>
+      <button onclick="resetBaselineData(); closeMobileMenu();" class="w-full py-2 rounded-xl border border-slate-800 text-slate-400 hover:text-slate-200 text-xs font-medium transition">
+        Reset to Baseline Dataset
+      </button>
+      <div class="text-[10px] text-center text-slate-500 pt-1">
+        Suggest, Never Act Alone • Axeom Pack 175
+      </div>
+    </div>
+  </aside>
+
+  <!-- TOP MINIMAL APP BAR WITH FULL NAVIGATION MENU -->
+  <header class="sticky top-0 z-30 bg-[#06080d]/95 backdrop-blur border-b border-slate-800/80 px-4 sm:px-8 py-2.5">
+    <div class="max-w-[1440px] mx-auto flex items-center justify-between gap-3 sm:gap-4">
+      
+      <!-- Left: Mobile Menu Button + Brand & Date -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Mobile Menu Toggle Button (Visible on mobile/tablet) -->
+        <button id="mobile-menu-toggle-btn" onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800 transition flex items-center justify-center" aria-label="Toggle Navigation Menu">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+          </svg>
+        </button>
+
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-950 font-black text-xs shadow-md shadow-amber-500/20 shrink-0">
           AX
         </div>
         <div>
           <div class="flex items-center gap-2">
             <span class="text-sm sm:text-base font-bold text-white tracking-tight">AXEOM</span>
-            <span class="text-xs font-mono-num font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center gap-1.5">
+            <span class="text-xs font-mono-num font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 hidden sm:flex items-center gap-1.5">
               <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
               OCT 6, 2026
             </span>
@@ -89,15 +203,39 @@
         </div>
       </div>
 
-      <!-- Quick Search & Upload -->
-      <div class="flex items-center gap-3">
+      <!-- Center: Desktop Navigation Menu Bar -->
+      <nav id="desktop-nav-menu" class="hidden md:flex items-center gap-1 bg-slate-900/90 border border-slate-800 rounded-2xl px-2 py-1 shadow-sm">
+        <button onclick="switchTab('videos'); setVideoStageFilter('all');" id="nav-btn-videos" class="nav-menu-btn px-3 py-1.5 rounded-xl text-xs font-bold text-amber-400 bg-amber-500/15 border border-amber-500/30 flex items-center gap-2 transition">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-2.36a.75.75 0 0 1 1.03.67v6.38a.75.75 0 0 1-1.03.67l-4.72-2.36M4.5 18.75h10.5a2.25 2.25 0 0 0 2.25-2.25V7.5a2.25 2.25 0 0 0-2.25-2.25H4.5A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z"/></svg>
+          <span>Videos</span>
+        </button>
+        <button onclick="switchTab('clients')" id="nav-btn-clients" class="nav-menu-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 border border-transparent flex items-center gap-2 transition">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"/></svg>
+          <span>Clients</span>
+        </button>
+        <button onclick="switchTab('invoices')" id="nav-btn-invoices" class="nav-menu-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 border border-transparent flex items-center gap-2 transition">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z"/></svg>
+          <span>Invoices & Debt</span>
+        </button>
+        <button onclick="switchTab('guards')" id="nav-btn-guards" class="nav-menu-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 border border-transparent flex items-center gap-2 transition">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/></svg>
+          <span>Guards</span>
+        </button>
+        <button onclick="switchTab('decisions')" id="nav-btn-decisions" class="nav-menu-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 border border-transparent flex items-center gap-2 transition">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+          <span>Audit & Jev</span>
+        </button>
+      </nav>
+
+      <!-- Right: Search & Upload -->
+      <div class="flex items-center gap-2 sm:gap-3">
         <div class="relative">
           <input id="quick-search" type="text" placeholder="Quick search..." 
-            class="w-36 sm:w-56 text-xs sm:text-sm px-3 py-1.5 pl-8 rounded-xl bg-slate-900 border border-slate-800 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-500 transition" />
+            class="w-32 sm:w-48 lg:w-56 text-xs sm:text-sm px-3 py-1.5 pl-8 rounded-xl bg-slate-900 border border-slate-800 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-500 transition" />
           <svg class="w-3.5 h-3.5 text-slate-500 absolute left-2.5 top-2.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/></svg>
         </div>
 
-        <label for="global-upload-input" class="cursor-pointer inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs sm:text-sm font-bold transition shadow-sm">
+        <label for="global-upload-input" class="cursor-pointer inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs sm:text-sm font-bold transition shadow-sm shrink-0">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
           <span class="hidden sm:inline">Upload Files</span>
           <input id="global-upload-input" type="file" multiple accept=".csv,.txt" class="hidden" />
@@ -609,6 +747,34 @@
     </section>
 
   </main>
+
+  <!-- MOBILE BOTTOM NAVIGATION BAR (Sticky, Thumb-friendly) -->
+  <nav id="mobile-bottom-nav" class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#06080d]/95 backdrop-blur border-t border-slate-800/90 px-2 py-1.5 flex items-center justify-around shadow-2xl">
+    <button onclick="switchTab('videos'); setVideoStageFilter('all');" id="bottom-nav-videos" class="bottom-nav-btn flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg text-amber-400 font-bold transition">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-2.36a.75.75 0 0 1 1.03.67v6.38a.75.75 0 0 1-1.03.67l-4.72-2.36M4.5 18.75h10.5a2.25 2.25 0 0 0 2.25-2.25V7.5a2.25 2.25 0 0 0-2.25-2.25H4.5A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z"/></svg>
+      <span class="text-[10px]">Videos</span>
+    </button>
+    <button onclick="switchTab('clients')" id="bottom-nav-clients" class="bottom-nav-btn flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg text-slate-400 font-medium transition">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"/></svg>
+      <span class="text-[10px]">Clients</span>
+    </button>
+    <button onclick="switchTab('invoices')" id="bottom-nav-invoices" class="bottom-nav-btn flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg text-slate-400 font-medium transition">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z"/></svg>
+      <span class="text-[10px]">Invoices</span>
+    </button>
+    <button onclick="switchTab('guards')" id="bottom-nav-guards" class="bottom-nav-btn flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg text-slate-400 font-medium transition">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/></svg>
+      <span class="text-[10px]">Guards</span>
+    </button>
+    <button onclick="switchTab('decisions')" id="bottom-nav-decisions" class="bottom-nav-btn flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg text-slate-400 font-medium transition">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+      <span class="text-[10px]">Audit</span>
+    </button>
+    <button onclick="toggleMobileMenu()" id="bottom-nav-menu-toggle" class="bottom-nav-btn flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg text-slate-400 hover:text-white font-medium transition" aria-label="Toggle Navigation Menu">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
+      <span class="text-[10px]">Menu</span>
+    </button>
+  </nav>
 
   <!-- ========================================================================= -->
   <!-- SLIDE-OVER / BOTTOM DRAWER FOR GRAPHICAL TRACING -->

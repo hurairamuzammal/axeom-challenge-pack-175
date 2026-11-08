@@ -2601,18 +2601,76 @@ function closeDrawer() {
   if (container) container.classList.add("hidden");
 }
 
+function toggleMobileMenu() {
+  const drawer = document.getElementById("mobile-nav-drawer");
+  const backdrop = document.getElementById("mobile-nav-backdrop");
+  if (!drawer || !backdrop) return;
+  const isClosed = drawer.classList.contains("-translate-x-full");
+  if (isClosed) {
+    drawer.classList.remove("-translate-x-full");
+    backdrop.classList.remove("opacity-0", "pointer-events-none");
+    backdrop.classList.add("opacity-100", "pointer-events-auto");
+    document.body.style.overflow = "hidden";
+  } else {
+    closeMobileMenu();
+  }
+}
+
+function closeMobileMenu() {
+  const drawer = document.getElementById("mobile-nav-drawer");
+  const backdrop = document.getElementById("mobile-nav-backdrop");
+  if (drawer) {
+    drawer.classList.add("-translate-x-full");
+  }
+  if (backdrop) {
+    backdrop.classList.remove("opacity-100", "pointer-events-auto");
+    backdrop.classList.add("opacity-0", "pointer-events-none");
+  }
+  document.body.style.overflow = "";
+}
+
 function switchTab(tabId) {
   CURRENT_TAB = tabId;
   const tabs = ["videos", "clients", "invoices", "guards", "decisions"];
   tabs.forEach((t) => {
     const tile = document.getElementById(`top-tile-${t}`);
     const view = document.getElementById(`view-${t}`);
+    const navBtn = document.getElementById(`nav-btn-${t}`);
+    const drawerNav = document.getElementById(`drawer-nav-${t}`);
+    const bottomNav = document.getElementById(`bottom-nav-${t}`);
+
     if (t === tabId) {
       tile?.classList.add("active");
       view?.classList.remove("hidden");
+
+      // Desktop Nav Button Active
+      if (navBtn) {
+        navBtn.className = "nav-menu-btn px-3 py-1.5 rounded-xl text-xs font-bold text-amber-400 bg-amber-500/15 border border-amber-500/30 flex items-center gap-2 transition shadow-sm";
+      }
+      // Drawer Nav Item Active
+      if (drawerNav) {
+        drawerNav.className = "w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-semibold transition text-amber-400 bg-amber-500/10 border border-amber-500/30";
+      }
+      // Mobile Bottom Nav Active
+      if (bottomNav) {
+        bottomNav.className = "bottom-nav-btn flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg text-amber-400 font-bold transition";
+      }
     } else {
       tile?.classList.remove("active");
       view?.classList.add("hidden");
+
+      // Desktop Nav Button Inactive
+      if (navBtn) {
+        navBtn.className = "nav-menu-btn px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 border border-transparent flex items-center gap-2 transition";
+      }
+      // Drawer Nav Item Inactive
+      if (drawerNav) {
+        drawerNav.className = "w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-semibold transition text-slate-300 hover:bg-slate-800/70 border border-transparent";
+      }
+      // Mobile Bottom Nav Inactive
+      if (bottomNav) {
+        bottomNav.className = "bottom-nav-btn flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg text-slate-400 font-medium transition";
+      }
     }
   });
 
@@ -2668,7 +2726,10 @@ function confirmAction(actionKey, message) {
 
 // Global Key Listeners
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeDrawer();
+  if (e.key === "Escape") {
+    closeDrawer();
+    closeMobileMenu();
+  }
 });
 
 document.addEventListener("DOMContentLoaded", () => {
