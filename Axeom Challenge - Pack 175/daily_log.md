@@ -1,7 +1,7 @@
 # Daily Work Log: Axeom Challenge
 
 ## Day 1 (November 6, 2026)
-- **Time spent:** 15:00 to 17:00
+- **Time spent:** 15:00 to 23:00
   - **What I did:** Understood the core challenge problem, reviewed the challenge brief and submission guidelines, and conducted initial sanity checks on raw dataset files.
   - **What I changed my mind about, and why:** Decided to deeply understand the data quality issues first through an interactive file-by-file investigation before writing code or building the application.
   - **What went wrong, and how I fixed it:** Nothing yet.
