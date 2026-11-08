@@ -72,18 +72,18 @@
 <body class="min-h-screen flex flex-col antialiased selection:bg-amber-400 selection:text-slate-950 pb-16">
 
   <!-- TOP MINIMAL APP BAR -->
-  <header class="sticky top-0 z-30 bg-[#06080d]/95 backdrop-blur border-b border-slate-800/80 px-4 sm:px-6 py-2.5">
-    <div class="max-w-6xl mx-auto flex items-center justify-between gap-3">
+  <header class="sticky top-0 z-30 bg-[#06080d]/95 backdrop-blur border-b border-slate-800/80 px-4 sm:px-8 py-3">
+    <div class="max-w-[1440px] mx-auto flex items-center justify-between gap-4">
       
       <!-- Brand & Date -->
-      <div class="flex items-center gap-2.5">
-        <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-950 font-black text-xs shadow-md shadow-amber-500/20">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-950 font-black text-xs shadow-md shadow-amber-500/20">
           AX
         </div>
         <div>
-          <div class="flex items-center gap-1.5">
-            <span class="text-xs sm:text-sm font-bold text-white tracking-tight">AXEOM</span>
-            <span class="text-[10px] font-mono-num font-semibold px-1.5 py-0.2 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center gap-1">
+          <div class="flex items-center gap-2">
+            <span class="text-sm sm:text-base font-bold text-white tracking-tight">AXEOM</span>
+            <span class="text-xs font-mono-num font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center gap-1.5">
               <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
               OCT 6, 2026
             </span>
@@ -92,16 +92,16 @@
       </div>
 
       <!-- Quick Search & Upload -->
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-3">
         <div class="relative">
-          <input id="quick-search" type="text" placeholder="Search..." 
-            class="w-32 sm:w-48 text-xs px-2.5 py-1.5 pl-7 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-500 transition" />
-          <svg class="w-3 h-3 text-slate-500 absolute left-2.5 top-2.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/></svg>
+          <input id="quick-search" type="text" placeholder="Quick search..." 
+            class="w-36 sm:w-56 text-xs sm:text-sm px-3 py-1.5 pl-8 rounded-xl bg-slate-900 border border-slate-800 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-500 transition" />
+          <svg class="w-3.5 h-3.5 text-slate-500 absolute left-2.5 top-2.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/></svg>
         </div>
 
-        <label for="global-upload-input" class="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold transition shadow-sm">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
-          <span class="hidden sm:inline">Upload</span>
+        <label for="global-upload-input" class="cursor-pointer inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs sm:text-sm font-bold transition shadow-sm">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+          <span class="hidden sm:inline">Upload Files</span>
           <input id="global-upload-input" type="file" multiple accept=".csv,.txt" class="hidden" />
         </label>
       </div>
@@ -110,104 +110,104 @@
   </header>
 
   <!-- NOTIFICATION BANNER -->
-  <div id="banner-container" class="max-w-6xl w-full mx-auto px-4 sm:px-6 pt-3 hidden"></div>
+  <div id="banner-container" class="max-w-[1440px] w-full mx-auto px-4 sm:px-8 pt-4 hidden"></div>
 
   <!-- =================================================================== -->
   <!-- TOP BAR SQUARE TILES (LINE ICON TOP-LEFT, TEXT BOTTOM-RIGHT) -->
   <!-- =================================================================== -->
-  <section class="max-w-6xl w-full mx-auto px-4 sm:px-6 pt-4">
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
+  <section class="max-w-[1440px] w-full mx-auto px-4 sm:px-8 pt-6">
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
       
       <!-- Top Tile 1: Videos -->
-      <div onclick="switchTab('videos')" id="top-tile-videos" class="top-tile active rounded-2xl p-3.5 sm:p-4 cursor-pointer flex flex-col justify-between">
+      <div onclick="switchTab('videos')" id="top-tile-videos" class="top-tile active rounded-3xl p-6 sm:p-7 cursor-pointer flex flex-col justify-between min-h-[165px] sm:min-h-[185px] transition-all">
         <!-- Top Left: Large Line Icon -->
         <div class="flex items-center justify-between">
-          <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-amber-500/10 border border-amber-500/25 flex items-center justify-center text-amber-400">
-            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+          <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-amber-500/10 border border-amber-500/25 flex items-center justify-center text-amber-400">
+            <svg class="w-7 h-7 sm:w-8 sm:h-8" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-2.36a.75.75 0 0 1 1.03.67v6.38a.75.75 0 0 1-1.03.67l-4.72-2.36M4.5 18.75h10.5a2.25 2.25 0 0 0 2.25-2.25V7.5a2.25 2.25 0 0 0-2.25-2.25H4.5A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z"/>
             </svg>
           </div>
-          <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+          <span class="w-3 h-3 rounded-full bg-amber-400 ring-4 ring-amber-400/20"></span>
         </div>
         <!-- Bottom Right: Text -->
-        <div class="text-right">
-          <div class="text-lg sm:text-2xl font-black font-mono-num text-white" id="stat-videos-count">344</div>
-          <div class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-400">Videos</div>
+        <div class="text-right mt-4">
+          <div class="text-3xl sm:text-4xl font-black font-mono-num text-white tracking-tight" id="stat-videos-count">344</div>
+          <div class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-slate-400 mt-1">Videos</div>
         </div>
       </div>
 
       <!-- Top Tile 2: Clients -->
-      <div onclick="switchTab('clients')" id="top-tile-clients" class="top-tile rounded-2xl p-3.5 sm:p-4 cursor-pointer flex flex-col justify-between">
+      <div onclick="switchTab('clients')" id="top-tile-clients" class="top-tile rounded-3xl p-6 sm:p-7 cursor-pointer flex flex-col justify-between min-h-[165px] sm:min-h-[185px] transition-all">
         <!-- Top Left: Large Line Icon -->
         <div class="flex items-center justify-between">
-          <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-sky-500/10 border border-sky-500/25 flex items-center justify-center text-sky-400">
-            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+          <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-sky-500/10 border border-sky-500/25 flex items-center justify-center text-sky-400">
+            <svg class="w-7 h-7 sm:w-8 sm:h-8" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"/>
             </svg>
           </div>
-          <span class="w-2 h-2 rounded-full bg-sky-400 opacity-60"></span>
+          <span class="w-3 h-3 rounded-full bg-sky-400 opacity-60"></span>
         </div>
         <!-- Bottom Right: Text -->
-        <div class="text-right">
-          <div class="text-lg sm:text-2xl font-black font-mono-num text-white" id="stat-clients-count">30</div>
-          <div class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-400">Clients</div>
+        <div class="text-right mt-4">
+          <div class="text-3xl sm:text-4xl font-black font-mono-num text-white tracking-tight" id="stat-clients-count">30</div>
+          <div class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-slate-400 mt-1">Clients</div>
         </div>
       </div>
 
       <!-- Top Tile 3: Overdue Invoices -->
-      <div onclick="switchTab('invoices')" id="top-tile-invoices" class="top-tile rounded-2xl p-3.5 sm:p-4 cursor-pointer flex flex-col justify-between">
+      <div onclick="switchTab('invoices')" id="top-tile-invoices" class="top-tile rounded-3xl p-6 sm:p-7 cursor-pointer flex flex-col justify-between min-h-[165px] sm:min-h-[185px] transition-all">
         <!-- Top Left: Large Line Icon -->
         <div class="flex items-center justify-between">
-          <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-rose-500/10 border border-rose-500/25 flex items-center justify-center text-rose-400">
-            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+          <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-rose-500/10 border border-rose-500/25 flex items-center justify-center text-rose-400">
+            <svg class="w-7 h-7 sm:w-8 sm:h-8" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z"/>
             </svg>
           </div>
-          <span class="w-2 h-2 rounded-full bg-rose-400"></span>
+          <span class="w-3 h-3 rounded-full bg-rose-400 ring-4 ring-rose-400/20"></span>
         </div>
         <!-- Bottom Right: Text -->
-        <div class="text-right">
-          <div class="text-lg sm:text-2xl font-black font-mono-num text-rose-400" id="stat-overdue-total">$8,570</div>
-          <div class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-400">Overdue</div>
+        <div class="text-right mt-4">
+          <div class="text-3xl sm:text-4xl font-black font-mono-num text-rose-400 tracking-tight" id="stat-overdue-total">$8,570</div>
+          <div class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-slate-400 mt-1">Overdue</div>
         </div>
       </div>
 
       <!-- Top Tile 4: Pre-Check & Alerts -->
-      <div onclick="switchTab('guards')" id="top-tile-guards" class="top-tile rounded-2xl p-3.5 sm:p-4 cursor-pointer flex flex-col justify-between">
+      <div onclick="switchTab('guards')" id="top-tile-guards" class="top-tile rounded-3xl p-6 sm:p-7 cursor-pointer flex flex-col justify-between min-h-[165px] sm:min-h-[185px] transition-all">
         <!-- Top Left: Large Line Icon -->
         <div class="flex items-center justify-between">
-          <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-400">
-            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+          <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-400">
+            <svg class="w-7 h-7 sm:w-8 sm:h-8" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/>
             </svg>
           </div>
-          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <span class="w-3 h-3 rounded-full bg-emerald-400 ring-4 ring-emerald-400/20"></span>
         </div>
         <!-- Bottom Right: Text -->
-        <div class="text-right">
-          <div class="text-lg sm:text-2xl font-black font-mono-num text-emerald-400" id="stat-precheck-total">$0.00</div>
-          <div class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-400">Pre-Check</div>
+        <div class="text-right mt-4">
+          <div class="text-3xl sm:text-4xl font-black font-mono-num text-emerald-400 tracking-tight" id="stat-precheck-total">$0.00</div>
+          <div class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-slate-400 mt-1">Pre-Check</div>
         </div>
       </div>
 
       <!-- Top Tile 5: Audit, Decisions & Graph -->
-      <div onclick="switchTab('decisions')" id="top-tile-decisions" class="top-tile rounded-2xl p-3.5 sm:p-4 cursor-pointer flex flex-col justify-between col-span-2 sm:col-span-1">
+      <div onclick="switchTab('decisions')" id="top-tile-decisions" class="top-tile rounded-3xl p-6 sm:p-7 cursor-pointer flex flex-col justify-between col-span-2 sm:col-span-1 min-h-[165px] sm:min-h-[185px] transition-all">
         <!-- Top Left: Large Line Icon -->
         <div class="flex items-center justify-between">
-          <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-indigo-500/10 border border-indigo-500/25 flex items-center justify-center text-indigo-400">
-            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+          <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-indigo-500/10 border border-indigo-500/25 flex items-center justify-center text-indigo-400">
+            <svg class="w-7 h-7 sm:w-8 sm:h-8" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
               <circle cx="6" cy="6" r="2.5"/>
               <circle cx="18" cy="6" r="2.5"/>
               <circle cx="12" cy="18" r="2.5"/>
               <path stroke-linecap="round" stroke-linejoin="round" d="M8.5 6h7M7.5 8.2l3 7.6M16.5 8.2l-3 7.6"/>
             </svg>
           </div>
-          <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
+          <span class="w-3 h-3 rounded-full bg-indigo-400 ring-4 ring-indigo-400/20"></span>
         </div>
         <!-- Bottom Right: Text -->
-        <div class="text-right">
-          <div class="text-lg sm:text-2xl font-black font-mono-num text-indigo-400">8 Files</div>
-          <div class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-400">Decisions</div>
+        <div class="text-right mt-4">
+          <div class="text-3xl sm:text-4xl font-black font-mono-num text-indigo-400 tracking-tight">8 Files</div>
+          <div class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-slate-400 mt-1">Decisions</div>
         </div>
       </div>
 
@@ -215,9 +215,9 @@
   </section>
 
   <!-- =================================================================== -->
-  <!-- MAIN CONTENT: SQUARE TILES GRID -->
+  <!-- MAIN APPLICATION CONTENT CONTAINER -->
   <!-- =================================================================== -->
-  <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 pt-6">
+  <main class="flex-1 max-w-[1440px] w-full mx-auto px-4 sm:px-8 pt-8">
 
     <!-- VIEW 1: VIDEOS (SQUARE TILES & COMPACT STREAMLINED LIST) -->
     <section id="view-videos" class="space-y-4">
@@ -422,39 +422,39 @@
     <section id="view-decisions" class="space-y-10 hidden">
       
       <!-- SUBSECTION A: INTERACTIVE FILE-BY-FILE GRAPH & HOVER INSPECTOR -->
-      <div class="space-y-4">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800/80 pb-3">
+      <div class="space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/80 pb-4">
           <div>
-            <span class="text-[10px] font-mono-num font-bold uppercase px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">FILE DEPENDENCY GRAPH &amp; HOVER INSPECTOR</span>
-            <h2 class="text-base sm:text-lg font-bold text-white mt-1">Operational Lineage &amp; File-by-File Decision Matrix</h2>
+            <span class="text-xs font-mono-num font-bold uppercase px-2.5 py-1 rounded bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">FILE DEPENDENCY GRAPH &amp; HOVER INSPECTOR</span>
+            <h2 class="text-lg sm:text-xl font-bold text-white mt-1.5">Operational Lineage &amp; File-by-File Decision Matrix</h2>
           </div>
-          <p class="text-xs text-slate-400 max-w-sm sm:text-right">Hover or tap any file tile to inspect core mistakes caught, missing fields, decisions taken, and why.</p>
+          <p class="text-xs sm:text-sm text-slate-400 max-w-md sm:text-right">Hover or tap any file tile to inspect core mistakes caught, missing fields, decisions taken, and business justifications.</p>
         </div>
 
         <!-- 2-COLUMN LAYOUT: GRAPH TILES ON LEFT, LIVE HOVER INSPECTOR ON RIGHT -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+        <div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
           
-          <!-- LEFT: 8 INTERACTIVE FILE TILES (SQUARE TILES) -->
-          <div class="lg:col-span-7 space-y-4">
+          <!-- LEFT: 8 INTERACTIVE FILE TILES -->
+          <div class="xl:col-span-6 space-y-6">
             
             <!-- Revenue Pipeline Track: Inbound -> Booking -> Production -> Invoices -> Payments -->
             <div>
-              <div class="text-[10px] font-mono-num uppercase font-semibold text-slate-500 mb-2.5 flex items-center gap-1.5">
-                <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+              <div class="text-xs font-mono-num uppercase font-bold text-slate-400 mb-3 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-amber-400"></span>
                 <span>Core Studio Revenue Engine (Sequential Pipeline)</span>
               </div>
-              <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" id="primary-files-grid">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="primary-files-grid">
                 <!-- Injected via app.js -->
               </div>
             </div>
 
             <!-- Supporting Context Streams: Messages, Team, Costs -->
             <div class="pt-2">
-              <div class="text-[10px] font-mono-num uppercase font-semibold text-slate-500 mb-2.5 flex items-center gap-1.5">
-                <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
+              <div class="text-xs font-mono-num uppercase font-bold text-slate-400 mb-3 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
                 <span>Context Streams &amp; Labor Constraints</span>
               </div>
-              <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" id="context-files-grid">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="context-files-grid">
                 <!-- Injected via app.js -->
               </div>
             </div>
@@ -462,8 +462,8 @@
           </div>
 
           <!-- RIGHT: LIVE HOVER INSPECTOR PANEL -->
-          <div class="lg:col-span-5">
-            <div id="file-live-inspector" class="sticky top-20 rounded-2xl bg-[#0d121c] border border-indigo-500/30 p-5 shadow-2xl space-y-4">
+          <div class="xl:col-span-6">
+            <div id="file-live-inspector" class="sticky top-24 rounded-3xl bg-[#0d121c] border border-indigo-500/30 p-6 sm:p-8 shadow-2xl space-y-6">
               <!-- Dynamically populated on hover / tap -->
             </div>
           </div>
@@ -472,62 +472,62 @@
       </div>
 
       <!-- SUBSECTION B: COMPLETE STEP-BY-STEP METHODOLOGY -->
-      <div class="space-y-4 pt-6 border-t border-slate-800/80">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+      <div class="space-y-6 pt-8 border-t border-slate-800/80">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
-            <span class="text-[10px] font-mono-num font-bold uppercase px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">RECONCILIATION METHODOLOGY</span>
-            <h2 class="text-base sm:text-lg font-bold text-white mt-1">How I Got to This Result: Complete 5-Step Process</h2>
+            <span class="text-xs font-mono-num font-bold uppercase px-2.5 py-1 rounded-lg bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">RECONCILIATION METHODOLOGY</span>
+            <h2 class="text-lg sm:text-xl font-bold text-white mt-1.5">How I Got to This Result: Complete 5-Step Process</h2>
           </div>
-          <span class="text-xs text-slate-500 font-mono-num">Audited Against Reference Date: Oct 6, 2026</span>
+          <span class="text-xs sm:text-sm text-slate-400 font-mono-num">Audited Against Reference Date: Oct 6, 2026</span>
         </div>
 
-        <div class="space-y-3" id="methodology-steps-container">
+        <div class="space-y-4" id="methodology-steps-container">
           <!-- 5 Detailed Expandable Phase Cards Rendered via app.js -->
         </div>
       </div>
 
       <!-- SUBSECTION C: JEV SYSTEM ONE LIVE PLAYGROUND & BENCHMARK -->
-      <div class="space-y-4 pt-6 border-t border-slate-800/80">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+      <div class="space-y-6 pt-8 border-t border-slate-800/80">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
-            <span class="text-[10px] font-mono-num font-bold uppercase px-2 py-0.5 rounded bg-purple-500/10 text-purple-300 border border-purple-500/20">TYPESAFE AI // JEV SYSTEM ONE</span>
-            <h2 class="text-base sm:text-lg font-bold text-white mt-1">Live Jev System One Tester &amp; Accuracy Benchmark</h2>
+            <span class="text-xs font-mono-num font-bold uppercase px-2.5 py-1 rounded-lg bg-purple-500/10 text-purple-300 border border-purple-500/20">TYPESAFE AI // JEV SYSTEM ONE</span>
+            <h2 class="text-lg sm:text-xl font-bold text-white mt-1.5">Live Jev System One Tester &amp; Accuracy Benchmark</h2>
           </div>
-          <span class="text-xs text-slate-500 font-mono-num">docs.typesafe.ai • Sub-200ms Typed Decision Engine</span>
+          <span class="text-xs sm:text-sm text-purple-300/80 font-mono-num">docs.typesafe.ai &bull; Sub-200ms Typed Decision Engine</span>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           
           <!-- LEFT: LIVE INPUT TESTER -->
-          <div class="lg:col-span-7 bg-[#0d121c] border border-slate-800 rounded-2xl p-5 space-y-4">
+          <div class="lg:col-span-7 bg-[#0d121c] border border-slate-800 rounded-3xl p-6 space-y-5">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-bold text-slate-200">Evaluate Any Message or Voice Transcript</span>
-              <span class="text-[10px] font-mono-num text-slate-500">API: /api/jev/evaluate</span>
+              <span class="text-sm font-bold text-slate-200">Evaluate Any Message or Voice Transcript</span>
+              <span class="text-xs font-mono-num text-slate-400">API: /api/jev/evaluate</span>
             </div>
 
             <!-- Quick Presets -->
-            <div class="flex flex-wrap items-center gap-1.5 text-[11px]">
-              <span class="text-slate-500 text-[10px] font-semibold">Presets:</span>
-              <button onclick="setJevPreset('v049')" class="px-2 py-0.5 rounded bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 transition">V049 Voice Note</button>
-              <button onclick="setJevPreset('hillcrest')" class="px-2 py-0.5 rounded bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 transition">Hillcrest Naming Crisis</button>
-              <button onclick="setJevPreset('bluebonnet')" class="px-2 py-0.5 rounded bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 transition">Blue Bonnet Reschedule</button>
-              <button onclick="setJevPreset('fieldhouse')" class="px-2 py-0.5 rounded bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 transition">Fieldhouse Billing</button>
-              <button onclick="setJevPreset('spam')" class="px-2 py-0.5 rounded bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 transition">Phishing Bot</button>
+            <div class="flex flex-wrap items-center gap-2 text-xs">
+              <span class="text-slate-400 text-xs font-bold">Presets:</span>
+              <button onclick="setJevPreset('v049')" class="px-3 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 transition font-medium">V049 Voice Note</button>
+              <button onclick="setJevPreset('hillcrest')" class="px-3 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 transition font-medium">Hillcrest Naming Crisis</button>
+              <button onclick="setJevPreset('bluebonnet')" class="px-3 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 transition font-medium">Blue Bonnet Reschedule</button>
+              <button onclick="setJevPreset('fieldhouse')" class="px-3 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 transition font-medium">Fieldhouse Billing</button>
+              <button onclick="setJevPreset('spam')" class="px-3 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 transition font-medium">Phishing Bot</button>
             </div>
 
             <textarea 
               id="jev-test-input" 
               rows="3" 
               placeholder="Paste any client message or voice transcript (e.g. '[VOICE NOTE 0:14] Hey Zaid on V049 please trim first 3 seconds')..." 
-              class="w-full text-xs p-3 rounded-xl bg-slate-950 border border-slate-800 text-slate-100 placeholder-slate-600 focus:outline-none focus:border-purple-500 font-mono transition"
+              class="w-full text-xs sm:text-sm p-4 rounded-2xl bg-slate-950 border border-slate-800 text-slate-100 placeholder-slate-600 focus:outline-none focus:border-purple-500 font-mono transition leading-relaxed"
             >[VOICE NOTE 0:14] Hey Zaid, Nina Torres. For video V049 on life insurance basics, please cut the first 3 seconds of dead silence before I speak.</textarea>
 
-            <div class="flex items-center justify-between gap-3">
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
               <input 
                 id="jev-api-key-input" 
                 type="password" 
                 placeholder="Optional TypeSafe API Key (leave blank for local System One)" 
-                class="flex-1 text-[11px] px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-slate-300 placeholder-slate-600 focus:outline-none focus:border-purple-500 font-mono"
+                class="flex-1 text-xs px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-slate-300 placeholder-slate-600 focus:outline-none focus:border-purple-500 font-mono"
               />
               <button 
                 onclick="runLiveJevEvaluation()" 
@@ -595,29 +595,29 @@
     <!-- Backdrop -->
     <div onclick="closeDrawer()" class="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity"></div>
 
-    <!-- Panel (Mobile-first bottom drawer on phone, right drawer on desktop) -->
-    <aside class="absolute inset-x-0 bottom-0 sm:inset-y-0 sm:left-auto sm:right-0 max-h-[92vh] sm:max-h-full sm:max-w-xl w-full bg-[#0c101a] border-t sm:border-t-0 sm:border-l border-slate-800 rounded-t-3xl sm:rounded-none shadow-2xl flex flex-col z-10 transition-transform">
+    <!-- Panel (Mobile-first bottom drawer on phone, spacious right drawer on desktop) -->
+    <aside class="absolute inset-x-0 bottom-0 sm:inset-y-0 sm:left-auto sm:right-0 max-h-[92vh] sm:max-h-full sm:max-w-2xl lg:max-w-3xl xl:max-w-4xl w-full bg-[#0c101a] border-t sm:border-t-0 sm:border-l border-slate-800 rounded-t-3xl sm:rounded-none shadow-2xl flex flex-col z-10 transition-transform">
       
       <!-- Drawer Header -->
-      <div class="px-6 py-4 border-b border-slate-800 flex items-center justify-between">
+      <div class="px-7 sm:px-8 py-5 border-b border-slate-800 flex items-center justify-between">
         <div>
-          <span id="drawer-tag" class="text-[10px] font-mono-num font-bold uppercase px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20">TRACE</span>
-          <h2 id="drawer-title" class="text-base font-bold text-white mt-1">Graphical Trace</h2>
+          <span id="drawer-tag" class="text-xs font-mono-num font-bold uppercase px-3 py-1 rounded-xl bg-amber-500/10 text-amber-300 border border-amber-500/20">TRACE</span>
+          <h2 id="drawer-title" class="text-lg sm:text-xl font-bold text-white mt-1.5">Graphical Trace</h2>
         </div>
-        <button onclick="closeDrawer()" class="p-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-white transition">
+        <button onclick="closeDrawer()" class="p-2.5 rounded-2xl bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-white transition">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
       </div>
 
       <!-- Drawer Scrollable Body -->
-      <div id="drawer-body" class="flex-1 overflow-y-auto p-6 space-y-6">
+      <div id="drawer-body" class="flex-1 overflow-y-auto p-6 sm:p-8 space-y-8">
         <!-- Injected via JavaScript -->
       </div>
 
       <!-- Drawer Action Footer -->
-      <div id="drawer-footer" class="p-4 border-t border-slate-800 bg-[#07090e] flex items-center justify-between text-xs text-slate-500">
+      <div id="drawer-footer" class="p-5 sm:p-6 border-t border-slate-800 bg-[#07090e] flex items-center justify-between text-xs sm:text-sm text-slate-400">
         <span>Click Esc or tap outside to close</span>
-        <button onclick="closeDrawer()" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold transition">
+        <button onclick="closeDrawer()" class="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold transition shadow-sm">
           Done
         </button>
       </div>
