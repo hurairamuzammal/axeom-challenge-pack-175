@@ -6,6 +6,12 @@ MEMORY.md
 working_docs/
 Axeom Challenge - Pack 175.zip
 
+# Extra presentations and guides
+*presentation.md
+*presentation.pptx
+*presentation.pdf
+*dataset_errors_and_omissions_guide.md
+
 # Python & SQLite runtime artifacts
 __pycache__/
 *.py[cod]
