@@ -1,7 +1,10 @@
 # Axeom Studio Operations & Financial Reconciliation Engine (Pack 175)
 
 **Author:** Muhammad Abu Huraira (`huraira.eqeel@gmail.com`)  
-**Pack ID:** `175` | **Reference Date ("Today"):** `2026-10-06`
+**Pack ID:** `175` | **Reference Date ("Today"):** `2026-10-06`  
+- **Live Vercel Application:** [axeom-challenge-five.vercel.app](https://axeom-challenge-five.vercel.app)
+- **Official Loom Video Recording:** [loom.com/share/95afc8c20a8c4ace9f56af0ed60c0618](https://www.loom.com/share/95afc8c20a8c4ace9f56af0ed60c0618)
+- **GitHub Repository:** [github.com/hurairamuzammal/axeom-challenge-pack-175](https://github.com/hurairamuzammal/axeom-challenge-pack-175)
 
 ---
 

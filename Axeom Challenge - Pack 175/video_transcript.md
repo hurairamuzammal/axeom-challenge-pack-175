@@ -5,6 +5,7 @@
 - **Business Reference Date ("Today"):** Tuesday, October 6, 2026
 - **Live Vercel Application:** `https://axeom-challenge-five.vercel.app`
 - **GitHub Repository:** `https://github.com/hurairamuzammal/axeom-challenge-pack-175`
+- **Recorded Video Link (Loom):** `https://www.loom.com/share/95afc8c20a8c4ace9f56af0ed60c0618`
 - **Total Word Count:** 618 words
 - **Estimated Speaking Time:** 4 minutes 15 seconds to 4 minutes 30 seconds (Guaranteed strictly under Loom's 5:00 limit)
 
