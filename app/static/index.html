@@ -113,15 +113,17 @@
   <!-- =================================================================== -->
   <!-- TOP BAR SQUARE TILES (LINE ICON TOP-LEFT, TEXT BOTTOM-RIGHT) -->
   <!-- =================================================================== -->
+  <!-- TOP METRIC CARDS ROW (6 KEY OPERATIONAL SIGNALS) -->
+  <!-- =================================================================== -->
   <section class="max-w-[1440px] w-full mx-auto px-4 sm:px-8 pt-6">
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
       
       <!-- Top Tile 1: Videos -->
-      <div onclick="switchTab('videos')" id="top-tile-videos" class="top-tile active rounded-2xl p-4 sm:p-5 cursor-pointer flex flex-col justify-between min-h-[115px] sm:min-h-[125px] transition-all">
+      <div onclick="switchTab('videos'); setVideoStageFilter('all');" id="top-tile-videos" class="top-tile active rounded-2xl p-3.5 sm:p-4 cursor-pointer flex flex-col justify-between min-h-[110px] sm:min-h-[120px] transition-all">
         <!-- Top Left: Line Icon -->
         <div class="flex items-center justify-between">
-          <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-amber-500/10 border border-amber-500/25 flex items-center justify-center text-amber-400">
-            <svg class="w-5 h-5 sm:w-5.5 sm:h-5.5" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-500/10 border border-amber-500/25 flex items-center justify-center text-amber-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-2.36a.75.75 0 0 1 1.03.67v6.38a.75.75 0 0 1-1.03.67l-4.72-2.36M4.5 18.75h10.5a2.25 2.25 0 0 0 2.25-2.25V7.5a2.25 2.25 0 0 0-2.25-2.25H4.5A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z"/>
             </svg>
           </div>
@@ -135,11 +137,11 @@
       </div>
 
       <!-- Top Tile 2: Clients -->
-      <div onclick="switchTab('clients')" id="top-tile-clients" class="top-tile rounded-2xl p-4 sm:p-5 cursor-pointer flex flex-col justify-between min-h-[115px] sm:min-h-[125px] transition-all">
+      <div onclick="switchTab('clients')" id="top-tile-clients" class="top-tile rounded-2xl p-3.5 sm:p-4 cursor-pointer flex flex-col justify-between min-h-[110px] sm:min-h-[120px] transition-all">
         <!-- Top Left: Line Icon -->
         <div class="flex items-center justify-between">
-          <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-sky-500/10 border border-sky-500/25 flex items-center justify-center text-sky-400">
-            <svg class="w-5 h-5 sm:w-5.5 sm:h-5.5" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-sky-500/10 border border-sky-500/25 flex items-center justify-center text-sky-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"/>
             </svg>
           </div>
@@ -153,11 +155,11 @@
       </div>
 
       <!-- Top Tile 3: Overdue Invoices -->
-      <div onclick="switchTab('invoices')" id="top-tile-invoices" class="top-tile rounded-2xl p-4 sm:p-5 cursor-pointer flex flex-col justify-between min-h-[115px] sm:min-h-[125px] transition-all">
+      <div onclick="switchTab('invoices')" id="top-tile-invoices" class="top-tile rounded-2xl p-3.5 sm:p-4 cursor-pointer flex flex-col justify-between min-h-[110px] sm:min-h-[120px] transition-all">
         <!-- Top Left: Line Icon -->
         <div class="flex items-center justify-between">
-          <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-rose-500/10 border border-rose-500/25 flex items-center justify-center text-rose-400">
-            <svg class="w-5 h-5 sm:w-5.5 sm:h-5.5" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-rose-500/10 border border-rose-500/25 flex items-center justify-center text-rose-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z"/>
             </svg>
           </div>
@@ -165,17 +167,35 @@
         </div>
         <!-- Bottom Right: Text -->
         <div class="text-right mt-2">
-          <div class="text-2xl sm:text-3xl font-extrabold font-mono-num text-rose-400 tracking-tight" id="stat-overdue-total">$8,570</div>
+          <div class="text-2xl sm:text-3xl font-extrabold font-mono-num text-rose-400 tracking-tight" id="stat-overdue-total">$15,850</div>
           <div class="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-400 mt-0.5">Overdue</div>
         </div>
       </div>
 
-      <!-- Top Tile 4: Pre-Check & Alerts -->
-      <div onclick="switchTab('guards')" id="top-tile-guards" class="top-tile rounded-2xl p-4 sm:p-5 cursor-pointer flex flex-col justify-between min-h-[115px] sm:min-h-[125px] transition-all">
+      <!-- Top Tile 4: Never Billed (Action Needed Hero Tile) -->
+      <div onclick="switchTab('videos'); setVideoStageFilter('unbilled');" id="top-tile-never-billed" class="top-tile rounded-2xl p-3.5 sm:p-4 cursor-pointer flex flex-col justify-between min-h-[110px] sm:min-h-[120px] transition-all">
         <!-- Top Left: Line Icon -->
         <div class="flex items-center justify-between">
-          <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-400">
-            <svg class="w-5 h-5 sm:w-5.5 sm:h-5.5" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-500/10 border border-amber-500/25 flex items-center justify-center text-amber-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"/>
+            </svg>
+          </div>
+          <span class="w-2.5 h-2.5 rounded-full bg-amber-400 ring-2 ring-amber-400/20 animate-pulse"></span>
+        </div>
+        <!-- Bottom Right: Text -->
+        <div class="text-right mt-2">
+          <div class="text-2xl sm:text-3xl font-extrabold font-mono-num text-amber-400 tracking-tight" id="stat-never-billed-total">$8,210</div>
+          <div class="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-400 mt-0.5">Never Billed</div>
+        </div>
+      </div>
+
+      <!-- Top Tile 5: Pre-Check & Alerts -->
+      <div onclick="switchTab('guards')" id="top-tile-guards" class="top-tile rounded-2xl p-3.5 sm:p-4 cursor-pointer flex flex-col justify-between min-h-[110px] sm:min-h-[120px] transition-all">
+        <!-- Top Left: Line Icon -->
+        <div class="flex items-center justify-between">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/>
             </svg>
           </div>
@@ -188,12 +208,12 @@
         </div>
       </div>
 
-      <!-- Top Tile 5: Audit, Decisions & Graph -->
-      <div onclick="switchTab('decisions')" id="top-tile-decisions" class="top-tile rounded-2xl p-4 sm:p-5 cursor-pointer flex flex-col justify-between col-span-2 sm:col-span-1 min-h-[115px] sm:min-h-[125px] transition-all">
+      <!-- Top Tile 6: Audit, Decisions & Graph -->
+      <div onclick="switchTab('decisions')" id="top-tile-decisions" class="top-tile rounded-2xl p-3.5 sm:p-4 cursor-pointer flex flex-col justify-between min-h-[110px] sm:min-h-[120px] transition-all">
         <!-- Top Left: Line Icon -->
         <div class="flex items-center justify-between">
-          <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-indigo-500/10 border border-indigo-500/25 flex items-center justify-center text-indigo-400">
-            <svg class="w-5 h-5 sm:w-5.5 sm:h-5.5" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/25 flex items-center justify-center text-indigo-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
               <circle cx="6" cy="6" r="2.5"/>
               <circle cx="18" cy="6" r="2.5"/>
               <circle cx="12" cy="18" r="2.5"/>
@@ -322,6 +342,10 @@
             <!-- Stage / Status Pills -->
             <div class="flex items-center gap-1 text-[11px]">
               <button onclick="setVideoStageFilter('all')" id="vsf-all" class="px-2 py-1 rounded-md bg-amber-500 text-slate-950 font-bold">All</button>
+              <button onclick="setVideoStageFilter('unbilled')" id="vsf-unbilled" class="px-2 py-1 rounded-md bg-slate-900 text-amber-300 border border-amber-500/30 flex items-center gap-1 font-semibold hover:text-white" title="Delivered shoots that were never invoiced">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                <span>Unbilled (12)</span>
+              </button>
               <button onclick="setVideoStageFilter('voicenotes')" id="vsf-voicenotes" class="px-2 py-1 rounded-md bg-slate-900 text-purple-300 border border-purple-500/20 flex items-center gap-1">
                 <svg class="w-3 h-3 text-purple-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z"/></svg>
                 <span>Voice Notes</span>
@@ -330,7 +354,7 @@
                 <svg class="w-3 h-3 text-rose-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"/></svg>
                 <span>Stuck (2)</span>
               </button>
-              <button onclick="setVideoStageFilter('revision')" id="vsf-revision" class="px-2 py-1 rounded-md bg-slate-900 text-amber-300 border border-amber-500/20">
+              <button onclick="setVideoStageFilter('revision')" id="vsf-revision" class="px-2 py-1 rounded-md bg-slate-900 text-sky-300 border border-sky-500/20">
                 In Revision
               </button>
             </div>

@@ -131,6 +131,17 @@ async function loadData() {
 
 function renderAll() {
   if (!APP_STATE) return;
+
+  const overdueList = APP_STATE.financial_action_queues?.overdue_invoices || [];
+  const overdueTotal = overdueList.reduce((acc, i) => acc + (i.amount_owed || 0), 0);
+  const elOverdue = document.getElementById("stat-overdue-total");
+  if (elOverdue) elOverdue.textContent = fmtUSD(overdueTotal);
+
+  const unbilledList = APP_STATE.financial_action_queues?.never_billed || [];
+  const unbilledTotal = unbilledList.reduce((acc, b) => acc + (b.amount || 0), 0);
+  const elNeverBilled = document.getElementById("stat-never-billed-total");
+  if (elNeverBilled) elNeverBilled.textContent = fmtUSD(unbilledTotal);
+
   renderVideosView();
   renderClientsView();
   renderInvoicesView();
@@ -176,16 +187,29 @@ function setVideoViewMode(mode) {
 
 function setVideoStageFilter(stage) {
   VIDEO_STAGE_FILTER = stage;
-  ["all", "voicenotes", "zombies", "revision"].forEach((s) => {
+  ["all", "unbilled", "voicenotes", "zombies", "revision"].forEach((s) => {
     const btn = document.getElementById(`vsf-${s}`);
     if (btn) {
       if (s === stage) {
-        btn.className = "px-2.5 py-1 rounded-md bg-amber-500 text-slate-950 font-bold flex items-center gap-1";
+        btn.className = "px-2 py-1 rounded-md bg-amber-500 text-slate-950 font-bold flex items-center gap-1 shadow-sm";
       } else {
-        btn.className = "px-2.5 py-1 rounded-md bg-slate-900 text-slate-300 border border-slate-800 flex items-center gap-1";
+        btn.className = "px-2 py-1 rounded-md bg-slate-900 text-slate-300 border border-slate-800 hover:text-white flex items-center gap-1";
       }
     }
   });
+
+  const nbTile = document.getElementById("top-tile-never-billed");
+  const vTile = document.getElementById("top-tile-videos");
+  if (stage === "unbilled") {
+    nbTile?.classList.add("active");
+    vTile?.classList.remove("active");
+  } else {
+    nbTile?.classList.remove("active");
+    if (CURRENT_TAB === "videos") {
+      vTile?.classList.add("active");
+    }
+  }
+
   VIDEO_PAGE = 1;
   renderVideosView();
 }
@@ -248,6 +272,9 @@ function renderVideosView() {
 
   // 1. Filter Pipeline
   let filtered = board;
+  const unbilledBookingsMap = new Map(
+    (APP_STATE.financial_action_queues?.never_billed || []).map((nb) => [nb.booking_id, nb])
+  );
 
   if (query) {
     filtered = filtered.filter(
@@ -261,7 +288,9 @@ function renderVideosView() {
     );
   }
 
-  if (VIDEO_STAGE_FILTER === "voicenotes") {
+  if (VIDEO_STAGE_FILTER === "unbilled") {
+    filtered = filtered.filter((v) => unbilledBookingsMap.has(v.shoot_booking || v.booking_id));
+  } else if (VIDEO_STAGE_FILTER === "voicenotes") {
     filtered = filtered.filter((v) => voiceNotesSet.has(v.video_id));
   } else if (VIDEO_STAGE_FILTER === "zombies") {
     filtered = filtered.filter((v) => ["V121", "V152"].includes(v.video_id));
@@ -350,7 +379,13 @@ function renderVideosView() {
   const getStatusBadge = (v) => {
     const hasVoiceNote = voiceNotesSet.has(v.video_id);
     const isZombie = ["V121", "V152"].includes(v.video_id);
+    const bookingId = v.shoot_booking || v.booking_id;
+    const unbilledInfo = unbilledBookingsMap.get(bookingId);
 
+    if (unbilledInfo) {
+      const amtStr = unbilledInfo.amount ? `$${Math.round(unbilledInfo.amount)}` : "Unbilled";
+      return `<span class="inline-flex items-center gap-1 text-amber-300 font-mono-num font-bold text-[10px] px-2 py-0.5 rounded-md bg-amber-500/20 border border-amber-500/40 animate-pulse">${ICONS.alert} Action Needed: Unbilled (${amtStr})</span>`;
+    }
     if (isZombie) {
       return `<span class="inline-flex items-center gap-1 text-amber-300 font-mono-num font-bold text-[10px] px-2 py-0.5 rounded-lg bg-amber-500/15 border border-amber-500/30">${ICONS.alert} Stuck (Approved)</span>`;
     }
@@ -370,18 +405,23 @@ function renderVideosView() {
   if (VIDEO_VIEW_MODE === "tiles") {
     // MODE 1: COMPACT RESPONSIVE TILES GRID (NO WASTED VOID SPACE)
     container.innerHTML = `
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-3.5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-2.5 sm:gap-3">
         ${displayList
           .map((v) => {
             const clientName = v.canonical_client || v.client;
             const isStuck = ["V121", "V152"].includes(v.video_id);
+            const bookingId = v.shoot_booking || v.booking_id;
+            const isUnbilled = unbilledBookingsMap.has(bookingId);
             return `
-              <div onclick="openVideoTrace('${v.video_id}')" class="square-tile rounded-2xl p-3.5 sm:p-4 cursor-pointer flex flex-col justify-between group transition-all ${isStuck ? "border-amber-500/40 bg-amber-500/[0.03]" : ""}">
+              <div onclick="openVideoTrace('${v.video_id}')" class="square-tile rounded-xl p-3 sm:p-3.5 cursor-pointer flex flex-col justify-between group transition-all ${isUnbilled ? "border-amber-500/60 bg-amber-500/[0.05] ring-1 ring-amber-500/30" : isStuck ? "border-amber-500/40 bg-amber-500/[0.03]" : ""}">
                 
-                <!-- Top Row: ID Badge + Hours Logged with Clock Icon -->
+                <!-- Top Row: ID Badge + Revisions + Hours Logged -->
                 <div class="flex items-center justify-between">
-                  <div class="px-2.5 py-1 rounded-xl bg-amber-500/10 border border-amber-500/25 font-mono-num font-black text-xs text-amber-400 shadow-inner">
-                    ${escapeHtml(v.video_id)}
+                  <div class="flex items-center gap-1.5">
+                    <span class="px-2 py-0.5 rounded-lg bg-amber-500/10 border border-amber-500/25 font-mono-num font-black text-xs text-amber-400 shadow-inner">
+                      ${escapeHtml(v.video_id)}
+                    </span>
+                    ${v.revisions_num > 0 ? `<span class="text-[10px] font-mono-num text-slate-400">${v.revisions_num} rev${v.revisions_num > 1 ? "s" : ""}</span>` : ""}
                   </div>
                   <span class="flex items-center gap-1 font-mono-num font-semibold text-[11px] text-slate-300 bg-slate-900/90 px-2 py-0.5 rounded-lg border border-slate-800" title="Editor production hours logged on this cut">
                     <svg class="w-3 h-3 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -390,18 +430,19 @@ function renderVideosView() {
                 </div>
 
                 <!-- Center: Video Title & Client -->
-                <div class="my-2">
-                  <h3 class="text-xs sm:text-sm font-bold text-white group-hover:text-amber-400 transition line-clamp-2 leading-snug">
+                <div class="my-2 min-w-0">
+                  <h3 class="text-xs sm:text-sm font-bold text-white group-hover:text-amber-400 transition truncate leading-snug">
                     ${escapeHtml(v.title || "Untitled Video")}
                   </h3>
-                  <p class="text-[11px] text-slate-400 truncate mt-0.5">
-                    ${escapeHtml(clientName)}
-                  </p>
+                  <div class="flex items-center justify-between text-[11px] text-slate-400 truncate mt-0.5">
+                    <span class="truncate">${escapeHtml(clientName)}</span>
+                    <span class="font-mono-num text-[10px] text-slate-500 ml-1 shrink-0">${v.effective_date || v.shoot_date || ""}</span>
+                  </div>
                 </div>
 
                 <!-- Bottom Row: Editor Tag + Status Text -->
                 <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between gap-1">
-                  <div class="flex items-center gap-1.5 text-xs text-slate-300 font-medium">
+                  <div class="flex items-center gap-1.5 text-xs text-slate-300 font-medium shrink-0">
                     <span class="w-1.5 h-1.5 rounded-full ${v.editor === "Eli" ? "bg-rose-400" : "bg-emerald-400"}"></span>
                     <span class="truncate max-w-[65px] sm:max-w-none text-[11px]">${escapeHtml(v.editor || "Team")}</span>
                   </div>
@@ -424,13 +465,15 @@ function renderVideosView() {
           .map((v) => {
             const hasVoiceNote = voiceNotesSet.has(v.video_id);
             const isZombie = ["V121", "V152"].includes(v.video_id);
+            const bookingId = v.shoot_booking || v.booking_id;
+            const isUnbilled = unbilledBookingsMap.has(bookingId);
             const clientName = v.canonical_client || v.client;
             const effDate = v.effective_date || v.client_approved_on || v.shoot_date || "Active";
 
             return `
               <div 
                 onclick="openVideoTrace('${v.video_id}')" 
-                class="rounded-xl bg-[#0d121c] hover:bg-slate-800/60 border border-slate-800/90 hover:border-amber-500/40 p-2.5 sm:p-3 cursor-pointer transition flex items-center justify-between gap-3 group"
+                class="rounded-xl bg-[#0d121c] hover:bg-slate-800/60 border ${isUnbilled ? "border-amber-500/50 bg-amber-500/[0.04]" : isZombie ? "border-amber-500/40" : "border-slate-800/90"} hover:border-amber-500/40 p-2.5 sm:p-3 cursor-pointer transition flex items-center justify-between gap-3 group"
               >
                 <!-- Left: ID Badge, Title & Client -->
                 <div class="flex items-center gap-3 min-w-0 flex-1">
@@ -442,10 +485,11 @@ function renderVideosView() {
                       <h3 class="text-xs sm:text-sm font-bold text-white group-hover:text-amber-400 transition truncate">
                         ${escapeHtml(v.title || "Untitled Video")}
                       </h3>
+                      ${isUnbilled ? `<span class="px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 text-[9px] font-mono-num font-semibold">Unbilled</span>` : ""}
                       ${hasVoiceNote ? `<span class="px-1.5 py-0.2 rounded bg-purple-500/20 text-purple-300 text-[9px] font-mono-num font-semibold">Voice Note</span>` : ""}
                       ${isZombie ? `<span class="px-1.5 py-0.2 rounded bg-rose-500/20 text-rose-300 text-[9px] font-mono-num font-semibold">Stuck</span>` : ""}
                     </div>
-                    <p class="text-[11px] text-slate-400 truncate mt-0.5">${escapeHtml(clientName)}</p>
+                    <p class="text-[11px] text-slate-400 truncate mt-0.5">${escapeHtml(clientName)} &bull; Ref: ${v.shoot_booking || "Direct"}</p>
                   </div>
                 </div>
 
@@ -1768,6 +1812,11 @@ function openVideoTrace(videoId) {
   const isOpenUpcoming = anyInvoice && owedAmount > 0.01 && (anyInvoice.days_overdue || 0) <= 0;
   const isOverdueDebt = anyInvoice && (anyInvoice.days_overdue || 0) > 0;
 
+  // Retainer and payment calculations for client
+  const clientPayments = (APP_STATE.module3_payment_reconciliation?.reconciled_payments || [])
+    .filter((p) => (p.canonical_client || "").toLowerCase() === clientName.toLowerCase());
+  const clientTotalPaid = clientPayments.reduce((acc, p) => acc + (p.amount_num || parseFloat(p.amount) || 0), 0);
+
   tag.textContent = `OPERATIONAL TRACE // ${video.video_id}`;
   tag.className = "text-xs font-mono-num font-bold uppercase px-3 py-1 rounded-xl bg-purple-500/20 text-purple-300 border border-purple-500/30";
   title.textContent = `${video.title || "Untitled Video"} (${video.video_id})`;
@@ -2077,12 +2126,18 @@ function openVideoTrace(videoId) {
           ${
             ((CLIENT_META[clientName] || {}).plan || "").toLowerCase().includes("retainer")
               ? `
-            <div class="p-3 rounded-xl bg-purple-500/10 border border-purple-500/25 flex items-center justify-between text-xs font-mono-num">
-              <div class="flex items-center gap-2 text-purple-300">
-                <span class="inline-block">${ICONS.calendar}</span>
-                <span><strong class="text-white">Monthly Retainer:</strong> Billed at start of month (1st of month)</span>
+            <div class="p-3.5 rounded-xl bg-purple-500/10 border border-purple-500/25 space-y-1.5 text-xs font-mono-num">
+              <div class="flex items-center justify-between text-purple-300 font-bold">
+                <span class="flex items-center gap-1.5">${ICONS.calendar} Monthly Retainer Contract</span>
+                <span>${(CLIENT_META[clientName] || {}).plan || "Retainer Plan"}</span>
               </div>
-              <span class="text-emerald-400 font-bold">Paid: ${fmtUSD(paidAmount || invoiceAmount)}</span>
+              <p class="text-slate-300 leading-relaxed font-sans text-xs">
+                Retainers are billed in advance at the <span class="font-bold text-white">start of each calendar month</span> (1st of month). Shoot session ${bookingId || ""} is covered under this client's active monthly retainer allocation.
+              </p>
+              <div class="flex items-center justify-between pt-1 border-t border-purple-500/20 text-[11px]">
+                <span class="text-slate-400">Schedule: 1st of month advance billing</span>
+                <span class="text-emerald-400 font-bold">Total Paid to Date: ${fmtUSD(clientTotalPaid)} (${clientPayments.length} payments)</span>
+              </div>
             </div>
           `
               : ""
@@ -2124,12 +2179,12 @@ function openVideoTrace(videoId) {
                 <span class="flex items-center gap-1.5">${ICONS.calendar} Monthly Retainer Contract</span>
                 <span>${(CLIENT_META[clientName] || {}).plan || "Retainer Plan"}</span>
               </div>
-              <p class="text-slate-300 leading-relaxed font-sans">
-                Retainers are billed at the <span class="font-bold text-white">start of each calendar month</span> (1st of month). Shoot session ${bookingId || ""} is covered under this client's active monthly retainer allocation.
+              <p class="text-slate-300 leading-relaxed font-sans text-xs">
+                Retainers are billed in advance at the <span class="font-bold text-white">start of each calendar month</span> (1st of month). Shoot session ${bookingId || ""} is covered under this client's active monthly retainer allocation.
               </p>
               <div class="flex items-center justify-between pt-1 border-t border-purple-500/20 text-[11px]">
-                <span class="text-slate-400">Terms: Advance billing (1st of month)</span>
-                <span class="text-emerald-400 font-bold">Covered by Retainer &bull; Paid to Date</span>
+                <span class="text-slate-400">Schedule: 1st of month advance billing</span>
+                <span class="text-emerald-400 font-bold">Total Paid to Date: ${fmtUSD(clientTotalPaid)} (${clientPayments.length} payments)</span>
               </div>
             </div>
           `
@@ -2250,6 +2305,10 @@ function openClientTrace(clientName) {
   const unbilledItem = getUnbilledInfo(clientName);
   const overdueItem = getOverdueInvoice(clientName);
   const isBlueBonnet = clientName === "Blue Bonnet Realty" || clientName === "Bluebonnet Realty Group";
+
+  const clientPayments = (APP_STATE.module3_payment_reconciliation?.reconciled_payments || [])
+    .filter((p) => (p.canonical_client || "").toLowerCase() === clientName.toLowerCase());
+  const clientTotalPaid = clientPayments.reduce((acc, p) => acc + (p.amount_num || parseFloat(p.amount) || 0), 0);
 
   body.innerHTML = `
     <!-- Client Profile Header -->
@@ -2419,7 +2478,7 @@ function openClientTrace(clientName) {
               </p>
               <div class="flex items-center justify-between pt-1 border-t border-purple-500/20 text-[11px]">
                 <span class="text-slate-400">Schedule: 1st of month advance billing</span>
-                <span class="text-emerald-400 font-bold">Active Retainer Client</span>
+                <span class="text-emerald-400 font-bold">Total Paid to Date: ${fmtUSD(clientTotalPaid)} (${clientPayments.length} payments)</span>
               </div>
             </div>
           `
@@ -2556,6 +2615,17 @@ function switchTab(tabId) {
       view?.classList.add("hidden");
     }
   });
+
+  const nbTile = document.getElementById("top-tile-never-billed");
+  if (nbTile) {
+    if (tabId === "videos" && VIDEO_STAGE_FILTER === "unbilled") {
+      nbTile.classList.add("active");
+      document.getElementById("top-tile-videos")?.classList.remove("active");
+    } else {
+      nbTile.classList.remove("active");
+    }
+  }
+
   if (tabId === "decisions") {
     renderDecisionsView();
   }
