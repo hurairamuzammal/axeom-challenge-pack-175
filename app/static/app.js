@@ -2075,6 +2075,20 @@ function openVideoTrace(videoId) {
           </div>
 
           ${
+            ((CLIENT_META[clientName] || {}).plan || "").toLowerCase().includes("retainer")
+              ? `
+            <div class="p-3 rounded-xl bg-purple-500/10 border border-purple-500/25 flex items-center justify-between text-xs font-mono-num">
+              <div class="flex items-center gap-2 text-purple-300">
+                <span class="inline-block">${ICONS.calendar}</span>
+                <span><strong class="text-white">Monthly Retainer:</strong> Billed at start of month (1st of month)</span>
+              </div>
+              <span class="text-emerald-400 font-bold">Paid: ${fmtUSD(paidAmount || invoiceAmount)}</span>
+            </div>
+          `
+              : ""
+          }
+
+          ${
             isUnbilled
               ? `
             <div class="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-start gap-3">
@@ -2105,7 +2119,19 @@ function openVideoTrace(videoId) {
             </div>
           `
               : `
-            <p class="text-xs sm:text-sm text-slate-400">Covered under primary client retainer package.</p>
+            <div class="p-3.5 rounded-xl bg-purple-500/10 border border-purple-500/25 space-y-1.5 text-xs font-mono-num">
+              <div class="flex items-center justify-between text-purple-300 font-bold">
+                <span class="flex items-center gap-1.5">${ICONS.calendar} Monthly Retainer Contract</span>
+                <span>${(CLIENT_META[clientName] || {}).plan || "Retainer Plan"}</span>
+              </div>
+              <p class="text-slate-300 leading-relaxed font-sans">
+                Retainers are billed at the <span class="font-bold text-white">start of each calendar month</span> (1st of month). Shoot session ${bookingId || ""} is covered under this client's active monthly retainer allocation.
+              </p>
+              <div class="flex items-center justify-between pt-1 border-t border-purple-500/20 text-[11px]">
+                <span class="text-slate-400">Terms: Advance billing (1st of month)</span>
+                <span class="text-emerald-400 font-bold">Covered by Retainer &bull; Paid to Date</span>
+              </div>
+            </div>
           `
           }
 
@@ -2378,6 +2404,27 @@ function openClientTrace(clientName) {
             <span class="text-sm sm:text-base font-bold text-white">4. Invoices &amp; Unbilled Revenue Audit</span>
             <span class="text-xs font-mono-num text-slate-400">${client.invoice_nos?.length || allInvoices.length} invoices</span>
           </div>
+
+          <!-- Retainer Advance Billing Notice -->
+          ${
+            (meta.plan || "").toLowerCase().includes("retainer")
+              ? `
+            <div class="p-3.5 rounded-xl bg-purple-500/10 border border-purple-500/25 space-y-1.5 text-xs font-mono-num">
+              <div class="flex items-center justify-between text-purple-300 font-bold">
+                <span class="flex items-center gap-1.5">${ICONS.calendar} Monthly Retainer Contract</span>
+                <span>${meta.plan}</span>
+              </div>
+              <p class="text-slate-300 leading-relaxed font-sans">
+                Retainer accounts are billed in advance at the <span class="font-bold text-white">start of each calendar month</span> (1st of month). Covers recurring monthly shoots and prioritized editing capacity.
+              </p>
+              <div class="flex items-center justify-between pt-1 border-t border-purple-500/20 text-[11px]">
+                <span class="text-slate-400">Schedule: 1st of month advance billing</span>
+                <span class="text-emerald-400 font-bold">Active Retainer Client</span>
+              </div>
+            </div>
+          `
+              : ""
+          }
 
           <!-- Unbilled Work Alert Banner if applicable -->
           ${
