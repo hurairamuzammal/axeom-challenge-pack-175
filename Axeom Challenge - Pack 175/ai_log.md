@@ -47,9 +47,11 @@ Gemini handled high-velocity code scaffolding, regex parsing, test generation, a
 
 ## 2. Tools Used & Division of Responsibilities
 
-### Tooling Stack
-- **Primary AI Agent:** Google Gemini (Antigravity Agent) — CLI execution, file editing, test execution, full-stack scaffolding.
-- **Interactive AI Chat:** Gemini 2.5 Pro (Deep Research & Architecture Brainstorming) — syntax cross-referencing and algorithmic logic discussions.
+### Tooling Stack & Shared Chat Links
+- **Interactive AI Chat:** Google Gemini (Gemini 2.5 Pro)  
+  **Public Shared Chat Link:** [https://share.gemini.google/bOVsRyTtf8E5](https://share.gemini.google/bOVsRyTtf8E5)  
+  *In this interactive session, I conducted exploratory data analysis across all 8 files, identified core data traps (European dates, entity boundaries, Blue Bonnet reschedule), and structured the business requirements into two master architectural prompt specifications.*
+- **Primary AI Coding Agent:** Google Gemini (Antigravity Agent) — CLI execution, file editing, test execution, full-stack scaffolding driven directly by the generated prompt specifications.
 - **Python Engine:** Python 3.12, Pandas, SQLite, SQLAlchemy.
 - **Frontend Engine:** HTML5, Modern Vanilla JS, Tailwind CSS, Vercel Serverless.
 
@@ -68,7 +70,14 @@ Gemini handled high-velocity code scaffolding, regex parsing, test generation, a
 
 ## 3. Key Prompts Used & Strategic Direction
 
-Below are verbatim examples of key prompts I used to drive Gemini while maintaining strict decision-making authority:
+### The Two Master Prompt Specifications Created from Gemini Chat
+As documented in my public Gemini session ([https://share.gemini.google/bOVsRyTtf8E5](https://share.gemini.google/bOVsRyTtf8E5)), I used an interactive 2-stage prompt engineering workflow:
+1. **Interactive Formulation:** In Gemini Chat, I explained the raw data quirks, defined the operational requirements, and directed Gemini to draft two formal architectural specification documents.
+2. **Deterministic Agent Execution:** I then used these two specifications as master prompts for the Antigravity coding agent to implement the pipeline without inventing assumptions:
+   - **Specification Prompt 1:** Architecture, Ingestion, Schema Normalization & 3-Tier Identity Resolution.
+   - **Specification Prompt 2:** 4-Pass Dynamic Payment Reconciliation, Jev System One Revision Intake, and Pre-Invoice Balance Guards.
+
+Below are the verbatim prompts and directives used throughout the project:
 
 ### Prompt 1: The "Zero Data Loss & Raw Integrity" Directive (Day 1)
 ```

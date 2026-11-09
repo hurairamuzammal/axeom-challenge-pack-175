@@ -5,6 +5,7 @@
 - **Live Vercel Application:** [axeom-challenge-five.vercel.app](https://axeom-challenge-five.vercel.app)
 - **Official Loom Video Recording:** [loom.com/share/95afc8c20a8c4ace9f56af0ed60c0618](https://www.loom.com/share/95afc8c20a8c4ace9f56af0ed60c0618)
 - **GitHub Repository:** [github.com/hurairamuzammal/axeom-challenge-pack-175](https://github.com/hurairamuzammal/axeom-challenge-pack-175)
+- **Interactive Gemini Brainstorming Chat:** [share.gemini.google/bOVsRyTtf8E5](https://share.gemini.google/bOVsRyTtf8E5)
 
 ---
 
