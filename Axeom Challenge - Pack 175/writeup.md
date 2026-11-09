@@ -2,6 +2,12 @@
 
 **Prepared by:** Muhammad Abu Huraira (`huraira.eqeel@gmail.com`)  
 **Reference Date ("Today"):** Tuesday, October 6, 2026  
+**Video Walkthrough (Loom):** https://www.loom.com/share/accd9aa2b6224104a33eaa57437a03cf *(Note: Kept to 5 minutes due to Loom free version limit)*  
+
+---
+
+### In One Paragraph: The Entire Story & Resolution
+Axeom is an active, profitable studio ($125,690 cash collected) whose rapid growth across disconnected spreadsheets, WhatsApp messages, and audio voice notes created four systemic leaks: 72 raw name variations resolved into 30 canonical clients (isolating third-party payer Fieldhouse Marketing from clinical clients and protecting separate businesses sharing common owners); $8,210 in completed work never billed alongside $7,670 in genuine overdue debt (while correcting 6 false-unpaid invoices already settled via Zelle/wire); 78.2% of production board cards missing revision notes with junior editor Eli logging zero notes and averaging 2.14 revisions per video; and Gloria Reed at Hillcrest PT withholding $5,000 in retainers over ignored legal compliance naming. To fix this permanently, we built and deployed a dynamic reactive operations engine that accepts multi-file CSV uploads with instant recalculation, guards credit balances before billing (voiding redundant invoices on prepaid rescheduled shoots like Blue Bonnet Realty), and utilizes an embedded sub-200ms TypeSafe Jev System One decision model to extract unstructured voice notes directly to editor task cards—empowering the owner through high-confidence action cards under the rule: *"Suggest, Never Act Alone"*.
 
 ---
 

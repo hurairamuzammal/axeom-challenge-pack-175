@@ -3,7 +3,7 @@
 **Author:** Muhammad Abu Huraira (`huraira.eqeel@gmail.com`)  
 **Pack ID:** `175` | **Reference Date ("Today"):** `2026-10-06`  
 - **Live Vercel Application:** [axeom-challenge-five.vercel.app](https://axeom-challenge-five.vercel.app)
-- **Official Loom Video Recording:** [loom.com/share/95afc8c20a8c4ace9f56af0ed60c0618](https://www.loom.com/share/95afc8c20a8c4ace9f56af0ed60c0618)
+- **Official Loom Video Recording:** [loom.com/share/accd9aa2b6224104a33eaa57437a03cf](https://www.loom.com/share/accd9aa2b6224104a33eaa57437a03cf) *(5-minute walkthrough due to Loom free tier limit)*
 - **GitHub Repository:** [github.com/hurairamuzammal/axeom-challenge-pack-175](https://github.com/hurairamuzammal/axeom-challenge-pack-175)
 - **Interactive Gemini Brainstorming Chat:** [share.gemini.google/bOVsRyTtf8E5](https://share.gemini.google/bOVsRyTtf8E5)
 
