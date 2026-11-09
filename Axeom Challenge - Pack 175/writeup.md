@@ -102,3 +102,37 @@ We hand-verified a 40-message benchmark sample representing the full operational
   - Implement an editor SLA dashboard alerting Zaid whenever an editor exceeds 2 revisions per video or holds an approved cut in `In revision` for more than 48 hours (remedying the 'Eli Effect').
   - Set up automated compliance name validation for healthcare clients (`Hillcrest Physical Therapy`) preventing export unless legal naming requirements are met.
 
+---
+
+## 7. Master Business Assumptions & Reconciliation Decisions
+
+For complete auditing transparency, the core reconciliation decisions, entity resolutions, and financial assumptions governing the engine's calculations are summarized below:
+
+1. **Third-Party Payer vs. Studio Client (`Fieldhouse Marketing`):**
+   - In `messages.txt` [2026-06-10], Tanya states: *"we handle marketing for Vista Pediatrics and Parkside Chiro... send their invoices directly to us"*.
+   - **Decision:** Fieldhouse Marketing is classified as a third-party payer, not an independent production client. The 7 invoices billed to them (`INV-1044`, `INV-1062`, `INV-1069`, `INV-1093`, `INV-1094`, `INV-1126`, `INV-1127`) and payments received from `FIELDHOUSE MARKETING LLC` (`P5053`, `P5080`, `P5105`, `P5123` totaling $5,400.00) are resolved to the underlying clinical clients (`Vista Pediatrics` and `Parkside Chiropractic`).
+
+2. **Monthly Retainer Model ($2,500/mo flat fee) vs. $0 Capacity Bookings:**
+   - Retainer clients (`Adeyemi Law Firm`, `Hillcrest Physical Therapy`, `Bayou Wealth Partners`) are billed a fixed $2,500 monthly retainer on the 1st of each month via `invoices.csv`.
+   - **Decision:** The 22 associated retainer shoot sessions in `bookings.csv` logged at $0 represent studio capacity and shoot scheduling without double-billing the client.
+
+3. **Strict Business Reference Date ("Today" = Tuesday, October 6, 2026):**
+   - **Decision:** All days overdue, billing aging, and pipeline boundaries are calculated relative to `2026-10-06`. Any booking after October 6 represents future pipeline. Bank feed dates in `payments.csv` follow European `%d/%m/%Y` format (e.g., `06/10/2026` = Oct 6, 2026), preventing day-month transposition errors.
+
+4. **Multi-Invoice Bulk & Partial Payment Reconciliation:**
+   - `P5076` ($900.00 Zelle from Mia Torres, memo: "july sessions") settles three open $300 July invoices (`INV-1066`, `INV-1077`, `INV-1084`).
+   - `P5115` ($450.00 Zelle from Will Moore, memo: "half now half later") is matched to `INV-1121` ($900.00), leaving an active overdue balance of $450.00 (15 days overdue).
+
+5. **Rescheduled Shoot Pre-Payment vs. Zero Cash Debt (`Blue Bonnet Realty`):**
+   - Shoot `B142` (`2026-09-22`, $1,500) was cancelled due to a family emergency and rescheduled to `B154` (`2026-10-05`), which was completed and delivered.
+   - Blue Bonnet paid $1,500 via ACH (`P5121`) on `2026-09-28` for `INV-1131`. Axeom subsequently generated a duplicate invoice `INV-1138` ($1,500, unpaid) on `2026-09-27` without checking client credit.
+   - **Decision:** Because the rescheduled shoot was delivered on Oct 5, Axeom owes zero cash refund. The fix is voiding redundant `INV-1138`.
+
+6. **Separate Legal Entities with Shared Contacts:**
+   - Three contacts manage two distinct businesses each (`Alana Ibarra`: `Beacon Med Spa` & `Juniper Med Spa`; `Tasha Torres`: `Torres Family Law` & `Torres's Auto Spa`; `Nolan Nguyen`: `Maple Athletics` & `Prime Barbershop`).
+   - **Decision:** These are treated as separate commercial accounts with distinct pricing agreements, rather than naively collapsing them into single records by name.
+
+7. **Voice Note & Unstructured Intake Architecture:**
+   - Client requests arriving via WhatsApp, Instagram DMs, and voice notes are evaluated through a TypeSafe Jev System One decision schema (`docs.typesafe.ai`), classifying intent in <200ms and syncing missed audio notes directly to the editor's production board card.
+
+
