@@ -2629,6 +2629,35 @@ function closeMobileMenu() {
   document.body.style.overflow = "";
 }
 
+async function resetBaselineData() {
+  showBanner("Resetting all state to baseline October 6, 2026 dataset...");
+  try {
+    const res = await fetch("/api/reset", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    });
+    if (res.ok) {
+      const resetState = await res.json();
+      APP_STATE = resetState;
+      
+      const searchInput = document.getElementById("quick-search");
+      if (searchInput) searchInput.value = "";
+      const videoSearchInput = document.getElementById("video-search-input");
+      if (videoSearchInput) videoSearchInput.value = "";
+      
+      renderAll();
+      showBanner("Successfully restored baseline October 6, 2026 dataset (7 overdue invoices, $7,670 debt, $125,690 cash).");
+    } else {
+      localStorage.clear();
+      window.location.reload();
+    }
+  } catch (err) {
+    console.error("Reset error:", err);
+    localStorage.clear();
+    window.location.reload();
+  }
+}
+
 function switchTab(tabId) {
   CURRENT_TAB = tabId;
   const tabs = ["videos", "clients", "invoices", "guards", "decisions"];
